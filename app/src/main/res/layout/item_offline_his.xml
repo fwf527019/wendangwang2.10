@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/f6"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:id="@+id/offline_his_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="时间"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px28" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/white">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/offline_his_goods_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                fresco:placeholderImage="@drawable/defalt_pic"
+                fresco:placeholderImageScaleType="fitXY" />
+
+
+            <TextView
+                android:id="@+id/offline_his_goods_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/offline_his_goods_img"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="×1"
+                android:textColor="@color/red" />
+
+            <TextView
+                android:id="@+id/offline_his_goods_pice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/offline_his_goods_img"
+                android:layout_alignLeft="@+id/offline_his_goods_name"
+                android:text="¥36.20"
+                android:textColor="@color/red"
+                android:textSize="@dimen/px28" />
+
+            <TextView
+                android:id="@+id/offline_his_goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toEndOf="@+id/offline_his_goods_img"
+                android:text="商品名称"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px28" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

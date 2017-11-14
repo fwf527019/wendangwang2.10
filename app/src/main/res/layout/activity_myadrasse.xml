@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:fitsSystemWindows="false"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@drawable/back_icon" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="标题"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px34" />
+
+        <TextView
+            android:id="@+id/myadress_add_myadress_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新增地址"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:textSize="@dimen/px32"
+            android:textColor="@color/gry"
+            />
+    </RelativeLayout>
+    <include layout="@layout/no_data_page"></include>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_adress_recycler"
+       android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/addadrasse"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:visibility="invisible"
+        android:layout_margin="20dp"
+        android:background="@drawable/xuline">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="暂时没有您的收货地地，点击添加"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_no_right"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/suerorder_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="送货清单"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px28" />
+
+        <ImageView
+            android:id="@+id/suerorder_img1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/suerorder_tv1"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/suerorder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/suerorder_tv1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/suerorder_img1"
+            android:text="优惠券null元，全场通用"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px32" />
+
+        <TextView
+            android:id="@+id/suerorder_spec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/suerorder_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/suerorder_img1"
+            android:text="优惠券null元，全场通用"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px26" />
+
+        <TextView
+            android:id="@+id/suerorder_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/suerorder_img1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:text="×1"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px26" />
+
+        <TextView
+            android:id="@+id/suerorder_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/suerorder_img1"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/suerorder_num"
+            android:text="¥null"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px26" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="订单备注："
+            android:textColor="@color/black"
+            android:textSize="@dimen/px26" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="请输入订单备注"
+            android:textColorHint="@color/greys"
+            android:textSize="@dimen/px26" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="提示：虚拟商品不支持退货与换货"
+        android:textColor="@color/gry"
+        android:textSize="@dimen/px26" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+    </View>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </View>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共"
+            android:textColor="#010101"
+            android:textSize="@dimen/px24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#010101"
+            android:textSize="@dimen/px24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="件商品，共计"
+            android:textColor="#010101"
+            android:textSize="@dimen/px24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥20.00"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px34" />
+
+        <TextView
+            android:id="@+id/suerorder_btn"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/jiesuan_btnbg"
+            android:gravity="center"
+            android:text="提交订单"
+            android:textColor="@color/white"
+            android:textSize="@dimen/px28" />
+    </LinearLayout>
+
+</LinearLayout>

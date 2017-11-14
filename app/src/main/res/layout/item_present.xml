@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/present_goods_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            fresco:placeholderImage="@drawable/defalt_pic"
+            fresco:placeholderImageScaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/present_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/present_goods_img"
+            android:text="商品名称"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28" />
+
+        <TextView
+            android:id="@+id/present_goods_spec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/present_goods_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/present_goods_img"
+            android:text="商品规格"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px26" />
+
+
+        <TextView
+            android:id="@+id/prensent_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/present_goods_img"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/present_goods_pice"
+            android:background="@drawable/kuang_mainc"
+            android:text="标签"
+            android:textColor="@color/maincolor" />
+
+        <TextView
+            android:id="@+id/present_goods_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/present_goods_img"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="×1"
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/present_goods_pice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/present_goods_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/present_goods_img"
+            android:text="¥36.20"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px28" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/whites"></View>
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_no_right"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RatingBar
+            android:id="@+id/push_eva_star"
+            style="@style/StarRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:numStars="5"
+            android:rating="5.0"
+            android:stepSize="1" />
+
+        <TextView
+            android:id="@+id/push_eva_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="不错呀"
+            android:textSize="@dimen/px28"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:background="@drawable/line_kuangw"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="100dp">
+    <EditText
+        android:id="@+id/push_eva_edt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/px26"
+        android:gravity="left"
+        android:background="@null"
+        android:padding="10dp"
+        android:textColorHint="@color/gry"
+        android:hint="说说你的购物感受吧" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/push_eva_img_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/push_eva_add_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/add_pic" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="最多上传4张图片(图片大小小于5M)" />
+
+    <Button
+        android:id="@+id/push_eva_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/home_btn_bgs"
+        android:text="提交"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

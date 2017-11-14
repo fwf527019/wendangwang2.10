@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:id="@+id/item_saleapply_ordernum"
+            android:gravity="center_vertical"
+            android:text="订单号:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="状态"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:id="@+id/item_saleapply_time"
+            android:gravity="center_vertical"
+            android:text="交易时间:2017-07-07 18:30:50"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px24" />
+
+    </LinearLayout>
+  <android.support.v7.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:id="@+id/item_apply_list"
+      android:layout_height="match_parent">
+  </android.support.v7.widget.RecyclerView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/f6"
+        ></View>
+</LinearLayout>

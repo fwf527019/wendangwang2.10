@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_columnWeight="1"
+    android:layout_rowWeight="1"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_margin="10dp"
+        fresco:placeholderImage="@drawable/defalt_pic"
+        android:id="@+id/classfy_grid_img"
+        fresco:placeholderImageScaleType="fitXY"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/calssfy_grid_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        style="@style/text_gry_26"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="奇异果" />
+</LinearLayout>

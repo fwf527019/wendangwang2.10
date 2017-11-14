@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/goodevaluat_userhead"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="10dp"
+        fresco:placeholderImage="@drawable/header" />
+
+    <TextView
+        android:id="@+id/goodevaluat_userphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/goodevaluat_userhead"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/goodevaluat_userhead"
+        android:text="123333333"
+        android:textColor="@color/black"
+        android:textSize="@dimen/px28" />
+
+
+    <RatingBar
+        android:id="@+id/goodevaluat_ratingbar"
+        style="@style/StarRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/goodevaluat_img_ll"
+        android:layout_margin="10dp"
+        android:clickable="false"
+        android:isIndicator="true" />
+
+    <TextView
+        android:id="@+id/goodevaluat_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/goodevaluat_ratingbar"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:text="2017-20-23 12:65"
+        android:textColor="@color/gry"
+        android:textSize="@dimen/px24" />
+
+    <View
+        android:id="@+id/goodevaluat_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/goodevaluat_time"
+        android:layout_margin="10dp"
+        android:background="@color/f6"></View>
+
+    <LinearLayout
+        android:id="@+id/kefu_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/goodevaluat_line"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/goodevaluat_kefu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="客服回复："
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px26" />
+
+        <TextView
+            android:id="@+id/goodevaluat_kefuhufu_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goodevaluat_line"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/goodevaluat_kefu"
+            android:text=".........."
+
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px26" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/goodevaluat_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/goodevaluat_userhead"
+        android:layout_below="@+id/goodevaluat_userhead"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:text="橙子包装很好，酸酸甜甜美美可口。"
+        android:textColor="@color/gry"
+        android:textSize="@dimen/px26" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/goodevaluat_img_ll"
+        android:visibility="gone"
+        android:layout_height="55dp"
+        android:layout_below="@+id/goodevaluat_content"
+        android:layout_toEndOf="@+id/kefu_content">
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/f6"
+        android:layout_alignParentBottom="true"
+        ></View>
+</RelativeLayout>

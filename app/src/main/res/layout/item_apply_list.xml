@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/my_sale_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/my_saleapply_chosse"
+            style="@style/all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:src="@drawable/ico_choose"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="10dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/my_saleapply_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                fresco:placeholderImage="@drawable/defalt_pic"
+                fresco:placeholderImageScaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/my_saleapply_shixiao"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/losedgoodbac"
+                android:gravity="center"
+                android:text="失效"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/my_saleapply_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px28" />
+
+            <TextView
+                android:id="@+id/my_saleapply_memo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gry"
+                android:textSize="@dimen/px26" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/my_saleapply_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="price"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/px34" />
+
+                <TextView
+                    android:id="@+id/my_saleapply_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="*3"
+
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/px28" />
+
+                <TextView
+                    android:id="@+id/apply_sale_btn"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/kuang_oval_mainc"
+                    android:gravity="center"
+                    android:text="申请售后"
+                    android:textColor="@color/maincolor" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

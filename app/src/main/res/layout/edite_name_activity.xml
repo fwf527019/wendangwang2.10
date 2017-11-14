@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="false">
+
+        <ImageView
+            android:id="@+id/editename_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@drawable/back_icon" />
+
+        <TextView
+            android:id="@+id/editename_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="标题"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px34" />
+
+        <TextView
+            android:id="@+id/editename_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="完成"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px32" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:layout_weight="1"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/edit_name_edt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            />
+        <ImageView
+            android:id="@+id/edit_name_delet"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ico_delete"
+            />
+    </LinearLayout>
+    <LinearLayout
+       android:background="@color/f6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_marginLeft="10dp"
+        android:text="4-20个字符，可由中英文，数字“_”组成"
+        />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <include layout="@layout/top_no_right"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/qiaodao_head_fr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/qiaodao_secsass_l"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@drawable/sign_bg1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/qiandao_jifen_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="恭喜获得"
+                        android:textColor="@color/gry"
+                        android:textSize="@dimen/px28" />
+
+                    <TextView
+                        android:id="@+id/qiaodao_secsass_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="30"
+                        android:textColor="@color/maincolor"
+                        android:textSize="@dimen/px28" />
+
+                    <TextView
+                        android:id="@+id/qiaodao_secsass_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="积分"
+                        android:textColor="@color/gry"
+                        android:textSize="@dimen/px28" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/qiandao_youhuiquan_relayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/coupon_bg1"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/lll2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/qiandao_conpoud_item_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/qiandao_conpoud_item_tv1"
+                                android:text="30"
+                                android:textColor="@color/white"
+                                android:textSize="35sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/qiandao_conpoud_item_condition"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ll1"
+                            android:text="满200元使用"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/px28" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/qiandao_conpoud_item_youxiaoqi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lll2"
+                        android:layout_marginLeft="10dp"
+                        android:text="有效期："
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/px28" />
+
+                    <TextView
+                        android:id="@+id/qiandao_conpoud_item_usetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/qiandao_conpoud_item_youxiaoqi"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/qiandao_conpoud_item_youxiaoqi"
+                        android:text="2017-02-13至2078-03-19"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/px28" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/lll2"
+                        android:background="@color/white"></View>
+
+                    <TextView
+                        android:id="@+id/qiandao_conpoud_name"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/view"
+                        android:text="元旦大派送红包来袭"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/px34" />
+
+                    <TextView
+                        android:id="@+id/qiandao_conpoud_item_limit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/qiandao_conpoud_name"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/view"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/px28" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:id="@+id/qiaodao3_ll"
+                    android:layout_gravity="bottom"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/qiaodao3_name"
+                        android:text="恭喜获得实物奖品"
+                        android:textColor="@color/black" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:layout_width="45dp"
+                        android:id="@+id/qiaodao3_pic"
+                        android:layout_height="45dp"
+                        />
+                    <TextView
+                        android:id="@+id/qiaodao3_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:background="@drawable/home_btn_bg"
+                        android:text="点击领取" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="更多好货"
+                        android:textColor="@color/gry"
+                        android:textSize="@dimen/px28" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/qiaodao_secsass_hotsale"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

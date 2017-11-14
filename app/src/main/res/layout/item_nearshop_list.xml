@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:placeholderImage="@drawable/defalt_pic"
+        android:layout_margin="10dp"
+        android:id="@+id/nearshop_list_img"
+        fresco:placeholderImageScaleType="fitXY"
+        android:layout_width="90dp"
+        android:layout_height="90dp" />
+
+    <TextView
+        android:textSize="@dimen/px32"
+        android:id="@+id/nearshop_list_shopename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/nearshop_list_img"
+        android:text="门店名称"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/shop_activity_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nearshop_list_img"
+        android:layout_alignLeft="@+id/nearshop_list_shopename"
+        android:background="@drawable/tab_huodong_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:background="@drawable/ico_huodong" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="活动"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/px24"
+            android:textColor="@color/reds"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/xiaonaba"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nearsop_msg"
+        android:layout_alignLeft="@+id/nearshop_list_img"
+        android:layout_below="@+id/nearshop_list_img"
+        android:background="@drawable/ico_notice_org" />
+
+    <TextView
+        android:id="@+id/nearsop_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_below="@+id/nearshop_list_img"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/maincolor"
+        android:textSize="@dimen/px26"
+        android:layout_toRightOf="@+id/xiaonaba"
+        android:text="活动信息"
+        />
+
+    <TextView
+        android:id="@+id/nearshop_list_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/px24"
+        android:textColor="@color/gry"
+        android:text="0.0km"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="11dp" />
+
+</RelativeLayout>

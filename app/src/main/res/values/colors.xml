@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="green">#cc088408</color>
+    <color name="black">#000</color>
+    <color name="white">#ffffff</color>
+    <color name="scan_corner_color">#c0c0</color>
+    <color name="hh">#fff</color>
+    <color name="base_top" >#FB6006</color>
+    <color name="bgcolor">#F7F7F7</color>
+    <color name="jingdu">#c8c8c8</color>
+    <color name="base">#00BB29</color>
+    <color name="greys">#999999</color>
+    <color name="greyq">#FF848484</color>
+
+    <color name="maincolor">#ff6c00</color>
+    <color name="orange">#ffa461</color>
+
+    <color name="popwindow">#c0000000</color>
+
+    <color name="gry">#666666</color>
+    <color name="classfytitel">#000000</color>
+    <color name="goods_name">#010101</color>
+    <color name="goods_wight">#7e7979</color>
+    <color name="red">#ff0000</color>
+    <color name="titel_goods">#292929</color>
+    <color name="goods_contents">#666666</color>
+    <color name="reds">#ff3c64</color>
+    <color name="ff">#ff6e54</color>
+    <color name="whites">#c9c0be</color>
+    <color name="f6">#f6f6f6</color>
+    <color name="f5">#f5f5f5</color>
+
+    <color name="line_bg_gry">#e5e5e5</color>
+    <color name="colorhint">#999999</color>
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
+    <color name="green_normal">#37C000</color>
+    <color name="green_pressed">#30A070</color>
+    <color name="purple_normal">#9932CC</color>
+    <color name="purple_pressed">#9F79EE</color>
+    <color name="white_pressed">#FFCFCFCF</color>
+    <color name="white_transparent_70">#BBFFFFFF</color>
+
+</resources>

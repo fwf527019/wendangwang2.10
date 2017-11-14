@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+<LinearLayout
+    android:layout_weight="1"
+    android:background="@drawable/sherch_kuang"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/getyouhuiquan_ed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="请输入优惠码"
+        android:layout_marginLeft="10dp"
+        android:textSize="@dimen/px28"
+        android:background="@null"
+        android:textColorHint="#bebebe"
+     />
+</LinearLayout>
+    <Button
+        android:layout_marginLeft="10dp"
+        android:layout_width="74dp"
+        android:layout_height="30dp"
+        android:id="@+id/youhuiquan_ok"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/home_btn_bgs"
+        android:text="兑换" />
+
+</LinearLayout>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_no_right"></include>
+
+    <LinearLayout
+        android:id="@+id/binding_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ico_phone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="手机号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28" />
+
+        <TextView
+            android:id="@+id/phone_isbinding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="未绑定"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px28" />
+
+        <ImageView
+            android:id="@+id/phone_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/more_icon"
+          />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/binding_qq"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ico_qq" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="QQ账号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28" />
+
+        <TextView
+            android:id="@+id/qq_isbinding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="未绑定"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px28"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/qq_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/more_icon" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/binding_weichat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ico_wechat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="微信账号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28" />
+
+        <TextView
+            android:id="@+id/weichat_isbinding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="未绑定"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px28"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/weichat_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/more_icon" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/binding_sina"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ico_sina" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="新浪微博账号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28" />
+
+        <TextView
+            android:id="@+id/weibo_isbinding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="未绑定"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px28"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/weibo_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/more_icon" />
+    </LinearLayout>
+</LinearLayout>

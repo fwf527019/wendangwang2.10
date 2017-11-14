@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_no_right"></include>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="原手机号码：1**********"
+            android:id="@+id/exchangephone_oldphone"
+         android:gravity="center_vertical"
+            android:textSize="@dimen/px32"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/greys">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/exchangephone_paw_edt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:textColorHint="@color/greys"
+            android:layout_weight="1"
+            android:hint="请输入登录密码"
+            android:background="@null"
+            android:textSize="@dimen/px32" />
+
+        <ImageView
+            android:id="@+id/exchangephone_phonedelete"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:background="@drawable/ico_delete"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/greys">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/exchangephone_newphone_edt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:textColorHint="@color/greys"
+            android:layout_weight="1"
+            android:hint="请输入新手机号码"
+            android:background="@null"
+            android:textSize="@dimen/px32" />
+
+        <ImageView
+            android:id="@+id/exchangephone_newphonedelete"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:background="@drawable/ico_delete"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/greys">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/exchangephone_piccode_edt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:textColorHint="@color/greys"
+            android:layout_weight="1"
+            android:hint="请输入图片验证码"
+            android:background="@null"
+            android:textSize="@dimen/px32" />
+
+        <ImageView
+            android:id="@+id/exchangephone_piccode"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/greys">
+
+    </View>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:hint="短信验证码"
+            android:id="@+id/exchangephone_code_edt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:textColorHint="@color/greys"
+            android:layout_weight="1"
+            android:background="@null"
+            android:textSize="@dimen/px32" />
+
+        <TextView
+            android:id="@+id/exchangephone_getcode_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送短信验证码"
+            android:textColor="@color/greys"
+            android:textSize="@dimen/px32"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/greys">
+
+    </View>
+
+    <Button
+        android:id="@+id/exchangephone_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_bgs"
+        android:text="确    定"
+        android:textColor="#fff"
+        android:textSize="@dimen/px34" />
+</LinearLayout>

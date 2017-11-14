@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:id="@+id/goodsevaluate_all"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/kuang_oval"
+                android:gravity="center"
+                android:text="全部(0)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:id="@+id/goodsevaluate_well"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/kuang_oval"
+                android:gravity="center"
+                android:text="不错哟(0)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:id="@+id/goodsevaluate_just"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/kuang_oval"
+                android:gravity="center"
+                android:text="待提高(0)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:id="@+id/goodevaluate_badly"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/kuang_oval"
+                android:gravity="center"
+                android:text="小失落(0)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:id="@+id/goodevaluate_saidan"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/kuang_oval"
+                android:gravity="center"
+                android:text="晒图(0)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"
+            android:id="@+id/goodevaluat_nodata"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                android:background="@drawable/no_data" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="暂无相关数据"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/goodsevaluate_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
+    </FrameLayout>
+</LinearLayout>

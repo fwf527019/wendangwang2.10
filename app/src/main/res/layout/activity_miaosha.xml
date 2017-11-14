@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/myself"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <LinearLayout
+                android:id="@+id/miaoshalist_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/backw" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="稳当秒杀"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px34" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="距离结束"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:id="@+id/miaoshalist_hour"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/kuang_miaosha"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text=":"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/miaoshalist_minut"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/kuang_miaosha"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text=":"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/miaoshalist_second"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/kuang_miaosha"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px26" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/miaohs_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="hb.xnwdw.com.wendangwang.gui.activity.MainPagerActivity">
+
+    <FrameLayout
+        android:id="@+id/reltabacontent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5px"
+        android:background="@color/greys"
+        >
+
+    </View>
+
+    <android.support.v4.app.FragmentTabHost
+        android:id="@+id/mian_fragmttabhost"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <FrameLayout
+            android:id="@+id/tabcontent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+        </FrameLayout>
+
+    </android.support.v4.app.FragmentTabHost>
+</LinearLayout>

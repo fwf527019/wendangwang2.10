@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/f6"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/choose_sex_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="取消"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></View>
+
+        <TextView
+            android:id="@+id/choose_sex_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="完成"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/f6"
+        android:id="@+id/choosesex_woman"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <View
+            android:visibility="invisible"
+            android:id="@+id/sex_view1"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/maincolor"></View>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="女" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:background="@color/f6"
+        android:id="@+id/choosesex_man"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <View
+            android:visibility="invisible"
+            android:id="@+id/sex_view2"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/maincolor"></View>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="男" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:background="@color/f6"
+        android:id="@+id/choosesex_no"
+        android:layout_width="match_parent"
+
+        android:layout_height="30dp">
+
+        <View
+            android:visibility="invisible"
+            android:id="@+id/sex_view3"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/maincolor"></View>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="保密" />
+    </LinearLayout>
+
+
+</LinearLayout>

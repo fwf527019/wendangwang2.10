@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/orderbalance_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="送货清单"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px28" />
+
+        <ImageView
+            android:id="@+id/orderbalance_img1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/orderbalance_tv1"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/orderbalance_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderbalance_tv1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/orderbalance_img1"
+            android:text="商品名称"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px32" />
+
+        <TextView
+            android:id="@+id/orderbalance_spec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderbalance_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/orderbalance_img1"
+            android:text="规格"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px26" />
+
+        <TextView
+            android:id="@+id/orderbalance_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/orderbalance_img1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:text="×1"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px26" />
+
+        <TextView
+            android:id="@+id/orderbalance_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/orderbalance_img1"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/orderbalance_num"
+            android:text="¥20.00"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px26" />
+    </RelativeLayout>
+</LinearLayout>

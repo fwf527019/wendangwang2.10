@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="180dp"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/brandallgoods_goods_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/brandallgoods_goods_img"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="商品名称"
+        android:maxLines="1"
+        android:textColor="@color/goods_name"
+        android:textSize="@dimen/px28" />
+
+    <TextView
+        android:id="@+id/brandallgoods_goods_wight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/brandallgoods_goods_name"
+        android:layout_marginLeft="10dp"
+        android:text="500g"
+        android:visibility="gone"
+        android:textColor="@color/goods_wight"
+        android:textSize="@dimen/px24" />
+
+    <TextView
+        android:id="@+id/brandallgoods_renmingbi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/brandallgoods_goods_price"
+        android:layout_below="@+id/brandallgoods_goods_wight"
+        android:layout_marginLeft="10dp"
+        android:gravity="bottom"
+        android:text="¥"
+        android:layout_marginBottom="1dp"
+        android:textColor="@color/red"
+        android:textSize="@dimen/px24" />
+
+    <TextView
+        android:id="@+id/brandallgoods_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/brandallgoods_goods_wight"
+        android:layout_toRightOf="@+id/brandallgoods_renmingbi"
+        android:gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:text="00.00"
+        android:textColor="@color/red"
+        android:textSize="@dimen/px28" />
+
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/brandallgoods_goods_img"
+        android:layout_below="@id/brandallgoods_goods_wight"
+        android:layout_marginRight="10dp"
+        android:visibility="gone"
+        android:background="@drawable/ic_cart" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:placeholderImage="@drawable/defalt_pic"
+        android:id="@+id/brandallgoods_goods_img"
+        android:layout_width="180dp"
+        fresco:placeholderImageScaleType="fitXY"
+        android:layout_height="180dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

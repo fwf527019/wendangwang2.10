@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="imageView_indicator_dot" type="id" />
+    <item name="img_item_ranking_thing_cover" type="id" />
+    <item name="linearLayout_pager_indicator" type="id" />
+    <item name="viewPager_main_list_slide" type="id" />
+    <item name="iamgeView_subview_main_slide_page" type="id" />
+    <item name="fab_fragment_main_list" type="id" />
+    <item name="weobo_logn" type="id" />
+    <item name="weichat_logn" type="id" />
+    <item name="qq_logn" type="id" />
+    <item name="fogetpasw_tv" type="id" />
+    <item name="fast_logn_tv" type="id" />
+    <item name="regest_tv" type="id" />
+    <item name="logn_bt" type="id" />
+    <item name="pasw_edt" type="id" />
+    <item name="phone_edt" type="id" />
+    <item name="phone_code_edt" type="id" />
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_lose_footer"
+    android:visibility="gone"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/clear_cannotbuy"
+        android:layout_width="160dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/kuang_oval_mainc"
+        android:gravity="center"
+        android:text="清空失效商品"
+        android:textColor="@color/maincolor"
+        android:textSize="@dimen/px28" />
+
+</LinearLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="@color/f6"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="填写物流"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:checked="true"
+                    android:id="@+id/pushlogist_rb1"
+                    android:text="寄回商店"
+                    android:textColor="@color/gry" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pushlogist_rb2"
+                    android:text="退回门店"
+                    android:textColor="@color/gry" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/pushlogist_choosefile"
+                android:text="选择文件"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/pushlogist_picnme"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:text="请上传清晰的运单照片" />
+        </LinearLayout>
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="80dp"
+            android:id="@+id/pushlogist_img"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/kuang_oval"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="取消"
+                android:id="@+id/pushlogist_exit"
+                android:textSize="@dimen/px28" />
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/kuang_ovals_mainc"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="确认"
+                android:id="@+id/pushlogist_commit"
+                android:textSize="@dimen/px28" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

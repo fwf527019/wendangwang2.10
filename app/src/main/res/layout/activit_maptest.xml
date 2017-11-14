@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<com.baidu.mapapi.map.MapView
+    android:id="@+id/maptest"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+</com.baidu.mapapi.map.MapView>
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/texttv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="地址："
+        />
+<Button
+    android:id="@+id/btn_test111"
+    android:text="btn"
+    android:layout_width="match_parent"
+    android:layout_height="50dp" />
+</LinearLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+  android:background="@drawable/line_kuang">
+<!--<FrameLayout-->
+    <!--android:layout_width=""-->
+    <!--android:layout_height=""></FrameLayout>-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_margin="10dp"
+        fresco:placeholderImage="@drawable/defalt_pic"
+        fresco:placeholderImageScaleType="fitXY"
+        android:id="@+id/carthistory_goods_img"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/carthistory_goods_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_below="@id/carthistory_goods_img"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="商品名称"
+        android:textColor="@color/goods_name"
+        android:textSize="@dimen/px28" />
+
+    <TextView
+        android:id="@+id/carthistory_goods_wight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/carthistory_goods_name"
+        android:layout_marginLeft="10dp"
+        android:text="500g"
+        android:textColor="@color/goods_wight"
+        android:textSize="@dimen/px24" />
+
+    <TextView
+        android:id="@+id/carthistory_renmingbi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/carthistory_goods_price"
+        android:layout_below="@+id/carthistory_goods_wight"
+        android:layout_marginLeft="10dp"
+        android:gravity="bottom"
+        android:text="¥"
+        android:layout_marginBottom="1dp"
+        android:textColor="@color/red"
+        android:textSize="@dimen/px24" />
+
+    <TextView
+        android:id="@+id/carthistory_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carthistory_goods_wight"
+        android:layout_toRightOf="@+id/carthistory_renmingbi"
+        android:gravity="bottom"
+        android:text="00.00"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/red"
+        android:textSize="@dimen/px28" />
+
+    <ImageView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/carthistory_goods_img"
+        android:layout_below="@id/carthistory_goods_wight"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ic_cart" />
+</RelativeLayout>

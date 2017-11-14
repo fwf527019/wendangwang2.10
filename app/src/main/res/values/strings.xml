@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WenDangWang</string>
+    <string name="app_tip">提示</string>
+    <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
+    <string name="app_share_weixin_txt" />
+
+    <string name="hello_world">Hello world!</string>
+    <string name="clear_data">恢复数据</string>
+    <string name="click_to_refresh">点击刷新</string>
+    <string name="change">切换View</string>
+    <string name="clear_or_fill_data">清空或恢复数据</string>
+    <string name="options">操作</string>
+</resources>

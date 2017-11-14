@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_car"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:id="@+id/item_lefet_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:background="@color/white"
+            android:id="@+id/shopcart_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <CheckBox
+                        android:id="@+id/checkbox_chosen"
+                        style="@style/all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/shopcart_imgview"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@id/checkbox_chosen"
+                        fresco:placeholderImage="@drawable/defalt_pic"
+                        fresco:placeholderImageScaleType="fitXY" />
+
+                    <TextView
+                        android:id="@+id/shopcart_titel_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/shopcart_imgview"
+                        android:text="商品名称"
+                        android:textColor="@color/titel_goods"
+                        android:textSize="@dimen/px28"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/shopcart_goods_sizi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/shopcart_titel_tv"
+                        android:layout_below="@+id/shopcart_titel_tv"
+                        android:layout_marginTop="10dp"
+                        android:text="商品规格"
+                        android:textColor="@color/goods_contents"
+                        android:textSize="@dimen/px24" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/shopcart_imgview"
+                        android:layout_alignLeft="@+id/shopcart_titel_tv"
+                        android:layout_marginBottom="1dp"
+                        android:gravity="bottom"
+                        android:text="¥"
+                        android:textColor="#ff0000"
+                        android:textSize="@dimen/px26" />
+
+                    <TextView
+                        android:id="@+id/shopcart_good_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/shopcart_imgview"
+                        android:layout_toRightOf="@+id/textView2"
+                        android:gravity="bottom"
+                        android:text="0.00"
+                        android:textColor="#ff0000"
+                        android:textSize="@dimen/px30px" />
+
+                    <TextView
+                        android:id="@+id/shopcart_biaoqian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/shopcart_imgview"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/shopcart_good_price"
+                        android:background="@drawable/rategkuang"
+                        android:paddingBottom="1dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:paddingTop="1dp"
+                        android:text="秒杀"
+                        android:textColor="@color/maincolor"
+                        android:textSize="@dimen/px24"
+                        android:visibility="visible" />
+
+
+                    <ImageView
+                        android:id="@+id/shopcart_jian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/shopcart_imgview"
+                        android:layout_toLeftOf="@+id/goods_num_tv"
+                        android:background="@drawable/reduce_btn_red_grey" />
+
+                    <TextView
+                        android:id="@+id/goods_num_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/shopcart_imgview"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@+id/shopcart_add"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/shopcart_add"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignBottom="@+id/shopcart_imgview"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/add_btn_red"
+
+                        />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tips_limt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tips_limtnum_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:textColor="@color/maincolor"
+                android:textSize="@dimen/px24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shop_cart_miaoshatital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="距离结束:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px28" />
+
+            <TextView
+                android:id="@+id/shop_cart_hour"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="7dp"
+                android:background="@drawable/kuang"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/shop_cart_minut"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/kuang"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/shop_cart_second"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/kuang"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/px26" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/item_addto_collecte"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/greys"
+        android:gravity="center"
+        android:text="加入收藏"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/item_delecte"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/reds"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

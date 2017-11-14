@@ -1,0 +1,10 @@
+package hb.xnwdw.com.wendangwang.gui.adapter;
+
+/**
+ * Created by Administrator on 2017/8/14.
+ */
+
+public class AfterProcessAdapter {
+
+
+}

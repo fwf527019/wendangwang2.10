@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/not_pass" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="25dp"
+        android:text="抱歉，您的实名认证信息审核未通过，
+                     请重新修改后提交。"
+        android:textColor="@color/gry"
+        android:textSize="@dimen/px26" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="失败原因："
+        android:textColor="@color/maincolor"
+        android:textSize="@dimen/px26"
+        android:layout_marginTop="38dp"
+        android:layout_gravity="center"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="失败原因"
+        android:textColor="@color/gry"
+        android:textSize="@dimen/px26"
+        android:layout_marginTop="38dp"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="165dp"
+        android:layout_height="34dp"
+        android:text="重新填写"
+        android:textColor="@color/white"
+        android:textSize="@dimen/px32"
+        android:gravity="center"
+        android:layout_marginTop="57dp"
+        android:background="@drawable/btn_bgs"
+        android:layout_gravity="center"
+
+        />
+</LinearLayout>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cart_root_fr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/is_carempty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/empty_cart" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="购物车还是空的"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/px32" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="快去挑几件喜欢的商品吧～"
+                    android:textColor="@color/gry"
+                    android:textSize="@dimen/px28" />
+
+                <TextView
+                    android:id="@+id/start_shoping"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_bac"
+                    android:gravity="center"
+                    android:text="开始购物"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/shopingcart_goods_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:id="@+id/fullreduce_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/fullreduce_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="20dp"
+                            android:gravity="center|end"
+                            android:text="节省:10"
+                            android:textColor="@color/maincolor"
+                            android:textSize="@dimen/px24" />
+                    </LinearLayout>
+
+                    <include layout="@layout/header_shixiaogoods"></include>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/shopingcart_losegoods_recview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+                    <include layout="@layout/sub_clearlist"></include>
+                    <LinearLayout
+                        android:id="@+id/his_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:text="浏览历史"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/px28" />
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/shongpingcart_gridview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/top_no_right"></include>
+
+
+        <LinearLayout
+            android:id="@+id/cart_jieshuan"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_alignBottom="@+id/tite_tv"
+                android:background="@color/whites">
+
+            </View>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/shopcart_quanxuan"
+                    style="@style/all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="全选"
+                    android:textSize="@dimen/px28" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </View>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="共"
+                    android:textColor="@color/goods_name"
+                    android:textSize="@dimen/px24" />
+
+                <TextView
+                    android:id="@+id/shopingcart_goodtotalsnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="件商品,共计"
+                    android:textColor="@color/goods_name"
+                    android:textSize="@dimen/px24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="¥"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/px24" />
+
+                <TextView
+                    android:id="@+id/shongpingcart_totalmoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="00.00"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/px24" />
+
+                <Button
+                    android:id="@+id/shopingcart_jiesuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/jiesuan_btnbg"
+                    android:gravity="center"
+                    android:text="结算"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/px30px" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

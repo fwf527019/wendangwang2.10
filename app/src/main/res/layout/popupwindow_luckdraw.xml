@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#36000000"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="380dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/pop">
+
+        <TextView
+            android:id="@+id/popuwid_draw_jifen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px48" />
+
+        <TextView
+            android:id="@+id/popuwid_draw_jifentishi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:gravity="center"
+            android:text="恭喜您，已抽中10积分"
+            android:textColor="@color/maincolor" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/popuwid_draw_seejifen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button" />
+
+    <ImageView
+        android:id="@+id/popuwid_draw_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/pop_ico_delete" />
+</LinearLayout>

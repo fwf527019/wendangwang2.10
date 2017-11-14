@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_no_right"></include>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/failure" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textSize="@dimen/px38"
+        android:text="支付失败，请重新支付"
+        android:textColor="@color/black" />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="@dimen/px28"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/gry"
+        android:layout_marginTop="44dp"
+        android:text="该订单会为你保留24小时（从下单时间算起），24小时后如果还未支付，系统将自动取消订单。" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/kuang_oval_mainc"
+            android:gravity="center"
+            android:textSize="@dimen/px28"
+            android:id="@+id/payagin"
+            android:text="重新支付"
+            android:textColor="@color/maincolor" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/px28"
+            android:id="@+id/cheack_order"
+            android:text="查看订单"
+            android:textColor="@color/black" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/shopcart_second_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/shopcart_imgview1"
+            fresco:placeholderImage="@drawable/defalt_pic"
+            fresco:placeholderImageScaleType="fitXY"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/shopcart_titel_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/shopcart_imgview1"
+            android:text="标题"
+            android:textColor="@color/titel_goods"
+            android:textSize="@dimen/px30px"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/shopcart_goods_num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/shopcart_titel_tv1"
+            android:layout_below="@+id/shopcart_titel_tv1"
+            android:text="100g"
+            android:textColor="@color/goods_contents"
+            android:textSize="@dimen/px24" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/shopcart_imgview1"
+            android:layout_alignLeft="@+id/shopcart_titel_tv1"
+            android:layout_marginBottom="1dp"
+            android:text="¥"
+            android:textColor="#ff0000"
+            android:textSize="@dimen/px26" />
+
+        <TextView
+            android:id="@+id/shopcart_biaoqian1"
+            android:layout_width="35dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/shopcart_imgview1"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/shopcart_price1"
+            android:background="@drawable/rategkuang"
+            android:gravity="center"
+            android:text="买赠"
+            android:textColor="@color/maincolor" />
+
+        <TextView
+            android:id="@+id/num_other_goods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/shopcart_imgview1"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="1"
+            android:textColor="@color/greys"
+            android:textSize="@dimen/px32" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/shopcart_imgview1"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/num_other_goods"
+            android:text="╳"
+            android:textColor="@color/greys"
+            android:textSize="@dimen/px32" />
+
+
+        <TextView
+            android:id="@+id/shopcart_price1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/shopcart_imgview1"
+            android:layout_toRightOf="@+id/textView21"
+            android:text="0.00"
+            android:textColor="#ff0000"
+            android:textSize="@dimen/px30px" />
+    </RelativeLayout>
+
+</LinearLayout>

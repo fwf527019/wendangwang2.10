@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shixiao_tab" />
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp">
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                fresco:placeholderImage="@drawable/defalt_pic"
+                android:id="@+id/cart_losed_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_gravity="bottom"
+                android:id="@+id/shixiao_bg"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="bottom|center"
+                android:background="@drawable/losedgoodbac"
+                android:text="失效"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cart_losed_name"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="法国香蕉苹果"
+                android:textColor="@color/gry"
+                android:textSize="@dimen/px28" />
+
+            <TextView
+                android:id="@+id/cart_losed_num"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="商品规格"
+                android:textColor="@color/gry"
+                android:textSize="@dimen/px24" />
+
+            <TextView
+                android:id="@+id/shixiao_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="无货"
+                android:textColor="@color/gry"
+                android:textSize="@dimen/px24" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </View>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="×"
+            android:textColor="@color/greys"
+            android:textSize="@dimen/px32" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/num_losegood"
+            android:layout_marginRight="10dp"
+            android:text="1"
+            android:textColor="@color/greys"
+            android:textSize="@dimen/px32" />
+    </LinearLayout>
+    <View
+        android:background="@color/whites"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"></View>
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/viewp3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/vip3_close3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/close_btn"
+        android:layout_gravity="end"
+        />
+
+
+    <Button
+        android:id="@+id/gui_viewpager_btn"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+      android:layout_gravity="bottom|center"
+        android:layout_marginBottom="50dp"
+        android:textSize="@dimen/px32"
+        android:textColor="@color/white"
+        android:text="立即体验"
+        android:background="@drawable/ty1" />
+</FrameLayout>

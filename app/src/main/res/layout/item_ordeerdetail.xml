@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/orderdetails_goods_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            fresco:placeholderImage="@drawable/defalt_pic"
+            fresco:placeholderImageScaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/orderdetails_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/orderdetails_goods_img"
+            android:text="商品名称"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px28" />
+
+        <TextView
+            android:id="@+id/orderdetails_goods_spec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderdetails_goods_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/orderdetails_goods_img"
+            android:text="商品规格"
+            android:textColor="@color/gry"
+            android:textSize="@dimen/px26" />
+
+        <TextView
+            android:id="@+id/orderdetails_goods_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderdetails_goods_spec"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/orderdetails_goods_img"
+            android:background="@drawable/kuang_mainc"
+            android:text="标签"
+            android:visibility="gone"
+            android:textColor="@color/maincolor"
+            android:textSize="@dimen/px26" />
+
+
+        <TextView
+            android:id="@+id/present_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderdetails_goods_spec"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/orderdetails_goods_act"
+            android:textColor="@color/black"
+            android:textSize="@dimen/px24" />
+
+        <TextView
+            android:id="@+id/presentnum_tv"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/orderdetails_goods_price"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderdetails_goods_spec"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/present_tv"
+            android:textColor="@color/maincolor"
+            android:textSize="@dimen/px24" />
+
+
+        <TextView
+            android:id="@+id/orderdetails_goods_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/orderdetails_goods_img"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="×1"
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/orderdetails_goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/orderdetails_goods_img"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/orderdetails_goods_num"
+            android:text="¥36.20"
+            android:textColor="@color/red"
+            android:textSize="@dimen/px28" />
+    </RelativeLayout>
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.1dp"-->
+        <!--android:background="@color/whites"></View>-->
+
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/item_orderdetail_present_items"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/f6">
+
+    </View>
+</LinearLayout>

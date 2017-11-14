@@ -119,7 +119,7 @@ public class BindPhoneActivity extends ActivityBase {
      */
     private void bindingPhoneAndLogin(final String Mode, final String openid) {
         startProgressDialog("绑定中...");
-        String Phone = bindPhoneEdt.getText().toString();
+        final String Phone = bindPhoneEdt.getText().toString();
         String code = bindCodeEdt.getText().toString();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Mode", Mode);
@@ -142,6 +142,7 @@ public class BindPhoneActivity extends ActivityBase {
                     Intent intent = new Intent(BindPhoneActivity.this, RegisterActivity.class);
                     intent.putExtra("Mode", Mode);
                     intent.putExtra("ID", openid);
+                    intent.putExtra("phone", Phone);
                     intent.putExtra("TAG", "third");
                     startActivity(intent);
                 } else {

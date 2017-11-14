@@ -66,7 +66,7 @@ public class RegisterActivity extends ActivityBase {
     private String TAG;
     private String Mode;
     private String ID;
-
+    private  String phone;
     @Override
     protected int getContentViewResId() {
         return R.layout.activit_register;
@@ -87,15 +87,22 @@ public class RegisterActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
-        title.setText("注册账号");
+
         time = new TimeCount(60000, 1000);
         Intent intent = getIntent();
         ID = intent.getStringExtra("ID");
         Mode = intent.getStringExtra("Mode");
         TAG = intent.getStringExtra("TAG");
+        phone=intent.getStringExtra("phone");
         if (("third").equals(TAG)) {
             registerGetcode.setVisibility(View.GONE);
+            title.setText("设置密码");
+            registerPhonenumEdt.setText(phone);
+            registerPhonenumEdt.setEnabled(false);
+        }else {
+            title.setText("注册账号");
         }
+
     }
 
     @OnClick({R.id.back, R.id.register_sendcode, R.id.register_ok_btn, R.id.zhucexieyi})

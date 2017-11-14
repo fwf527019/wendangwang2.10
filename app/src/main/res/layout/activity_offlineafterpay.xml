@@ -26,7 +26,7 @@
             android:layout_alignBottom="@+id/offline_list_img"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="10dp"
-            android:text="×1"
+            android:text=""
             android:textColor="@color/red"
             android:textSize="@dimen/px28" />
 
@@ -38,7 +38,7 @@
             android:layout_alignLeft="@+id/offline_list_name"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/offline_list_num"
-            android:text="¥00.00"
+            android:text=""
             android:textColor="@color/red"
             android:textSize="@dimen/px28" />
 

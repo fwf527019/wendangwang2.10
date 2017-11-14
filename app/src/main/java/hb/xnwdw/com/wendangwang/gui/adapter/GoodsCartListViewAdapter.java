@@ -75,16 +75,14 @@ public class GoodsCartListViewAdapter extends BaseQuickAdapter<ShopingCartData.O
             (helper.getView(R.id.shopcart_biaoqian)).setVisibility(View.GONE);
         }
         //超出限购数量
-        if(item.getCanBuyCout()!=0&&item.getBuyCounts()!=0){
+
         if (item.getCanBuyCout()<item.getBuyCounts()) {
             (helper.getView(R.id.tips_limt)).setVisibility(View.VISIBLE);
             ((TextView)( helper.getView(R.id.tips_limtnum_tv))).setText("该商品限购"+item.getMostCount()+"件，超出部分按原价计算");
         }else{
             (helper.getView(R.id.tips_limt)).setVisibility(View.GONE);
         }
-        }else {
-            (helper.getView(R.id.tips_limt)).setVisibility(View.GONE);
-        }
+
         String tag= (String) helper.getView(R.id.shopcart_imgview).getTag();
 
         if ((UrlApi.SERVER_IP+item.getItemPic()).equals(tag)){

@@ -62,7 +62,7 @@
             android:layout_alignBottom="@+id/present_goods_img"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="×1"
+            android:text=""
             android:textColor="@color/red" />
 
         <TextView
@@ -73,7 +73,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@+id/present_goods_img"
-            android:text="¥36.20"
+            android:text=""
             android:textColor="@color/red"
             android:textSize="@dimen/px28" />
     </RelativeLayout>

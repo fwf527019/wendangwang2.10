@@ -47,7 +47,7 @@
             android:layout_alignLeft="@+id/miaosha_titel_tv"
             android:layout_below="@+id/miaosha_titel_tv"
             android:layout_marginTop="10dp"
-            android:text="¥888"
+            android:text=""
             android:textColor="#ff0000"
             android:textSize="@dimen/px26" />
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/textView2"
             android:background="@drawable/line_bg"
-            android:text="¥66.66"
+            android:text=""
             android:textSize="@dimen/px28" />
 
         <TextView
@@ -85,7 +85,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@+id/chushou_tv"
-            android:text="%30"
+            android:text=""
             android:textColor="@color/maincolor"
             android:textSize="@dimen/px28" />
 

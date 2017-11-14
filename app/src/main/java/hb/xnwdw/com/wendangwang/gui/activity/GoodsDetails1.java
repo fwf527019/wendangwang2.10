@@ -326,7 +326,9 @@ public class GoodsDetails1 extends ActivityBase implements View.OnClickListener,
         }
     }
 
-
+    /**
+     *分享弹窗
+     */
     private void show1() {
         WindowManager wm = (WindowManager) getApplicationContext()
                 .getSystemService(Context.WINDOW_SERVICE);

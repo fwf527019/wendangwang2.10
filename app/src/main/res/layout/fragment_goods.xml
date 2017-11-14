@@ -493,7 +493,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="bottom"
-                        android:text="24件商品在售" />
+                        android:text="件商品在售" />
                 </LinearLayout>
 
                 <TextView

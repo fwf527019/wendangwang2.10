@@ -47,7 +47,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分6"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_toRightOf="@+id/tvv6"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分5"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:layout_toLeftOf="@+id/tvv6"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分7"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <TextView
@@ -85,7 +85,7 @@
                     android:layout_toLeftOf="@+id/btn_luck"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分8"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <TextView
@@ -97,7 +97,7 @@
                     android:layout_toRightOf="@+id/btn_luck"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分4"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <TextView
@@ -109,7 +109,7 @@
                     android:layout_marginBottom="6dp"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分2"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <TextView
@@ -121,7 +121,7 @@
                     android:layout_toRightOf="@+id/tvv2"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分3"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <TextView
@@ -133,7 +133,7 @@
                     android:layout_toLeftOf="@+id/tvv2"
                     android:background="@drawable/lattice"
                     android:gravity="center"
-                    android:text="积分1"
+                    android:text=""
                     android:textColor="@color/black" />
             </RelativeLayout>
         </FrameLayout>

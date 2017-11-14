@@ -481,6 +481,8 @@ public class FragmentGoods extends FragmentBase implements HtttpRequest.LoginSta
 //                R.layout.popupwindow_choosenum, null);
 //        mPopuwidow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
 //        mPopuwidow.setContentView(contentView);
+
+
         /***********下面这段代码可以重用******************/
         final Dialog bottomDialog = new Dialog(getActivity(), R.style.BottomDialog);
         View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.popupwindow_choosenum, null);
@@ -518,6 +520,14 @@ public class FragmentGoods extends FragmentBase implements HtttpRequest.LoginSta
         if (ItemSize != null) {
             goods_sizi.setText(ItemSize);
         }
+
+        if (canBuyCout >= goodNum) {
+            tips.setVisibility(View.GONE);
+        } else {
+            tips.setVisibility(View.VISIBLE);
+            tips.setText("提醒:商品限购" + mostCount + "件,超出部分按原价计算");
+        }
+
 
         choose_num.setText("1" + UnitName);
         SimpleDraweeView img_goods = (SimpleDraweeView) contentView.findViewById(R.id.popgoods_img);

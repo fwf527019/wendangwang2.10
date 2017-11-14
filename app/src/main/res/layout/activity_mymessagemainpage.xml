@@ -7,19 +7,6 @@
 
     <include layout="@layout/top_no_right"></include>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="12dp"
-            android:gravity="center_vertical"
-            android:text="全部消息:"
-            android:textColor="@color/black" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/message_sys_ll"
@@ -78,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:text="2017-10-21 20:00:45"
+                    android:text=""
                     android:textColor="@color/gry"
                     android:textSize="@dimen/px26" />
             </LinearLayout>
@@ -159,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:text="2017-10-21 20:00:45"
+                    android:text=""
                     android:textColor="@color/gry"
                     android:textSize="@dimen/px26" />
             </LinearLayout>

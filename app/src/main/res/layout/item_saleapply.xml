@@ -45,12 +45,13 @@
             android:layout_weight="1"
             android:id="@+id/item_saleapply_time"
             android:gravity="center_vertical"
-            android:text="交易时间:2017-07-07 18:30:50"
+            android:text="交易时间:"
             android:textColor="@color/gry"
             android:textSize="@dimen/px24" />
 
     </LinearLayout>
-  <android.support.v7.widget.RecyclerView
+
+    <android.support.v7.widget.RecyclerView
       android:layout_width="match_parent"
       android:id="@+id/item_apply_list"
       android:layout_height="match_parent">

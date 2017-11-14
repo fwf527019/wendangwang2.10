@@ -58,7 +58,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="支付金额：¥ 200.11"
+                android:text="支付金额："
                 android:textColor="@color/black" />
 
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="请等待收货，订单号：1212121212"
+                android:text="请等待收货，订单号："
 
                 />
         </LinearLayout>

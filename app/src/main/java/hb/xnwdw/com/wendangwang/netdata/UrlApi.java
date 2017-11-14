@@ -11,10 +11,10 @@ public class UrlApi {
     //  public static String SERVER_IP = "http://wdw.cdhb.net";
     // public static String SERVER_IP = "http://wdw.cdhb.net";
     // public static String SERVER_IP = "http://192.168.1.137:8001";
-   // public static String SERVER_IP = "http://192.168.1.222:8002";
+   public static String SERVER_IP = "http://192.168.1.222:8002";
     // public static String SERVER_IP = "http://www.qhwendang.com";
     //正式地址
-      public static String SERVER_IP = "https://www.qhwendang.com";
+    //  public static String SERVER_IP = "https://www.qhwendang.com";
 
     // public static String SERVER_IP = "http://125.72.17.131";
     public static String getServerIp() {

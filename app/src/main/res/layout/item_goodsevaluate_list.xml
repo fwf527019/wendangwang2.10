@@ -21,7 +21,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/goodevaluat_userhead"
-        android:text="123333333"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/px28" />
 
@@ -43,7 +43,7 @@
         android:layout_alignBottom="@+id/goodevaluat_ratingbar"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        android:text="2017-20-23 12:65"
+        android:text=""
         android:textColor="@color/gry"
         android:textSize="@dimen/px24" />
 
@@ -93,7 +93,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
-        android:text="橙子包装很好，酸酸甜甜美美可口。"
+        android:text=""
         android:textColor="@color/gry"
         android:textSize="@dimen/px26" />
 

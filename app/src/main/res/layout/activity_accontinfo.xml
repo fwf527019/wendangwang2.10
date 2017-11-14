@@ -83,7 +83,7 @@
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:background="@null"
-            android:text="wendang"
+            android:text="null"
             android:textSize="@dimen/px28"
             android:textColor="@color/black" />
     </LinearLayout>

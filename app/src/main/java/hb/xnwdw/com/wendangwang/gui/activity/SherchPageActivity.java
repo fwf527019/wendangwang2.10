@@ -230,7 +230,12 @@ public class SherchPageActivity extends ActivityBase {
             public void onItemClick(View view, int position) {
                 TextView textView = (TextView) view.findViewById(R.id.shearch_his_content);
                 String name = textView.getText().toString();
-                sherchpageEdt.setText(name);
+//                sherchpageEdt.setText(name);
+                //原生
+                Intent intent1 = new Intent(SherchPageActivity.this, ShearchResutsActivity.class);
+                intent1.putExtra("keyword", name);
+                intent1.putExtra("TAG", "搜索");
+                startActivity(intent1);
             }
 
         });

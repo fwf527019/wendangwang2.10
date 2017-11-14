@@ -44,6 +44,7 @@ import hb.xnwdw.com.wendangwang.gui.widget.MyLinearLayoutManager;
 import hb.xnwdw.com.wendangwang.netdata.UrlApi;
 import hb.xnwdw.com.wendangwang.netdata.entity.ItemListBean;
 import hb.xnwdw.com.wendangwang.netdata.entity.JifenData;
+import hb.xnwdw.com.wendangwang.netdata.entity.LineCanNotCouponsData;
 import hb.xnwdw.com.wendangwang.netdata.entity.OrderAdreessData;
 import hb.xnwdw.com.wendangwang.netdata.entity.OrderBean;
 import hb.xnwdw.com.wendangwang.netdata.entity.OrderConpData;
@@ -147,6 +148,8 @@ public class OrderBalanceActivity extends ActivityBase {
     private OrderStoreData storeData;
     private double itemsPrice = 0;
     private OrderConpData conpData;
+    private LineCanNotCouponsData lineCanNotCouponsData;
+
     private int orderGoodsnum, orderTypeId = 0;//0为线上订单 1为线下订单 2为换货订单 3为奖品订单 4为优惠券订单
     private ItemListBean itembean;
     private List<ItemListBean> items;
@@ -300,10 +303,8 @@ public class OrderBalanceActivity extends ActivityBase {
                                 Intent intent = new Intent(OrderBalanceActivity.this, SelfGetChooseShop.class);
                                 intent.putExtra("shoppeId", shoppeId);
                                 intent.putExtra("shoppeName", shoppeName);
-
                                 startActivityForResult(intent, 2);
                             }
-
                             @Override
                             public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
                                 Toast.makeText(OrderBalanceActivity.this, "位置权限获取失败", Toast.LENGTH_SHORT).show();
@@ -314,8 +315,10 @@ public class OrderBalanceActivity extends ActivityBase {
             //选择优惠券
             case R.id.choose_copond:
                 if (chooseCopond.getText().toString().equals("请选择优惠券")) {
-                    Intent intent2 = new Intent(this, LineCopuonActivity.class);
+                    Intent intent2 = new Intent(this, LineCouponsActivity.class);
+               //     Intent intent2 = new Intent(this, LineCopuonActivity.class);
                     intent2.putExtra("cdata", conpData);
+                    intent2.putExtra("cdata2", lineCanNotCouponsData);
                     startActivityForResult(intent2, 4);
                 } else if (chooseCopond.getText().toString().equals("取消使用优惠券")) {
                     chooseCopond.setText("请选择优惠券");
@@ -765,7 +768,7 @@ public class OrderBalanceActivity extends ActivityBase {
                         loadJifenData();
 
 
-                        /***5、未使用的优惠券******/
+                        /***5、未使用的可用优惠券******/
                         JSONArray jsonArrayConpount = (JSONArray) jsonArray.get(4);
                         LogUtils.d("OrderBalanceActivity", "jsonArrayConpount.size():" + jsonArrayConpount.size());
 
@@ -774,6 +777,16 @@ public class OrderBalanceActivity extends ActivityBase {
                         LogUtils.d("OrderBalanceActivity", conps);
 
                         conpData = JSON.parseObject(conps, OrderConpData.class);
+
+                        /**********未使用的不可用优惠券***********/
+
+
+
+
+                        String cannotUseCoupon = jsonArray.get(7).toString();
+                        String cannotUseCoupons = "{\"datas\":" + cannotUseCoupon + "}";
+                        LogUtils.d("OrderBalanceActivity", cannotUseCoupons);
+                        lineCanNotCouponsData = JSON.parseObject(cannotUseCoupons, LineCanNotCouponsData.class);
 
 
                         /***6、运费数据列表******/

@@ -89,7 +89,7 @@
             android:layout_alignBottom="@+id/orderdetails_goods_img"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="×1"
+            android:text=""
             android:textColor="@color/red" />
 
         <TextView
@@ -99,7 +99,7 @@
             android:layout_alignBottom="@+id/orderdetails_goods_img"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/orderdetails_goods_num"
-            android:text="¥36.20"
+            android:text=""
             android:textColor="@color/red"
             android:textSize="@dimen/px28" />
     </RelativeLayout>

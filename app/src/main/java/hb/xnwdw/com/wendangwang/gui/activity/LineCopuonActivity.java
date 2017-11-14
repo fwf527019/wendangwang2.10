@@ -35,6 +35,7 @@ import hb.xnwdw.com.wendangwang.utils.MConstant;
 import okhttp3.Call;
 
 /**
+ * 线上优惠券
  * Created by Administrator on 2017/6/29.
  */
 public class LineCopuonActivity extends ActivityBase {
@@ -103,9 +104,7 @@ public class LineCopuonActivity extends ActivityBase {
             }else {
                 imgNodata.setVisibility(View.VISIBLE);
             }
-
         }
-
         title.setText("选择优惠券");
 
     }

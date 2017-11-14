@@ -311,6 +311,7 @@
         <activity android:name=".gui.activity.ForgetPaswActivity" />
         <activity android:name=".gui.activity.LognActivity" />
         <activity android:name=".gui.activity.ScanActivity" />
+        <activity android:name=".gui.activity.LineCouponsActivity" />
         <activity
             android:name=".gui.activity.GuideActivity"
             android:screenOrientation="portrait" />

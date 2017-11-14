@@ -161,6 +161,14 @@ public class MiaoShaActivity extends ActivityBase {
                         return false;
                     }
                 });
+                adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        Intent intent = new Intent(MiaoShaActivity.this,GoodsDetails1.class);
+                        intent.putExtra("itemId", data.getItems().get(position).getItemID());
+                        startActivity(intent);
+                    }
+                });
                 miaohsRecycler.setAdapter(adapter);
 
 

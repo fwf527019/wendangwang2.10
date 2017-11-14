@@ -49,7 +49,7 @@
                 android:layout_alignBottom="@+id/offline_his_goods_img"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:text="×1"
+                android:text=""
                 android:textColor="@color/red" />
 
             <TextView
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/offline_his_goods_img"
                 android:layout_alignLeft="@+id/offline_his_goods_name"
-                android:text="¥36.20"
+                android:text=""
                 android:textColor="@color/red"
                 android:textSize="@dimen/px28" />
 

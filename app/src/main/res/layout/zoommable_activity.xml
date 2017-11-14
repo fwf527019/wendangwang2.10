@@ -22,7 +22,7 @@
         android:background="@drawable/zoomable_oval_bg"
         android:gravity="center"
         android:textColor="@android:color/black"
-        tools:text="1/4" />
+        tools:text="" />
     <TextView
         android:id="@+id/zoomable_back"
         android:layout_width="40dp"

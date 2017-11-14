@@ -91,7 +91,7 @@
             android:id="@+id/max_num"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="2"
+            android:text=""
             android:textSize="@dimen/px26"
             android:gravity="center_vertical"
             />

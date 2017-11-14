@@ -136,6 +136,25 @@ public class ShearchResutData {
         private int lockStock;
         private int SalesSum;
         private Object SalesActivityNum;
+        private String IsNewMember;
+        private String ActFlag;
+
+
+        public String getIsNewMember() {
+            return IsNewMember;
+        }
+
+        public void setIsNewMember(String isNewMember) {
+            IsNewMember = isNewMember;
+        }
+
+        public String getActFlag() {
+            return ActFlag;
+        }
+
+        public void setActFlag(String actFlag) {
+            ActFlag = actFlag;
+        }
 
         public String getGUID() {
             return GUID;

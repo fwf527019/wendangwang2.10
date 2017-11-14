@@ -365,7 +365,6 @@ public class LognActivity extends ActivityBase {
                         intent.putExtra("Mode", "QQID");
                         startActivity(intent);
                     }
-
                 } else {
                     String userToken = jsonObject.get("Data").toString();
                     WDWApp.setUserToken(userToken);

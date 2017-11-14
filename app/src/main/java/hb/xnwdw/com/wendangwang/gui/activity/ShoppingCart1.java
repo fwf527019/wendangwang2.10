@@ -243,6 +243,15 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
                             return false;
                         }
                     });
+                    adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                            Intent intent = new Intent(ShoppingCart1.this, GoodsDetails1.class);
+                            intent.putExtra("itemId", canBuy.get(position).getItemID() + "");
+                            startActivity(intent);
+                        }
+                    });
+
                     /****item的长点击事件弹出删除收藏提示框*****/
                     adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
                         @Override

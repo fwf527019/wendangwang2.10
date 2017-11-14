@@ -378,6 +378,7 @@ public class UrlWebActivity extends ActivityBase {
                 msg.description = description;
             }
             if (bitmap != null) {
+
                 Bitmap thumbBmp = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
                 msg.setThumbImage(thumbBmp);
             }

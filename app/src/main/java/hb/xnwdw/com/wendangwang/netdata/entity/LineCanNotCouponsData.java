@@ -47,7 +47,7 @@ public class LineCanNotCouponsData  implements Serializable {
         private int CouponStatus;
         private Object StrStatus;
         private String UseTime;
-        private Object Memo;
+        private String Memo;
         private BasicCouponBean basic_Coupon;
         private Object orders;
 
@@ -131,11 +131,11 @@ public class LineCanNotCouponsData  implements Serializable {
             this.UseTime = UseTime;
         }
 
-        public Object getMemo() {
+        public String getMemo() {
             return Memo;
         }
 
-        public void setMemo(Object Memo) {
+        public void setMemo(String Memo) {
             this.Memo = Memo;
         }
 

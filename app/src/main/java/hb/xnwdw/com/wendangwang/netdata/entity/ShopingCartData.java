@@ -111,7 +111,7 @@ public class ShopingCartData {
          * IsColl ect : 0
          */
         /////////////////////////////////////
-        private int canBuyCout;
+        private int canBuyCout=9999;
         private int mostCount;
         private Long EndTime;
         private boolean Cheached;

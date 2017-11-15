@@ -157,6 +157,8 @@ public class BrandDeatailData {
         private String lockStock;
         private String SalesSum;
         private String SalesActivityNum;
+        private String actFlag;
+        private String IsNewMember;
 
         public String getGUID() {
             return GUID;
@@ -437,5 +439,23 @@ public class BrandDeatailData {
         public void setSalesActivityNum(String SalesActivityNum) {
             this.SalesActivityNum = SalesActivityNum;
         }
+
+        public String getActFlag() {
+            return actFlag;
+        }
+
+        public void setActFlag(String actFlag) {
+            this.actFlag = actFlag;
+        }
+
+        public String getIsNewMember() {
+            return IsNewMember;
+        }
+
+        public void setIsNewMember(String isNewMember) {
+            IsNewMember = isNewMember;
+        }
     }
+
+
 }

@@ -119,7 +119,7 @@ public class RegestConpondData implements Serializable{
         private int CouponStatus;
         private int IsDelete;
         private String Memo;
-        private String CouponLimit;
+        private List<CouponLimitBean> CouponLimit;
         private int coponStatus;
 
         public String getGUID() {
@@ -242,13 +242,7 @@ public class RegestConpondData implements Serializable{
             this.Memo = Memo;
         }
 
-        public String getCouponLimit() {
-            return CouponLimit;
-        }
 
-        public void setCouponLimit(String CouponLimit) {
-            this.CouponLimit = CouponLimit;
-        }
 
         public int getCoponStatus() {
             return coponStatus;
@@ -257,5 +251,35 @@ public class RegestConpondData implements Serializable{
         public void setCoponStatus(int coponStatus) {
             this.coponStatus = coponStatus;
         }
+
+        public List<CouponLimitBean> getCouponLimit() {
+            return CouponLimit;
+        }
+
+        public void setCouponLimit(List<CouponLimitBean> couponLimit) {
+            CouponLimit = couponLimit;
+        }
+
+        public static class CouponLimitBean implements Serializable{
+            private  String LimitCate1;
+            private  String cateName;
+
+            public String getLimitCate1() {
+                return LimitCate1;
+            }
+
+            public void setLimitCate1(String limitCate1) {
+                LimitCate1 = limitCate1;
+            }
+
+            public String getCateName() {
+                return cateName;
+            }
+
+            public void setCateName(String cateName) {
+                this.cateName = cateName;
+            }
+        }
+
     }
 }

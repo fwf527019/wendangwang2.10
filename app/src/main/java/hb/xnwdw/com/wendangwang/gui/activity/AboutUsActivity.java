@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSONObject;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.umeng.analytics.MobclickAgent;
-import com.zhy.http.okhttp.callback.StringCallback;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -84,7 +84,9 @@ public class AboutUsActivity extends ActivityBase {
             public void onDoubleClick() {
 
             /***********************c测试代码***********************/
+                Intent intent = new Intent(AboutUsActivity.this, PrizeDrawActivity.class);
 
+                startActivity(intent);
 
             }
         }));

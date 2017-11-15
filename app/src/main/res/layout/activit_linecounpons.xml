@@ -8,47 +8,42 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="35dp"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:id="@+id/can_uesecounpons"
-            android:layout_height="55dp"
+            android:id="@+id/can_uesecounpons_ll"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:textColor="@color/maincolor"
+                android:id="@+id/can_uesecounpons_tv"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="可使用优惠券()" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@color/maincolor"></View>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:id="@+id/cannot_uesecounpons"
-            android:layout_height="55dp"
+            android:id="@+id/cannot_uesecounpons_ll"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/cannot_uesecounpons_tv"
                 android:textColor="@color/maincolor"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="不可使用优惠券()" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@color/maincolor"></View>
         </LinearLayout>
 
 

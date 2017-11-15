@@ -22,7 +22,7 @@ public class YouHuiQuanOverTimeAdapter extends BaseQuickAdapter<CouponInfoData.O
 
     @Override
     protected void convert(BaseViewHolder helper, CouponInfoData.ObjBean item) {
-                if (item != null && item.getCouponStatus() == 2) {
+                if (item != null) {
             helper.setText(R.id.youhuiquannotused_item_price, "¥"+item.getBasic_Coupon().getCouponMoney())
                     .setText(R.id.youhuiquannotused_name, item.getBasic_Coupon().getCouponName())
                     .setText(R.id.youhuiquannotused_item_usetime, item.getBasic_Coupon().getValidStartTime().substring(0,10) + "至" + item.getBasic_Coupon().getValidEndTime().substring(0,10))

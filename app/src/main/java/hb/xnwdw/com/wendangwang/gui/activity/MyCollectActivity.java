@@ -42,6 +42,7 @@ import hb.xnwdw.com.wendangwang.netdata.entity.TestGoods;
 import hb.xnwdw.com.wendangwang.netdata.mvp.UrlUtils;
 import hb.xnwdw.com.wendangwang.utils.HtttpRequest;
 import hb.xnwdw.com.wendangwang.utils.LogUtils;
+import hb.xnwdw.com.wendangwang.utils.MConstant;
 import okhttp3.Call;
 import okhttp3.MediaType;
 
@@ -103,11 +104,11 @@ public class MyCollectActivity extends ActivityBase implements SwipeMenuCreator,
     private void loadData() {
         Map<String, String> map = new HashMap<>();
         map.put("pageIndex", "1");
-        map.put("pageSize", "20");
+        map.put("pageSize", "100");
         map.put("dataSource", "APP");
         map.put("memberId", WDWApp.getMenberId());
 
-        HtttpRequest.CheackIsLoginGet(this,UrlApi.URL_MYCOLECTION, map, new StringCallback() {
+        HtttpRequest.CheackIsLoginGet(this, UrlApi.URL_MYCOLECTION, map, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 
@@ -116,20 +117,21 @@ public class MyCollectActivity extends ActivityBase implements SwipeMenuCreator,
             @Override
             public void onResponse(String response, int id) {
                 Log.d("MyCollectActivity", response);
+                if (!response.contains(MConstant.HTTP404)) {
+                    data = JSON.parseObject(response, MyCollectionData.class);
+                    if (data.getObj().size() != 0) {
+                        objBeen.clear();
+                        objBeen.addAll(data.getObj());
+                        for (int i = 0; i < objBeen.size(); i++) {
+                            selected.add(false);
+                        }
+                        noCollecets.setVisibility(View.GONE);
+                        myCollectesAdapter = new MyCollectesAdapter(MyCollectActivity.this, objBeen, selected);
+                        myCollectsRecycler.setAdapter(myCollectesAdapter);
 
-                data = JSON.parseObject(response, MyCollectionData.class);
-                if (data.getObj().size() != 0) {
-                    objBeen.clear();
-                    objBeen.addAll(data.getObj());
-                    for (int i = 0; i < objBeen.size(); i++) {
-                        selected.add(false);
+                    } else {
+                        noCollecets.setVisibility(View.VISIBLE);
                     }
-                    noCollecets.setVisibility(View.GONE);
-                    myCollectesAdapter = new MyCollectesAdapter(MyCollectActivity.this, objBeen, selected);
-                    myCollectsRecycler.setAdapter(myCollectesAdapter);
-
-                } else {
-                    noCollecets.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -158,7 +160,7 @@ public class MyCollectActivity extends ActivityBase implements SwipeMenuCreator,
             case R.id.mycollects_delete:
                 List<Integer> ids = new ArrayList<>();
 
-                for (int i = selected.size()-1; i >=0 ; i--) {
+                for (int i = selected.size() - 1; i >= 0; i--) {
                     if (selected.get(i)) {
                         ids.add(objBeen.get(i).getItemID());
                         objBeen.remove(i);

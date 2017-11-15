@@ -63,12 +63,7 @@ public class FragmentYouHuiQuanNotUsed extends FragmentBase {
 
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        loadDatas();
-//
-//    }
+
 
 
     @Override

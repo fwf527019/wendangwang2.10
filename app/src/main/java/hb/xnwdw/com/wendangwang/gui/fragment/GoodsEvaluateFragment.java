@@ -101,14 +101,16 @@ public class GoodsEvaluateFragment extends FragmentBase {
      * @param grade
      */
     private EvaluateListAdapter adapter;
+    private int pageIndex=1;
    private ArrayList<String> mPaths;
-    private void loadEvaluateListData(String id, int grade) {
+    private void loadEvaluateListData(final String itemId, final int grade) {
+        pageIndex=1;
         OkHttpUtils
                 .get()
                 .addHeader("timestamp", UrlUtils.getTime())
                 .addHeader("token", UrlUtils.getMd5(UrlUtils.getTime()))
-                .addParams("itemId", id)
-                .addParams("pageIndex", "1")
+                .addParams("itemId", itemId)
+                .addParams("pageIndex",pageIndex+"")
                 .addParams("grade", String.valueOf(grade))
                 .url(UrlApi.URL_GETEVALUATELIST)
                 .build()
@@ -117,18 +119,56 @@ public class GoodsEvaluateFragment extends FragmentBase {
                     public void onError(Call call, Exception e, int id) {
 
                     }
-
                     @Override
-                    public void onResponse(String response, int id) {
+                    public void onResponse(String response, final int id) {
                         LogUtils.d("GoodsEvaluateActivity", response);
                         if(!response.contains(MConstant.HTTP404)){
                             final GoodsEvaluateListData data = JSON.parseObject(response, GoodsEvaluateListData.class);
+
                             if(data.getObj()!=null&&data.getObj().size()!=0){
                                 goodsevaluateList.setVisibility(View.VISIBLE);
                                 goodevaluatNodata.setVisibility(View.GONE);
                                 goodsevaluateList.setLayoutManager(new MyLinearLayoutManager(getActivity()));
                                 adapter = new EvaluateListAdapter(R.layout.item_goodsevaluate_list, data.getObj(), getActivity());
                                 goodsevaluateList.setAdapter(adapter);
+                                //添加footer
+                                adapter.addFooterView(getActivity().getLayoutInflater().inflate(R.layout.sub_getmore, (ViewGroup) goodsevaluateList.getParent(), false));                                adapter.getFooterLayout().setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        pageIndex++;
+
+                                        OkHttpUtils
+                                                .get()
+                                                .addHeader("timestamp", UrlUtils.getTime())
+                                                .addHeader("token", UrlUtils.getMd5(UrlUtils.getTime()))
+                                                .addParams("itemId", itemId)
+                                                .addParams("pageIndex",pageIndex+"")
+                                                .addParams("grade", String.valueOf(grade))
+                                                .url(UrlApi.URL_GETEVALUATELIST)
+                                                .build()
+                                                .execute(new StringCallback() {
+                                                    @Override
+                                                    public void onError(Call call, Exception e, int id) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onResponse(String response, int id) {
+                                                        if (!response.contains(MConstant.HTTP404)) {
+                                                            GoodsEvaluateListData data = JSON.parseObject(response, GoodsEvaluateListData.class);
+                                                            adapter.addData(data.getObj());
+                                                            if (data.getObj().size() == 0) {
+                                                                TextView tv = (TextView) adapter.getFooterLayout().findViewById(R.id.getmore_tv);
+                                                                tv.setText("没有更多");
+                                                            }
+                                                        }
+
+                                                    }
+                                                });
+
+
+                                    }
+                                });
 
                                 adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                                     @Override

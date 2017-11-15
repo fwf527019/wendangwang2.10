@@ -85,7 +85,7 @@ public class Offline_hisActivity extends ActivityBase {
         Map<String, String> map = new HashMap<String, String>();
         map.put("state", "-10");
         map.put("page", "1");
-        map.put("pageSize", "20");
+        map.put("pageSize", "50");
         map.put("memberID", WDWApp.getMenberId());
         HtttpRequest.CheackIsLoginGet(this,UrlApi.URL_GETODERLIST, map, new StringCallback() {
             @Override

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -23,17 +23,17 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/no_collecets"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -42,30 +42,38 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="150dp"
+                android:layout_marginTop="10dp"
                 android:text="您还没有收藏任何商品"
                 android:textColor="@color/black" />
         </LinearLayout>
 
-        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-            android:id="@+id/my_collects_recycler"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView>
+            android:layout_height="wrap_content">
+
+            <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                android:id="@+id/my_collects_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView>
+
+
+
+        </LinearLayout>
+
     </FrameLayout>
 
     <TextView
         android:id="@+id/mycollects_delete"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="删除"
-        android:visibility="gone"
         android:layout_margin="10dp"
-        android:gravity="center"
-        android:textSize="@dimen/px28"
-        android:textColor="@color/white"
         android:background="@color/maincolor"
-        />
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/white"
+        android:textSize="@dimen/px28"
+        android:visibility="gone" />
 </LinearLayout>

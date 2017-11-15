@@ -149,12 +149,14 @@ public class PayActivity extends ActivityBase {
             @Override
             public void onResponse(String response, int id) {
                 LogUtils.d("PayActivity_c", response);
-                if (JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
-                    canPay = true;
-                } else {
-                    canPay = false;
-                    Toast.makeText(PayActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
+                if (!response.contains(MConstant.HTTP404)) {
+                    if (JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
+                        canPay = true;
+                    } else {
+                        canPay = false;
+                        Toast.makeText(PayActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
 
+                    }
                 }
             }
         });
@@ -214,7 +216,7 @@ public class PayActivity extends ActivityBase {
                                 finish();
                             }
                             dialog.dismiss();
-                        }else {
+                        } else {
                             finish();
                         }
                     }
@@ -281,8 +283,8 @@ public class PayActivity extends ActivityBase {
                         if (!payOrderType.equals("1")) {
                             startActivity(new Intent(PayActivity.this, PaySuccessActivity.class));
                         } else if (payOrderType.equals("1")) {
-                         //   startActivity(new Intent(PayActivity.this, OfflineAfterPay.class));
-                           startActivity(new Intent(PayActivity.this, OfflineAfterPay.class).putExtra("memberId",WDWApp.payOrderNum));
+                            //   startActivity(new Intent(PayActivity.this, OfflineAfterPay.class));
+                            startActivity(new Intent(PayActivity.this, OfflineAfterPay.class).putExtra("memberId", WDWApp.payOrderNum));
                         }
                     } else {
                         // "8000"代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服<span style="white-space:pre">                </span>务端异步通知为准（小概率状态）
@@ -377,6 +379,7 @@ public class PayActivity extends ActivityBase {
      * 获取交易金额
      */
     double payMoneys;
+
     private void loadOrderMoney(String orderNum) {
         startProgressDialog("加载中...");
         JSONObject jsonObject = new JSONObject();
@@ -384,7 +387,7 @@ public class PayActivity extends ActivityBase {
         jsonObject.put("memberId", "APP");
         jsonObject.put("orderNum", orderNum);
         String pamas = jsonObject.toJSONString();
-        HtttpRequest.CheackIsLoginPOST(this,UrlApi.URL_ORDERMONY, pamas, new StringCallback() {
+        HtttpRequest.CheackIsLoginPOST(this, UrlApi.URL_ORDERMONY, pamas, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
                 Log.d("PayActivity", "e:" + e);
@@ -398,14 +401,14 @@ public class PayActivity extends ActivityBase {
                 if (!response.contains(MConstant.HTTP404)) {
                     OrderMoney orderMoney = JSON.parseObject(response, OrderMoney.class);
                     payMoney = orderMoney.getObj().getPracticalMoney();
-                    payMoneys=Double.parseDouble(payMoney);
+                    payMoneys = Double.parseDouble(payMoney);
                     payMony.setText(orderMoney.getObj().getPracticalMoney());
                     //   loadData(payOrderNum);
 
-                    if ((payMoneys-0.0==0) && payOrderType.equals("0")) {
+                    if ((payMoneys - 0.0 == 0) && payOrderType.equals("0")) {
                         startActivity(new Intent(PayActivity.this, PaySuccessActivity.class));
                     }
-                    if ((payMoneys-0.0==0)&& payOrderType.equals("1")) {
+                    if ((payMoneys - 0.0 == 0) && payOrderType.equals("1")) {
                         startActivity(new Intent(PayActivity.this, OfflineAfterPay.class));
                     }
 
@@ -473,7 +476,7 @@ public class PayActivity extends ActivityBase {
                             finish();
                         }
 
-                    }else {
+                    } else {
                         finish();
                     }
                 }

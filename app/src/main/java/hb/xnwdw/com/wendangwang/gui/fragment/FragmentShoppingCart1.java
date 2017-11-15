@@ -254,6 +254,16 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
                         });
                         adapter.setCheckInterface(FragmentShoppingCart1.this);
                         adapter.setModifyCountInterface(FragmentShoppingCart1.this);
+
+                        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                                Intent intent = new Intent(getActivity(), GoodsDetails1.class);
+                                intent.putExtra("itemId", canBuy.get(position).getItemID() + "");
+                                startActivity(intent);
+                            }
+                        });
+
                         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                             @Override
                             public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -263,11 +273,6 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
                                         break;
                                     case R.id.item_delecte:
                                         delecteItem(position);
-                                        break;
-                                    case R.id.shopcart_imgview:
-                                        Intent intent = new Intent(getActivity(), GoodsDetails1.class);
-                                        intent.putExtra("itemId", canBuy.get(position).getItemID() + "");
-                                        startActivity(intent);
                                         break;
                                 }
                                 return false;
@@ -286,8 +291,6 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
                         thread.start();
                         /***********能购买的************/
                         if (canBuy != null && canBuy.size() != 0) {
-
-
                             for (int i = 0; i < canBuy.size(); i++) {
                                 final int finalI = i;
                                 /***
@@ -305,7 +308,7 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
                                         Log.d("FragmentShoppingCart1" + finalI, response);
                                         if (response != null && (!response.contains(MConstant.HTTP404))) {
                                             canBuyCountData = JSON.parseObject(response, CanBuyCountData.class);
-                                            if (canBuyCountData.getObj() != null) {
+                                            if (canBuyCountData.getObj() != null&&canBuy!=null&&canBuy.size()!=0) {
                                                 canBuy.get(finalI).setCanBuyCout(canBuyCountData.getObj().getCanBuyCout());
                                                 canBuy.get(finalI).setMostCount(canBuyCountData.getObj().getMostCount());
                                             } else {
@@ -314,6 +317,8 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
                                             }
 
 
+                                        }else {
+                                            canBuy.get(finalI).setCanBuyCout(9999);
                                         }
                                         adapter.notifyItemChanged(finalI);
                                     }
@@ -823,7 +828,7 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
         }
     };
 
-    boolean endThread = false;
+    boolean isRun = true;
 
 
     /**
@@ -841,7 +846,7 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
 
         @Override
         public void run() {
-            while (!endThread) {
+            while (isRun) {
                 try {
                     Thread.sleep(1000);
                     for (int i = 0; i < shopingcatData.size(); i++) {
@@ -1012,23 +1017,15 @@ public class FragmentShoppingCart1 extends FragmentBase implements GoodsCartList
 
     }
 
-    private boolean isclose = false;
-
     @Override
-    public void onPause() {
-        super.onPause();
-        endThread = true;
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        endThread = true;
+    public void onStart() {
+        super.onStart();
+        isRun = true;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        endThread = true;
+        isRun = false;
     }
 }

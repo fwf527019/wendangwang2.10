@@ -60,18 +60,18 @@ public class RegestConpoud extends ActivityBase {
         Intent intent = getIntent();
         title.setText("注册获得的优惠券");
         data = (RegestConpondData) intent.getSerializableExtra("regestData");
-        if (data.getObj() != null&&data.getObj().size()!=0) {
+        if (data.getObj() != null && data.getObj().size() != 0) {
             LinearLayoutManager linearLayoutManager = new MyLinearLayoutManager(RegestConpoud.this);
             regestConpoundlist.setLayoutManager(linearLayoutManager);
-            Adpter adpter = new Adpter(R.layout.item_youhuiquan_notused, data.getObj().subList(0,data.getObj().size()-1));
+            Adpter adpter = new Adpter(R.layout.item_youhuiquan_notused, data.getObj().subList(0, data.getObj().size() - 1));
             regestConpoundlist.setAdapter(adpter);
             adpter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    startActivity(new Intent(RegestConpoud.this,MainPagerActivity.class).putExtra("fr",0));
+                    startActivity(new Intent(RegestConpoud.this, MainPagerActivity.class).putExtra("fr", 0));
                 }
             });
-        }else {
+        } else {
 
         }
 
@@ -80,7 +80,7 @@ public class RegestConpoud extends ActivityBase {
 
     @OnClick(R.id.back)
     public void onViewClicked() {
-        startActivity(new Intent(RegestConpoud.this,MainPagerActivity.class).putExtra("fr",4));
+        startActivity(new Intent(RegestConpoud.this, MainPagerActivity.class).putExtra("fr", 4));
         finish();
     }
 
@@ -92,26 +92,33 @@ public class RegestConpoud extends ActivityBase {
         @Override
         protected void convert(BaseViewHolder helper, RegestConpondData.ObjBean item) {
 
-                helper.setText(R.id.youhuiquannotused_item_price, item.getCouponMoney()+"")
-                        .setText(R.id.youhuiquannotused_name, item.getCouponName())
-                        .setText(R.id.youhuiquannotused_item_usetime, item.getValidStartTime().substring(0, 10) + "至" + item.getValidEndTime().substring(0, 10))
-                       .setText(R.id.youhuiquannotused_item_condition, "满" + item.getUseCondition() + "元使用")
-
-                        .addOnClickListener(R.id.uesit);
-            if(item.getCouponLimit()!=null){
-                helper.setText(R.id.youhuiquannotused_item_classfay,"限"+item.getCouponLimit());
-            }else {
-                helper.setText(R.id.youhuiquannotused_item_classfay,"全部类商品");
+            helper.setText(R.id.youhuiquannotused_item_price, item.getCouponMoney() + "")
+                    .setText(R.id.youhuiquannotused_name, item.getCouponName())
+                    .setText(R.id.youhuiquannotused_item_usetime, item.getValidStartTime().substring(0, 10) + "至" + item.getValidEndTime().substring(0, 10))
+                    .setText(R.id.youhuiquannotused_item_condition, "满" + item.getUseCondition() + "元使用");
+//            if(item.getCouponLimit()!=null){
+//                helper.setText(R.id.youhuiquannotused_item_classfay,"限"+item.getCouponLimit());
+//            }else {
+//                helper.setText(R.id.youhuiquannotused_item_classfay,"全部类商品");
+//            }
+            if (item.getCouponLimit() != null && item.getCouponLimit().size() != 0) {
+                String str = "";
+                for (int i = 0; i < item.getCouponLimit().size(); i++) {
+                    str += item.getCouponLimit().get(i).getCateName() + ",";
+                }
+                int l = str.length();
+                helper.setText(R.id.youhuiquannotused_item_limit, "限" + str.substring(0, l - 1) + "使用");
+            } else {
+                helper.setText(R.id.youhuiquannotused_item_limit, "全品类商品");
             }
-
         }
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            startActivity(new Intent(RegestConpoud.this,MainPagerActivity.class).putExtra("fr",4));
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(RegestConpoud.this, MainPagerActivity.class).putExtra("fr", 4));
         }
         return super.onKeyDown(keyCode, event);
     }

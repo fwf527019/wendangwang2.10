@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -174,9 +175,12 @@ public class UrlWebActivity extends ActivityBase {
         urlwebview.setWebChromeClient(new WebChromeClient() {
 
             @Override
-            public void onReceivedTitle(WebView view, String title) {
-                super.onReceivedTitle(view, title);
-                urlactivtyTitle.setText(title);
+            public void onReceivedTitle(WebView view, String titlea) {
+                super.onReceivedTitle(view, titlea);
+                if(tital==null){
+                    urlactivtyTitle.setText(titlea);
+                }
+
             }
         });
 
@@ -220,6 +224,12 @@ public class UrlWebActivity extends ActivityBase {
                 //分类
                 else if (url.contains("/wdw/page/mb/list.html")) {
                     MainPagerActivity.GotoFragment(1);
+                    return true;
+                }
+                //分类
+                else if (url.contains("/wdw/page/mb/login")) {
+                    Intent i = new Intent(UrlWebActivity.this, LognActivity.class);
+                    startActivity(i);
                     return true;
                 }
                 //购物车
@@ -360,6 +370,7 @@ public class UrlWebActivity extends ActivityBase {
     private IWXAPI api;
 
     private boolean shearToFrends(String url, String title, String description, int scene) {
+        bitmap= BitmapFactory.decodeResource(UrlWebActivity.this.getResources(), R.mipmap.ic_icon);
         api = WXAPIFactory.createWXAPI(UrlWebActivity.this, WXConstants.APP_ID, true);
         api.registerApp(WXConstants.APP_ID);
         if (!api.isWXAppInstalled()) {
@@ -407,6 +418,7 @@ public class UrlWebActivity extends ActivityBase {
     private MyIUiListener mIUiListener = new MyIUiListener();
 
     private void shearToQQ() {
+        bitmap= BitmapFactory.decodeResource(UrlWebActivity.this.getResources(), R.mipmap.ic_icon);
         params = new Bundle();
         params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
         params.putString(QQShare.SHARE_TO_QQ_TITLE, "稳当网活动");// 标题
@@ -454,12 +466,13 @@ public class UrlWebActivity extends ActivityBase {
     }
 
     private WebpageObject getWebpageObj() {
+        bitmap= BitmapFactory.decodeResource(UrlWebActivity.this.getResources(), R.mipmap.ic_icon);
         WebpageObject mediaObject = new WebpageObject();
         mediaObject.identify = Utility.generateGUID();
         mediaObject.title = tital;
         mediaObject.description = "稳当生活品质优先！";
         // 设置 Bitmap 类型的图片到视频对象里设置缩略图。 注意：最终压缩过的缩略图大小不得超过 32kb。
-        //  mediaObject.setThumbImage(bitmap);
+          mediaObject.setThumbImage(bitmap);
         mediaObject.actionUrl = url;
         mediaObject.defaultText = "稳当生活";
         return mediaObject;

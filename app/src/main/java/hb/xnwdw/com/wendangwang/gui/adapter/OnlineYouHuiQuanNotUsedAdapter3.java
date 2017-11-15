@@ -30,8 +30,10 @@ public class OnlineYouHuiQuanNotUsedAdapter3 extends BaseQuickAdapter<LineCanNot
 
 
     if (item != null && item.getCouponStatus() == 0) {
+        helper.getView(R.id.ll_why).setAlpha((float) 0.5);
         helper.setText(R.id.youhuiquannotused_item_price, item.getBasic_Coupon().getCouponMoney()+"")
                 .setText(R.id.youhuiquannotused_name, item.getBasic_Coupon().getCouponName())
+                .setText(R.id.tv_why,item.getMemo())
                 .setText(R.id.youhuiquannotused_item_usetime, item.getBasic_Coupon().getValidStartTime().substring(0,10) + "至" + item.getBasic_Coupon().getValidEndTime().substring(0,10))
                 .setText(R.id.youhuiquannotused_item_condition, "满" + item.getBasic_Coupon().getUseCondition() + "元使用")
                 .addOnClickListener(R.id.uesit);

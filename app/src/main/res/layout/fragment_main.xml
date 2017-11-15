@@ -73,94 +73,109 @@
                         android:gravity="center_vertical"></hb.xnwdw.com.wendangwang.gui.view.RollingView>
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/f6"></View>
-
                 <LinearLayout
                     android:id="@+id/main_miaoshatital"
                     android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:background="@color/white"
-                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:visibility="gone">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/title_miaosha" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/f6"></View>
 
-                    <TextView
-                        android:id="@+id/miaosha_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/px26" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
 
-                    <TextView
-                        android:id="@+id/mian_hour"
-                        android:layout_width="30dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="7dp"
-                        android:background="@drawable/kuang"
-                        android:gravity="center"
-                        android:text="00"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/px26" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/title_miaosha" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:text=":"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/miaosha_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/px26" />
 
-                    <TextView
-                        android:id="@+id/mian_minut"
-                        android:layout_width="30dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="2dp"
-                        android:background="@drawable/kuang"
-                        android:gravity="center"
-                        android:text="00"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/px26" />
+                        <TextView
+                            android:id="@+id/mian_hour"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_marginLeft="7dp"
+                            android:background="@drawable/kuang"
+                            android:gravity="center"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/px26" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:text=":"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text=":"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
 
-                    <TextView
-                        android:id="@+id/main_second"
-                        android:layout_width="30dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="2dp"
-                        android:background="@drawable/kuang"
-                        android:gravity="center"
-                        android:text="00"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/px26" />
+                        <TextView
+                            android:id="@+id/mian_minut"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_marginLeft="2dp"
+                            android:background="@drawable/kuang"
+                            android:gravity="center"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/px26" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text=":"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/main_second"
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_marginLeft="2dp"
+                            android:background="@drawable/kuang"
+                            android:gravity="center"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/px26" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/sekkill_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
-                <View
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/miaosha_list_ll"
                     android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/f6">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                </View>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/sekkill_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/f6">
+
+                    </View>
+                </LinearLayout>
 
                 <include
                     layout="@layout/sec_titel1"

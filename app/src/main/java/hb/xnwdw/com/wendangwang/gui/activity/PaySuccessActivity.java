@@ -2,6 +2,7 @@ package hb.xnwdw.com.wendangwang.gui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,7 +47,8 @@ public class PaySuccessActivity extends ActivityBase {
     TextView paysuccessOk;
     @BindView(R.id.public_tital)
     RelativeLayout publicTital;
-  private   String payOrderNum;
+    private String payOrderNum;
+
     @Override
     protected int getContentViewResId() {
         return R.layout.activity_paysuccess;
@@ -68,14 +70,15 @@ public class PaySuccessActivity extends ActivityBase {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
         paysuccessTitle.setText("支付完成");
-        Intent intent=getIntent();
-        int orderType=intent.getIntExtra("orderType",0);
-        if(orderType==3){
+        Intent intent = getIntent();
+        int orderType = intent.getIntExtra("orderType", 0);
+        if (orderType == 3) {
             paysuccessPaymoney.setText("支付金额：¥0");
-            payOrderNum=intent.getStringExtra("orderNum");
+            payOrderNum = intent.getStringExtra("orderNum");
             paysuccessOrdernum.setText("请等待收货，订单号：" + payOrderNum);
 
         }
+        payOrderNum = WDWApp.payOrderNum;
         paysuccessPaymoney.setText("支付金额：¥ " + PayActivity.payMoney);
         paysuccessOrdernum.setText("请等待收货，订单号：" + WDWApp.payOrderNum);
         AppcanDraw();
@@ -104,7 +107,7 @@ public class PaySuccessActivity extends ActivityBase {
 
         Map<String, String> map = new HashMap<>();
         map.put("source", "APP");
-        HtttpRequest.CheackIsLoginGet(this,UrlApi.URL_GETIsOpen, map, new StringCallback() {
+        HtttpRequest.CheackIsLoginGet(this, UrlApi.URL_GETIsOpen, map, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
                 LogUtils.d("PaySuccessActivity", "e:" + e);
@@ -116,7 +119,7 @@ public class PaySuccessActivity extends ActivityBase {
                 if (JSONObject.parseObject(response).get("obj").toString().equals("true")) {
                     orderCanDraw();
                 } else {
-                    drawLl.setVisibility(View.INVISIBLE);
+                    drawLl.setVisibility(View.GONE);
                 }
             }
         });
@@ -127,18 +130,25 @@ public class PaySuccessActivity extends ActivityBase {
      */
     private void orderCanDraw() {
         Map<String, String> map = new HashMap<>();
+        Log.d("PaySuccessActivity_", payOrderNum);
         map.put("sOrderNum", payOrderNum);
+        map.put("sMemberID", "");
+
         HtttpRequest.CreatGetRequst(UrlApi.URL_GETCanDraw, map, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
                 LogUtils.d("PaySuccessActivity_", "e:" + e);
+                orderCanDraw();
             }
 
             @Override
             public void onResponse(String response, int id) {
                 LogUtils.d("PaySuccessActivity_", response);
-                if (JSONObject.parseObject(response).get("obj").toString().equals("1")) {
-                    drawLl.setVisibility(View.INVISIBLE);
+
+                if (JSONObject.parseObject(response).get("obj") != null && JSONObject.parseObject(response).get("obj").toString().equals("1")) {
+                    drawLl.setVisibility(View.VISIBLE);
+                } else {
+                    drawLl.setVisibility(View.GONE);
                 }
             }
         });

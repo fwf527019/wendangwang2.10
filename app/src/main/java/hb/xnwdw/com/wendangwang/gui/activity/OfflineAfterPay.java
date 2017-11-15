@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -61,7 +62,7 @@ public class OfflineAfterPay extends ActivityBase {
     LinearLayout drawLl;
     @BindView(R.id.offline_seehistory)
     TextView offlineSeehistory;
-
+   private String orderNum;
     @Override
     protected int getContentViewResId() {
         return R.layout.activity_offlineafterpay;
@@ -83,10 +84,11 @@ public class OfflineAfterPay extends ActivityBase {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        String orderNum = intent.getStringExtra("orderNum");
+        orderNum = intent.getStringExtra("orderNum");
         offlineListOrdernum.setText(orderNum);
         loadData(orderNum);
         title.setText(OffilineOrder.storeName);
+        AppcanDraw();
     }
 
     @OnClick({R.id.back, R.id.offline_goto_draw, R.id.offline_seehistory})
@@ -144,5 +146,60 @@ public class OfflineAfterPay extends ActivityBase {
         }
         return super.onKeyDown(keyCode, event);
 
+    }
+
+
+    /**
+     * 判断手机是否开启抽奖
+     */
+
+    private void AppcanDraw() {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("source", "APP");
+        HtttpRequest.CheackIsLoginGet(this, UrlApi.URL_GETIsOpen, map, new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                LogUtils.d("PaySuccessActivity", "e:" + e);
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                LogUtils.d("PaySuccessActivity", response);
+                if (JSONObject.parseObject(response).get("obj").toString().equals("true")) {
+                    orderCanDraw();
+                } else {
+                    drawLl.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+    }
+
+    /**
+     * 查看订单是否可以参与抽奖
+     */
+    private void orderCanDraw() {
+        Map<String, String> map = new HashMap<>();
+        map.put("sOrderNum", orderNum);
+        map.put("sMemberID", "");
+
+        HtttpRequest.CreatGetRequst(UrlApi.URL_GETCanDraw, map, new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                LogUtils.d("PaySuccessActivity_", "e:" + e);
+                orderCanDraw();
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                LogUtils.d("PaySuccessActivity_", response);
+
+                if (JSONObject.parseObject(response).get("obj") != null && JSONObject.parseObject(response).get("obj").toString().equals("1")) {
+                    drawLl.setVisibility(View.VISIBLE);
+                } else {
+                    drawLl.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
     }
 }

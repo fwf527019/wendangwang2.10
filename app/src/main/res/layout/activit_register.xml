@@ -7,7 +7,18 @@
 
     <include layout="@layout/top_no_right" />
 
+    <TextView
+        android:id="@+id/therd_phone"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:text="手机号码"
+        android:gravity="center"
+        />
     <LinearLayout
+        android:id="@+id/phonenum_ll"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"

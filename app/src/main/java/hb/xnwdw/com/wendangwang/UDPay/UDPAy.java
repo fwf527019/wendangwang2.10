@@ -1,27 +1,15 @@
 package hb.xnwdw.com.wendangwang.UDPay;
-
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import com.alibaba.fastjson.JSONObject;
 import com.unionpay.UPPayAssistEx;
 import com.unionpay.uppay.PayActivity;
 import com.zhy.http.okhttp.callback.StringCallback;
-
 import java.util.HashMap;
 import java.util.Map;
-
-import hb.xnwdw.com.wendangwang.R;
 import hb.xnwdw.com.wendangwang.gui.activity.OfflineAfterPay;
 import hb.xnwdw.com.wendangwang.gui.activity.PayFailedActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.PaySuccessActivity;

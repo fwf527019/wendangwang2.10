@@ -46,11 +46,12 @@ public class PrizeDrawActivity extends ActivityBase {
     private int timeC = 100;//变色时间间隔
     private int lightPosition = 0;//当前亮灯位置,从0开始
     private int runCount = 5;//需要转多少圈
-    private int lunckyPosition ;//中奖的幸运位置,从0开始
+    private int lunckyPosition;//中奖的幸运位置,从0开始
     TextView btnLuck;
     ImageView img;
     List<String> drawList;
-    private int [] random={5,1,2,7,4,3,6,0};
+    private int[] random = {5, 1, 2, 7, 4, 3, 6, 0};
+
     @Override
     protected int getContentViewResId() {
         return R.layout.activity_prizedraw;
@@ -208,7 +209,7 @@ public class PrizeDrawActivity extends ActivityBase {
             if (runCount == 0 && lightPosition == 8) {
                 btnLuck.setClickable(false);
                 btnLuck.setEnabled(false);
-           //     Toast.makeText(PrizeDrawActivity.this, "恭喜你抽中: " + views.get(lunckyPosition).getText().toString(), Toast.LENGTH_SHORT).show();
+                //     Toast.makeText(PrizeDrawActivity.this, "恭喜你抽中: " + views.get(lunckyPosition).getText().toString(), Toast.LENGTH_SHORT).show();
                 showPopupWindow();
                 if (lunckyPosition != views.size())
                     tvLast.setBackgroundResource(R.drawable.lattice);
@@ -229,22 +230,22 @@ public class PrizeDrawActivity extends ActivityBase {
         ImageView img_exit = (ImageView) contentView.findViewById(R.id.popuwid_draw_exit);
         TextView jifen_tv = (TextView) contentView.findViewById(R.id.popuwid_draw_jifentishi);
         TextView jifen_tv1 = (TextView) contentView.findViewById(R.id.popuwid_draw_jifen);
-        if(drawList.get(lunckyPosition).equals("谢谢惠顾")){
+        if (drawList.get(lunckyPosition).equals("谢谢惠顾")) {
             jifen_tv.setText("您抽中0积分");
             jifen_tv1.setText("0");
-        }else {
-            jifen_tv.setText("恭喜您抽中"+drawList.get(lunckyPosition));
-            jifen_tv1.setText(data.getObj().get(random[lunckyPosition]).getValue()+"");
+        } else {
+            jifen_tv.setText("恭喜您抽中" + drawList.get(lunckyPosition));
+            jifen_tv1.setText(data.getObj().get(random[lunckyPosition]).getValue() + "");
         }
 
 
-        Button gotojifen= (Button) contentView.findViewById(R.id.popuwid_draw_seejifen);
+        Button gotojifen = (Button) contentView.findViewById(R.id.popuwid_draw_seejifen);
 
 
         gotojifen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MyWenDangJiFenActivity.class));
+                startActivity(new Intent(getApplicationContext(), MyWenDangJiFenActivity.class));
                 finish();
             }
         });
@@ -252,7 +253,7 @@ public class PrizeDrawActivity extends ActivityBase {
             @Override
             public void onClick(View v) {
                 mPopuwidow.dismiss();
-               startActivity(new Intent(PrizeDrawActivity.this,MainPagerActivity.class).putExtra("fr",4));
+                startActivity(new Intent(PrizeDrawActivity.this, MainPagerActivity.class).putExtra("fr", 4));
             }
         });
         View rootview = LayoutInflater.from(this).inflate(R.layout.activity_prizedraw, null);
@@ -263,7 +264,8 @@ public class PrizeDrawActivity extends ActivityBase {
     /**
      * 获取奖品
      */
-    private  DrawsData data;
+    private DrawsData data;
+
     private void getDraws() {
         HtttpRequest.CreatGetRequst(UrlApi.URL_GETDraws, null, new StringCallback() {
             @Override
@@ -274,7 +276,7 @@ public class PrizeDrawActivity extends ActivityBase {
             @Override
             public void onResponse(String response, int id) {
                 Log.d("PrizeDrawActivity", response);
-                 data = JSON.parseObject(response, DrawsData.class);
+                data = JSON.parseObject(response, DrawsData.class);
                 drawList = new ArrayList<String>();
 
 
@@ -293,8 +295,8 @@ public class PrizeDrawActivity extends ActivityBase {
 
     private void GetLuckGrade() {
         Map<String, String> map = new HashMap<>();
-       map.put("sOrderNumber", WDWApp.payOrderNum);
-      // map.put("sOrderNumber", "201709070022");
+        map.put("sOrderNumber", WDWApp.payOrderNum);
+        // map.put("sOrderNumber", "201709070022");
 
         HtttpRequest.CreatGetRequst(UrlApi.URL_GetLuckGrade, map, new StringCallback() {
             @Override
@@ -305,13 +307,15 @@ public class PrizeDrawActivity extends ActivityBase {
             @Override
             public void onResponse(String response, int id) {
                 Log.d("PrizeDrawActivity", response);
-                if(!response.contains(MConstant.HTTP404)){
+                if (!response.contains(MConstant.HTTP404)) {
                     DrawLuck dataw = JSON.parseObject(response, DrawLuck.class);
 
-                    for (int i = 0; i <drawList.size() ; i++) {
-                        if(dataw.getObj().getIGrade()==data.getObj().get(random[i]).getGrade()){
-                            lunckyPosition =i;
-                            LogUtils.d("PrizeDrawActivity", "lunckyPosition:" + lunckyPosition);
+                    for (int i = 0; i < drawList.size(); i++) {
+                        if (dataw.getObj()!=null) {
+                            if (dataw.getObj().getIGrade() == data.getObj().get(random[i]).getGrade()) {
+                                lunckyPosition = i;
+                                LogUtils.d("PrizeDrawActivity", "lunckyPosition:" + lunckyPosition);
+                            }
                         }
                     }
                     init();

@@ -49,7 +49,7 @@ public class OrderBalanceListAdapter extends BaseQuickAdapter<ItemListBean,BaseV
                 .setText(R.id.orderdetails_goods_price,"¥"+item.getItemPrice());
         if(item.getPresentItemList()!=null&&item.getPresentItemList().size()!=0){
             ((TextView)(helper.getView(R.id.present_tv))).setText(":"+item.getPresentItemList().get(0).getItemName());
-            ((TextView)(helper.getView(R.id.presentnum_tv))).setText(item.getPresentItemList().get(0).getPresentNum()+"");
+            ((TextView)(helper.getView(R.id.presentnum_tv))).setText("×"+item.getPresentItemList().get(0).getPresentNum()+"");
         }
         ((SimpleDraweeView)(helper.getView(R.id.orderdetails_goods_img))).setImageURI(UrlApi.SERVER_IP+item.getItemPic());
 

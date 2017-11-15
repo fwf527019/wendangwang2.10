@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -60,13 +61,22 @@ public class RegisterActivity extends ActivityBase {
     CheckBox zhucexieyiCheckbox;
     @BindView(R.id.zhucexieyi)
     TextView zhucexieyi;
+    @BindView(R.id.right_tv)
+    TextView rightTv;
+    @BindView(R.id.therd_phone)
+    TextView therdPhone;
+    @BindView(R.id.phonenum_ll)
+    LinearLayout phonenumLl;
+
+
     private String phoneNum;
     private String pasw;
     private String phoneCode;
     private String TAG;
     private String Mode;
     private String ID;
-    private  String phone;
+    private String phone;
+
     @Override
     protected int getContentViewResId() {
         return R.layout.activit_register;
@@ -93,14 +103,18 @@ public class RegisterActivity extends ActivityBase {
         ID = intent.getStringExtra("ID");
         Mode = intent.getStringExtra("Mode");
         TAG = intent.getStringExtra("TAG");
-        phone=intent.getStringExtra("phone");
+        phone = intent.getStringExtra("phone");
         if (("third").equals(TAG)) {
             registerGetcode.setVisibility(View.GONE);
             title.setText("设置密码");
+            phonenumLl.setVisibility(View.GONE);
+            therdPhone.setVisibility(View.VISIBLE);
             registerPhonenumEdt.setText(phone);
-            registerPhonenumEdt.setEnabled(false);
-        }else {
+            therdPhone.setText(phone);
+        } else {
             title.setText("注册账号");
+            phonenumLl.setVisibility(View.VISIBLE);
+            therdPhone.setVisibility(View.GONE);
         }
 
     }
@@ -122,8 +136,8 @@ public class RegisterActivity extends ActivityBase {
                 break;
             case R.id.register_ok_btn:
 
-                if (registerPhonenumEdt.getText().toString().length()==0) {
-                    Toast.makeText(this, "手机号码不能为空", Toast.LENGTH_SHORT).show();
+                if (registerPhonenumEdt.getText().toString().length()!= 11) {
+                    Toast.makeText(this, "请输入11位的手机号码", Toast.LENGTH_SHORT).show();
                 } else if (registerPaswEdt.getText().toString().length() < 6 || registerPaswEdt.getText().toString().length() > 20) {
                     Toast.makeText(this, "请输入6-20位密码", Toast.LENGTH_SHORT).show();
                 } else if (zhucexieyiCheckbox.isChecked()) {
@@ -200,25 +214,25 @@ public class RegisterActivity extends ActivityBase {
                 String s = (String) jsonObject.get("describe");
                 Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
                 RegestConpondData data = JSON.parseObject(response, RegestConpondData.class);
-                if (data.getDataStatus()==1) {
+                if (data.getDataStatus() == 1) {
                     Toast.makeText(RegisterActivity.this, "恭喜注册成功", Toast.LENGTH_SHORT).show();
-                    WDWApp.setUserToken(data.getObj().get(data.getObj().size()-1).getGUID());
+                    WDWApp.setUserToken(data.getObj().get(data.getObj().size() - 1).getGUID());
                     SharedPreferences sp = getSharedPreferences("MenberData", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString("userName", phoneNum);
                     editor.putString("userPsw", pasw);
-                    editor.putString("userToken", data.getObj().get(data.getObj().size()-1).getGUID());
+                    editor.putString("userToken", data.getObj().get(data.getObj().size() - 1).getGUID());
                     editor.commit();
-                    if (data.getObj() != null&&data.getObj().size()!=1) {
+                    if (data.getObj() != null && data.getObj().size() != 1) {
                         Intent intent = new Intent(RegisterActivity.this, RegestConpoud.class);
                         intent.putExtra("regestData", data);
                         startActivity(intent);
                         finish();
-                    }else {
-                      startActivity(new Intent(RegisterActivity.this,MainPagerActivity.class).putExtra("fr",4));
+                    } else {
+                        startActivity(new Intent(RegisterActivity.this, MainPagerActivity.class).putExtra("fr", 4));
                     }
 
-                }else {
+                } else {
                     Toast.makeText(RegisterActivity.this, data.getDescribe(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -260,7 +274,7 @@ public class RegisterActivity extends ActivityBase {
      * 第三方注册绑定并登
      */
     private void thirdRegister() {
-        phoneNum = registerPhonenumEdt.getText().toString();
+        phoneNum = therdPhone.getText().toString();
         pasw = registerPaswEdt.getText().toString();
         JSONObject object = new JSONObject();
         object.put("Phone", phoneNum);
@@ -268,6 +282,7 @@ public class RegisterActivity extends ActivityBase {
         object.put("Mode", Mode);
         object.put("ID", ID);
         String paramsString = object.toJSONString();
+        LogUtils.d("RegisterActivity", paramsString);
         HtttpRequest.CreatPostRequstNoToken(UrlApi.URL_REJESTANDBINDINGANDLOGIG, paramsString, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -276,6 +291,7 @@ public class RegisterActivity extends ActivityBase {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("RegisterActivity", response);
                 if (JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
                     Toast.makeText(RegisterActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     WDWApp.setUserToken(JSONObject.parseObject(response).get("describe").toString());
@@ -286,8 +302,11 @@ public class RegisterActivity extends ActivityBase {
                     Intent intent = new Intent(RegisterActivity.this, MainPagerActivity.class);
                     intent.putExtra("fr", 4);
                     startActivity(intent);
-                    MobclickAgent.onProfileSignIn(Mode,"wendangwang");
+                    MobclickAgent.onProfileSignIn(Mode, "wendangwang");
                     finish();
+                }else{
+                    Toast.makeText(RegisterActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

@@ -269,9 +269,9 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
 
                         for (int i = 0; i < canBuy.size(); i++) {
                             final int finalI = i;
-//                        /***
-//                         * 写入限买数量
-//                         */
+                            /***
+                             * 写入限买数量
+                             */
                             loadNumOfCanBuy(i, canBuy.get(i).getItemID() + "", new StringCallback() {
                                 @Override
                                 public void onError(Call call, Exception e, int id) {
@@ -293,6 +293,8 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
                                         }
 
 
+                                    } else {
+                                        //  canBuy.get(finalI).setCanBuyCout(9999);
                                     }
                                     adapter.notifyItemChanged(finalI);
                                 }
@@ -318,24 +320,6 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
                         myShopcartLosAdapter = new ShopcartLosedGoodsAdapter(R.layout.item_losedgoods, canNotBuy);
                         shopingcartLosegoodsRecview.setAdapter(myShopcartLosAdapter);
                     }
-
-
-//                        myShopcartLosAdapter.addFooterView(ShoppingCart1.this.getLayoutInflater().inflate(R.layout.sub_clearlist, (ViewGroup) shopingcartLosegoodsRecview.getParent(), false));
-//                        myShopcartLosAdapter.addHeaderView(ShoppingCart1.this.getLayoutInflater().inflate(R.layout.header_shixiaogoods, (ViewGroup) shopingcartLosegoodsRecview.getParent(), false));
-//                        myShopcartLosAdapter.getFooterLayout().setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                for (int i = canNotBuy.size() - 1; i >= 0; i--) {
-//                                    delecteItemCanNotBuy(i);
-//
-//                                }
-//                                canNotBuy.clear();
-//
-//                                myShopcartLosAdapter.notifyDataSetChanged();
-//
-//                            }
-//                        });
-//                    }
 
                 }
             }
@@ -709,7 +693,7 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
      *
      * @param view
      */
-    @OnClick({R.id.shopcart_quanxuan, R.id.shopingcart_jiesuan, R.id.right_tv, R.id.start_shoping, R.id.back,R.id.clear_cannotbuy})
+    @OnClick({R.id.shopcart_quanxuan, R.id.shopingcart_jiesuan, R.id.right_tv, R.id.start_shoping, R.id.back, R.id.clear_cannotbuy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.shopcart_quanxuan:
@@ -801,14 +785,14 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
             super.handleMessage(msg);
         }
     };
-
+    //用来停止线程
+    boolean isRun = true;
 
     /**
      * 秒杀商品的倒计时类
      */
     class MyThread implements Runnable {
-        //用来停止线程
-        boolean endThread;
+
 
         List<ShopingCartData.ObjBean> shopingcatData;
 
@@ -818,7 +802,7 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
 
         @Override
         public void run() {
-            while (!endThread) {
+            while (isRun) {
                 try {
                     Thread.sleep(1000);
                     for (int i = 0; i < shopingcatData.size(); i++) {
@@ -903,7 +887,7 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
     @Override
     public void onResume() {
         super.onResume();
-        if (canBuy != null&&myShopcartLosAdapter!=null) {
+        if (canBuy != null && myShopcartLosAdapter != null) {
             canBuy.clear();
             canNotBuy.clear();
             myShopcartLosAdapter.notifyDataSetChanged();
@@ -913,7 +897,7 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
         Log.d("FragmentShoppingCart1", "onResume");
 
         loadCarData();
-        if (adapter != null&&adapter!=null) {
+        if (adapter != null && adapter != null) {
             GoodsCartListViewAdapter.isEdiText = 0;
             shopcartQuanxuan.setChecked(false);
             adapter.notifyDataSetChanged();
@@ -984,4 +968,17 @@ public class ShoppingCart1 extends ActivityBase implements GoodsCartListViewAdap
         });
 
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        isRun = true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isRun = false;
+    }
+
 }

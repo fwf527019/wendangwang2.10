@@ -216,7 +216,11 @@ public class OrderBalanceActivity extends ActivityBase {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    topPostag.setVisibility(View.VISIBLE);
+                    if (provence!=null) {
+                        topPostag.setVisibility(View.VISIBLE);
+                    }else {
+                        topPostag.setVisibility(View.GONE);
+                    }
                     LogisticsType = "2";
                     checkboxJiti.setChecked(false);
                     phonenum = (String) shangmenPhone.getText();
@@ -305,6 +309,7 @@ public class OrderBalanceActivity extends ActivityBase {
                                 intent.putExtra("shoppeName", shoppeName);
                                 startActivityForResult(intent, 2);
                             }
+
                             @Override
                             public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
                                 Toast.makeText(OrderBalanceActivity.this, "位置权限获取失败", Toast.LENGTH_SHORT).show();
@@ -316,7 +321,7 @@ public class OrderBalanceActivity extends ActivityBase {
             case R.id.choose_copond:
                 if (chooseCopond.getText().toString().equals("请选择优惠券")) {
                     Intent intent2 = new Intent(this, LineCouponsActivity.class);
-               //     Intent intent2 = new Intent(this, LineCopuonActivity.class);
+                    //     Intent intent2 = new Intent(this, LineCopuonActivity.class);
                     intent2.putExtra("cdata", conpData);
                     intent2.putExtra("cdata2", lineCanNotCouponsData);
                     startActivityForResult(intent2, 4);
@@ -423,7 +428,7 @@ public class OrderBalanceActivity extends ActivityBase {
                         suerorderBtn.setClickable(true);
                         suerorderBtn.setText("提交订单");
                         LogUtils.d("OrderBalanceActivity_l", response);
-                        if (!response.contains(MConstant.HTTP404)&&JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
+                        if (!response.contains(MConstant.HTTP404) && JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
                             Intent intent = new Intent(OrderBalanceActivity.this, PayActivity.class);
                             if (JSONObject.parseObject(response).get("obj") != null) {
                                 orderNum = JSONObject.parseObject(response).get("obj").toString();
@@ -515,7 +520,7 @@ public class OrderBalanceActivity extends ActivityBase {
                             orderbalancePostage.setText("¥" + 0);
                             postage = 0;
                         }
-                        topPostag.setText(provence+"，运费¥" + postage);
+                        topPostag.setText(provence + "，运费¥" + postage);
                         orderbalancePostage.setText("¥" + postage);
                         CountFilalyMony();
                     }
@@ -595,11 +600,11 @@ public class OrderBalanceActivity extends ActivityBase {
                         orderbalanceJifen.setText("使用" + (int) data.getObj().getSurplusIntegral() + "稳当积分抵扣" + data.getObj().getSurplusIntegral() / data.getObj().getProportion() + "元");
                         canUsejifenMony = data.getObj().getSurplusIntegral() / data.getObj().getProportion();
                     } else {
-                       if((int) (orderMoney * data.getObj().getProportion())>0){
-                           orderbalanceJifen.setText("使用" + (int) (orderMoney * data.getObj().getProportion()) + "稳当积分抵扣" + orderMoney + "元");
-                       }else {
-                           orderbalanceJifen.setText("使用" + 1 + "稳当积分抵扣" + orderMoney + "元");
-                       }
+                        if ((int) (orderMoney * data.getObj().getProportion()) > 0) {
+                            orderbalanceJifen.setText("使用" + (int) (orderMoney * data.getObj().getProportion()) + "稳当积分抵扣" + orderMoney + "元");
+                        } else {
+                            orderbalanceJifen.setText("使用" + 1 + "稳当积分抵扣" + orderMoney + "元");
+                        }
 
                         canUsejifenMony = data.getObj().getSurplusIntegral() / data.getObj().getProportion();
                     }
@@ -644,7 +649,7 @@ public class OrderBalanceActivity extends ActivityBase {
         } else {
             toatalMony = orderMoney + postage - jifenMony - conpMony - fullCat;
         }
-        topPostag.setText(provence+"，运费¥" + postage);
+        topPostag.setText(provence + "，运费¥" + postage);
         orderbalancePostage.setText("¥" + postage);
         DecimalFormat df = new DecimalFormat("#####0.00");
         String toatalMonys = df.format(toatalMony);
@@ -779,8 +784,6 @@ public class OrderBalanceActivity extends ActivityBase {
                         conpData = JSON.parseObject(conps, OrderConpData.class);
 
                         /**********未使用的不可用优惠券***********/
-
-
 
 
                         String cannotUseCoupon = jsonArray.get(7).toString();

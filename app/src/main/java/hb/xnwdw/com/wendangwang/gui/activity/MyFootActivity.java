@@ -100,7 +100,7 @@ public class MyFootActivity extends ActivityBase implements ExpandableListView.O
     private void loadData() {
         Map<String, String> map = new HashMap<>();
         map.put("iPage", "1");
-        map.put("iPageSize", "20");
+        map.put("iPageSize", "100");
         map.put("sDataSource", "APP");
         map.put("sMemberID", WDWApp.getMenberId());
 

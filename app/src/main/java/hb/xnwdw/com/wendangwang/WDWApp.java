@@ -26,7 +26,7 @@ import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
+
 import com.zhy.http.okhttp.https.HttpsUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
@@ -174,7 +174,7 @@ public class WDWApp extends MultiDexApplication {
     private void initHttp() {
         try {
             InputStream in = getAssets().open("qhwendangwang.com.crt");
-        //  HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, in, null);
+        // HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, in, null);
          HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new LoggerInterceptor("TAG"))

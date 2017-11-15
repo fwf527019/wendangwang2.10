@@ -66,7 +66,6 @@ public class GoodsCartListViewAdapter extends BaseQuickAdapter<ShopingCartData.O
                 .setText(R.id.shopcart_good_price,item.getUnit()+"")
                 .addOnClickListener(R.id.item_addto_collecte)
                 .addOnClickListener(R.id.item_delecte)
-                .addOnClickListener(R.id.shopcart_imgview)
                 .setText(R.id.shopcart_biaoqian,item.getActivityFlag());
         //活动标签
         if(item.getActivityFlag()!=null&&!item.getActivityFlag().equals("")){

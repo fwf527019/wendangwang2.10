@@ -16,7 +16,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -61,7 +60,6 @@ import hb.xnwdw.com.wendangwang.gui.activity.GoodsDetails1;
 import hb.xnwdw.com.wendangwang.gui.activity.LognActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MainPagerActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MiaoShaActivity;
-import hb.xnwdw.com.wendangwang.gui.activity.MyMassegeActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MyMessageMianPage;
 import hb.xnwdw.com.wendangwang.gui.activity.NearShopActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.PreferredBrandActivity;
@@ -172,6 +170,8 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
     TextView miaoshaType;
     @BindView(R.id.maintitail_pad)
     LinearLayout maintitailPad;
+    @BindView(R.id.miaosha_list_ll)
+    LinearLayout miaoshaListLl;
     private MainSlidpagerPresenter mpresenter;
     private int sheight;
     private int height;
@@ -449,6 +449,7 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
 
         if (date != null) {
             mainMiaoshatital.setVisibility(View.VISIBLE);
+            miaoshaListLl.setVisibility(View.VISIBLE);
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date d1 = null;
             Date d2 = null;
@@ -496,21 +497,21 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
     public void showNewCommende(final List<NewRecommendeData.DatasBean> itemsBeen) {
         NewRecommendeDatadata = new ArrayList<>();
 
-            MyLinearLayoutManager linearLayoutManager = new MyLinearLayoutManager(getActivity());
-            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-            recommentRecycler.setLayoutManager(linearLayoutManager);
-            NewRecommendeDatadata = itemsBeen;
-            recommendeNewAdapter = new RecommendeNewAdapter(R.layout.item_goods, NewRecommendeDatadata);
-            recommentRecycler.setAdapter(recommendeNewAdapter);
-            //     recommendeNewAdapter.addFooterView(getActivity().getLayoutInflater().inflate(R.layout.sub_more, (ViewGroup) sekkillRecycler.getParent().getParent(), false), -1, LinearLayout.HORIZONTAL);
-            recommendeNewAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    Intent intent = new Intent(getActivity(), GoodsDetails1.class);
-                    intent.putExtra("itemId", itemsBeen.get(position).getItemID());
-                    startActivity(intent);
-                }
-            });
+        MyLinearLayoutManager linearLayoutManager = new MyLinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recommentRecycler.setLayoutManager(linearLayoutManager);
+        NewRecommendeDatadata = itemsBeen;
+        recommendeNewAdapter = new RecommendeNewAdapter(R.layout.item_goods, NewRecommendeDatadata);
+        recommentRecycler.setAdapter(recommendeNewAdapter);
+        //     recommendeNewAdapter.addFooterView(getActivity().getLayoutInflater().inflate(R.layout.sub_more, (ViewGroup) sekkillRecycler.getParent().getParent(), false), -1, LinearLayout.HORIZONTAL);
+        recommendeNewAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getActivity(), GoodsDetails1.class);
+                intent.putExtra("itemId", itemsBeen.get(position).getItemID());
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -602,48 +603,45 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
             view.setTitleText(data.get(i).getFloorName());
             final int finalI = i;
             try {
-                final String url= URLDecoder.decode(data.get(finalI).getMbPicUrl(), "utf-8");
+                final String url = URLDecoder.decode(data.get(finalI).getMbPicUrl(), "utf-8");
 
-            view.setPicIntent(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                view.setPicIntent(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                    if (url.contains("/wdw/page/mb/gs_detail.html")) {
-                        Intent intent = new Intent(getActivity(), GoodsDetails1.class);
-                        intent.putExtra("itemId", Utils.cutString((data.get(finalI).getMbPicUrl()), "(?i)itemId="));
-                        startActivity(intent);
-                    } else if (url.contains("/wdw/page/mb/search_result.html?oneId=")) {
-                        //跳转到收索结果页面
-                        //网页：
+                        if (url.contains("/wdw/page/mb/gs_detail.html")) {
+                            Intent intent = new Intent(getActivity(), GoodsDetails1.class);
+                            intent.putExtra("itemId", Utils.cutString((data.get(finalI).getMbPicUrl()), "(?i)itemId="));
+                            startActivity(intent);
+                        } else if (url.contains("/wdw/page/mb/search_result.html?oneId=")) {
+                            //跳转到收索结果页面
+                            //网页：
 //                        Intent intent = new Intent(getActivity(), UrlWebActivity.class);
 //                        intent.putExtra("url", data.get(finalI).getMbPicUrl());
 //                        intent.putExtra("tag", "more");
-                        //原生：
-                        Intent intent = new Intent(getActivity(), ShearchResutsActivity.class);
-                        intent.putExtra("TAG", "classfy");
-                        String TwoCateID=Utils.cutString(data.get(finalI).getMbPicUrl(),"(?i)twoId=");
-                        intent.putExtra("TwoCateID",TwoCateID );
-                        String OneCateID=Utils.cutString(data.get(finalI).getMbPicUrl(),"(?i)oneId=","&");
-                        intent.putExtra("OneCateID",OneCateID);
-                        startActivity(intent);
+                            //原生：
+                            Intent intent = new Intent(getActivity(), ShearchResutsActivity.class);
+                            intent.putExtra("TAG", "classfy");
+                            String TwoCateID = Utils.cutString(data.get(finalI).getMbPicUrl(), "(?i)twoId=");
+                            intent.putExtra("TwoCateID", TwoCateID);
+                            String OneCateID = Utils.cutString(data.get(finalI).getMbPicUrl(), "(?i)oneId=", "&");
+                            intent.putExtra("OneCateID", OneCateID);
+                            startActivity(intent);
 
-                    } else if(url.contains("/wdw/page/mb/search_result.html?kw=")){
-                        Intent intent = new Intent(getActivity(), ShearchResutsActivity.class);
-                        intent.putExtra("TAG", "搜索");
-                        intent.putExtra("keyword",Utils.cutString(url,"kw="));
-                        startActivity(intent);
+                        } else if (url.contains("/wdw/page/mb/search_result.html?kw=")) {
+                            Intent intent = new Intent(getActivity(), ShearchResutsActivity.class);
+                            intent.putExtra("TAG", "搜索");
+                            intent.putExtra("keyword", Utils.cutString(url, "kw="));
+                            startActivity(intent);
+                        } else {
+                            Intent inten1 = new Intent(getActivity(), UrlWebActivity.class);
+                            inten1.putExtra("url", data.get(finalI).getMbPicUrl());
+                            startActivity(inten1);
+                        }
+
                     }
-
-
-                    else {
-                        Intent inten1 = new Intent(getActivity(), UrlWebActivity.class);
-                        inten1.putExtra("url", data.get(finalI).getMbPicUrl());
-                        startActivity(inten1);
-                    }
-
-                }
-            });
-            floorLl.addView(view);
+                });
+                floorLl.addView(view);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -880,7 +878,7 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
                                 } else {
                                     Intent intent = new Intent(getActivity(), UrlWebActivity.class);
                                     intent.putExtra("url", data.getObj().get(finalI1).getUrl());
-                                    intent.putExtra("tital", "");
+                                    intent.putExtra("tital", data.getObj().get(finalI).getText());
                                     startActivity(intent);
                                 }
                             }
@@ -937,7 +935,7 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
                                         if (data.getObj().get(finalI).getUrl() != null) {
                                             Intent intent = new Intent(getActivity(), UrlWebActivity.class);
                                             intent.putExtra("url", data.getObj().get(finalI).getUrl());
-                                            intent.putExtra("tital", "");
+                                            intent.putExtra("tital", data.getObj().get(finalI).getText());
                                             startActivity(intent);
                                         }
                                     }
@@ -1013,6 +1011,7 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
         @Override
         public void onFinish() {
             mainMiaoshatital.setVisibility(View.GONE);
+            miaoshaListLl.setVisibility(View.GONE);
         }
 
         @Override
@@ -1095,7 +1094,7 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
                         mainNewrecmendTatil.setVisibility(View.VISIBLE);
                         recommentRecycler.setVisibility(View.VISIBLE);
                     }
-                }else {
+                } else {
                     mainNewrecmendTatil.setVisibility(View.GONE);
                     recommentRecycler.setVisibility(View.GONE);
                 }

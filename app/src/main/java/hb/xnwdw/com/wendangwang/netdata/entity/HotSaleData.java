@@ -137,7 +137,24 @@ public class HotSaleData {
         private int lockStock;
         private int SalesSum;
         private String SalesActivityNum;
+        private String ActFlag;
+        private String IsNewMember;
 
+        public String getActFlag() {
+            return ActFlag;
+        }
+
+        public void setActFlag(String actFlag) {
+            ActFlag = actFlag;
+        }
+
+        public String getIsNewMember() {
+            return IsNewMember;
+        }
+
+        public void setIsNewMember(String isNewMember) {
+            IsNewMember = isNewMember;
+        }
 
         public String getLimitNewMember() {
             return LimitNewMember;

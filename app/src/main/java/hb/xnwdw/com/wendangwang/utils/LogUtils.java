@@ -23,7 +23,7 @@ public class LogUtils {
     /**
      * isDebug :是用来控制，是否打印日志
      */
-    private static final boolean isDeBug = true;
+    private static final boolean isDeBug = false;
     /**
      * 存放日志文件的所在路径
      */

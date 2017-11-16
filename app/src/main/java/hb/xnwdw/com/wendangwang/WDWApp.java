@@ -174,8 +174,8 @@ public class WDWApp extends MultiDexApplication {
     private void initHttp() {
         try {
             InputStream in = getAssets().open("qhwendangwang.com.crt");
-        // HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, in, null);
-         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, in, null);
+        // HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new LoggerInterceptor("TAG"))
                     .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)

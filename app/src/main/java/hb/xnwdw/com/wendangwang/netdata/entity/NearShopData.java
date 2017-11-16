@@ -114,7 +114,7 @@ public class NearShopData  {
         private int IsDelete;
         private String Memo;
         private String Activity;
-        private boolean isSlecte;
+        private boolean isSlecte=false;
         private int ActNum;
 
         public int getActNum() {

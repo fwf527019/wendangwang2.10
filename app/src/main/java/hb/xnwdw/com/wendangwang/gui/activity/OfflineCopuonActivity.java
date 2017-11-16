@@ -15,7 +15,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,22 +92,16 @@ public class OfflineCopuonActivity extends ActivityBase {
     private YouHuiQuanNotUsedAdapter mAdapter;
 
     private void loadConpond(String itemId, int Amount) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ItemID", itemId);
-        jsonObject.put("Amount", Amount);
-        List<JSONObject> jsonlist = new ArrayList<>();
-        jsonlist.add(jsonObject);
 
-        JSONObject jsonObject1 = new JSONObject();
-        jsonObject1.put("dataSource", "APP");
-        jsonObject1.put("memberId", WDWApp.getMenberId());
-        jsonObject1.put("itemList", jsonlist);
+      Map<String,String> map=new HashMap<>();
+        map.put("itemId", itemId);
+        map.put("amount", Amount+"");
+        map.put("memberId", WDWApp.getMenberId());
 
 
-        LogUtils.d("OfflineCopuonActivity", jsonObject1.toJSONString());
 
 
-        HtttpRequest.CheackIsLoginPOST(this,UrlApi.URL_GainUseMyCoupon, jsonObject1.toJSONString(), new StringCallback() {
+        HtttpRequest.CheackIsLoginGet(this,UrlApi.URL_GetValidCoupon, map, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
                 LogUtils.d("OfflineCopuonActivity", "e:" + e);
@@ -116,30 +112,30 @@ public class OfflineCopuonActivity extends ActivityBase {
                 LogUtils.d("OfflineCopuonActivity", response);
                 if (response != null&!response.contains(MConstant.HTTP404)) {
                     data = JSON.parseObject(response, OfflineConpund.class);
+
                     MyLinearLayoutManager myLinearLayoutManager = new MyLinearLayoutManager(OfflineCopuonActivity.this);
                     youhuiquanofflineNotusedRecycler.setLayoutManager(myLinearLayoutManager);
                     if (data.getObj().size() != 0) {
                         imgNodata.setVisibility(View.GONE);
                         mAdapter = new YouHuiQuanNotUsedAdapter(R.layout.item_youhuiquan_notused, data.getObj());
                         youhuiquanofflineNotusedRecycler.setAdapter(mAdapter);
-                        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                             @Override
-                            public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                                switch (view.getId()) {
-                                    case R.id.uesit:
-                                        Intent intent = new Intent();
-                                        intent.putExtra("couponCode", data.getObj().get(position).getCouponCode());
-                                        intent.putExtra("coupId", data.getObj().get(position).getID());
-                                        intent.putExtra("coupMony", data.getObj().get(position).getBasic_Coupon().getCouponMoney());
-                                        intent.putExtra("coupLimit", data.getObj().get(position).getBasic_Coupon().getUseCondition());
+                            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-                                        setResult(1, intent);
-                                        finish();
-                                        break;
-                                }
-                                return false;
+                                Intent intent = new Intent();
+                                intent.putExtra("couponCode", data.getObj().get(position).getCouponCode());
+                                intent.putExtra("coupId", data.getObj().get(position).getID());
+                                intent.putExtra("coupMony", data.getObj().get(position).getBasic_Coupon().getCouponMoney());
+                                intent.putExtra("coupLimit", data.getObj().get(position).getBasic_Coupon().getUseCondition());
+
+                                setResult(1, intent);
+                                finish();
+
                             }
                         });
+
+
                     }else {
                         imgNodata.setVisibility(View.VISIBLE);
                     }

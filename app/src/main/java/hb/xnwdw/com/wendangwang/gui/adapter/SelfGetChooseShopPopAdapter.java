@@ -20,9 +20,11 @@ import hb.xnwdw.com.wendangwang.netdata.entity.NearShopData;
  */
 public class SelfGetChooseShopPopAdapter extends BaseQuickAdapter<NearShopData.ObjBean, BaseViewHolder> {
     private int slectepos = -1;
+    private List<NearShopData.ObjBean> datas;
 
     public SelfGetChooseShopPopAdapter(int layoutResId, List<NearShopData.ObjBean> data) {
         super(layoutResId, data);
+        this.datas = data;
     }
 
     @Override
@@ -30,26 +32,26 @@ public class SelfGetChooseShopPopAdapter extends BaseQuickAdapter<NearShopData.O
         helper
                 .setText(R.id.selfget_list_name, item.getStoreName())
                 .setText(R.id.selfget_list_phone, "联系电话：" + item.getPhoneNumber())
+
                 .setText(R.id.selfget_list_adrasse, "地址" + item.getStoreAddress());
-        ((CheckBox) (helper.getView(R.id.selfget_list_cheacbox))).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                myListerner.OnCheakedBoxClickListener(buttonView, isChecked, helper.getLayoutPosition());
-            }
-        });
 
         if (item.isSlecte()) {
             ((CheckBox) (helper.getView(R.id.selfget_list_cheacbox))).setChecked(true);
         } else {
             ((CheckBox) (helper.getView(R.id.selfget_list_cheacbox))).setChecked(false);
         }
-//
-//        if (slectepos == helper.getPosition()) {
-////            ((ImageView) (helper.getView(R.id.selfget_list_cheacbox))).setImageResource(R.drawable.radio_selected);
-//
-//        } else {
-////            ((ImageView) (helper.getView(R.id.selfget_list_cheacbox))).setImageResource(R.drawable.radio);
-//        }
+        ((CheckBox) (helper.getView(R.id.selfget_list_cheacbox))).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //单选：每次点击前将数据重置
+                for (int i = 0; i < datas.size(); i++) {
+                    datas.get(i).setSlecte(false);
+                }
+                datas.get(helper.getLayoutPosition()).setSlecte(true);
+                myListerner.OnCheakedBoxClickListener(v, true, helper.getLayoutPosition());
+                notifyDataSetChanged();
+            }
+        });
     }
 
     private MyListerner myListerner;

@@ -84,13 +84,13 @@ public class AboutUsActivity extends ActivityBase {
             public void onDoubleClick() {
 
             /***********************c测试代码***********************/
-                Intent intent = new Intent(AboutUsActivity.this, PrizeDrawActivity.class);
-
-                startActivity(intent);
+//                Intent intent = new Intent(AboutUsActivity.this, OffilineOrder.class);
+//                intent.putExtra("itemId","62" );
+//                intent.putExtra("storeId","65");
+//                startActivity(intent);
 
             }
         }));
-
 
 
     }

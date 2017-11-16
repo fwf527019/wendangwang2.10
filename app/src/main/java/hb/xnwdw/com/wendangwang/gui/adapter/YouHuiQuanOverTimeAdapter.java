@@ -38,14 +38,12 @@ public class YouHuiQuanOverTimeAdapter extends BaseQuickAdapter<CouponInfoData.O
 
 //    @Override
 //    protected void convert(BaseViewHolder holder, YouHuiQuanBean item) {
-//
 //        holder.setText(R.id.youhuiquannotused_item_price,item.getPrice())
 //                .setText(R.id.youhuiquannotused_name,item.getName())
 //                .setText(R.id.youhuiquannotused_item_usetime,item.getTime())
 //                .setText(R.id.youhuiquannotused_item_condition,item.getUseCont())
 //             //  .setText(R.id.youhuiquannotused_item_uscont,item.getUseConten())
 //                .addOnClickListener(R.id.uesit);
-//
 //        ((TextView)(holder.getView(R.id.youhuiquannotused_item_uscont))).setText(item.getUseConten());
 //
 //    }

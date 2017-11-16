@@ -153,7 +153,7 @@ public class ForgetPaswActivity extends ActivityBase {
         HtttpRequest.CreatPostRequst(UrlApi.URL_GETPHONECODE, paramsString, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-
+                Toast.makeText(ForgetPaswActivity.this, "e:" + e, Toast.LENGTH_SHORT).show();
             }
 
             @Override

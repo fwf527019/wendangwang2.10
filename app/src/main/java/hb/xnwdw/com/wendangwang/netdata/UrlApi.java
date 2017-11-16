@@ -10,13 +10,13 @@ package hb.xnwdw.com.wendangwang.netdata;
 public class UrlApi {
     //  public static String SERVER_IP = "http://wdw.cdhb.net";
     // public static String SERVER_IP = "http://wdw.cdhb.net";
-    // public static String SERVER_IP = "http://192.168.1.137:8001";
-    public static String SERVER_IP = "http://192.168.1.222:8002";
+    //public static String SERVER_IP = "http://192.168.1.125:801";
+   //public static String SERVER_IP = "http://192.168.1.222:8002";
     // public static String SERVER_IP = "http://www.qhwendang.com";
     //正式地址
-   // public static String SERVER_IP = "https://www.qhwendang.com";
+   public static String SERVER_IP = "https://www.qhwendang.com";
 
-    // public static String SERVER_IP = "http://125.72.17.131";
+   //public static String SERVER_IP = "http://125.72.17.131";
     public static String getServerIp() {
         return SERVER_IP;
     }
@@ -102,7 +102,7 @@ public class UrlApi {
     public static String URL_GetOfflineQRCodeItem = SERVER_IP + "/api/Basic_Item/GetOfflineQRCodeItem";//线下扫码购商品
     public static String URL_GetOfflineItemInfo = SERVER_IP + "/api/OrderServiceInterface/GetOfflineItemInfo";//获取线下扫码购商品详情
     public static String URL_GetValidCoupon = SERVER_IP + "/api/OrderServiceInterface/GetValidCoupon";//获取线下优惠券
-    public static String URL_GainUseMyCoupon = SERVER_IP + "/api/OrderServiceInterface//GainUseMyCoupon";//获取线下优惠券
+    public static String URL_GainUseMyCoupon = SERVER_IP + "/api/OrderServiceInterface/GainUseMyCoupon";//获取线下优惠券
     public static String URL_OffLineOrderCrate = SERVER_IP + "/api/OrderServiceInterface/OffLineOrderCrate";//线下扫码购立即提交生成订单
     public static String URL_WXLOGIN = SERVER_IP + "/api/Basic_Member/WXAuthorized";//微信登录
     public static String URL_GETMESSAGE = SERVER_IP + "/api/Basic_Member/QueryMemberMsg";//消息

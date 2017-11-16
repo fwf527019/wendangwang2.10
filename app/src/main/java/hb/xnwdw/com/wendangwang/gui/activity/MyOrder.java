@@ -87,7 +87,7 @@ public class MyOrder extends ActivityBase {
     private MyOrderListData data;
     private Handler mhandler;
     private String titalTag;
-    private String statue;
+    public static String statue;
 
     @Override
     protected int getContentViewResId() {
@@ -755,10 +755,6 @@ public class MyOrder extends ActivityBase {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     /**
      * 判断是否能够支付
@@ -871,10 +867,10 @@ public class MyOrder extends ActivityBase {
 
     }
 
+
     /**
      * 刷新数据
      */
-
     private void loadNewData() {
         if (statue != null) {
             loadDatas(statue);
@@ -882,4 +878,21 @@ public class MyOrder extends ActivityBase {
             loadDatass();
         }
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //  Log.d("MyOrder_onDestroy", statue);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //  Log.d("MyOrder_onRestart", statue);
+    }
+
+
+
+
 }

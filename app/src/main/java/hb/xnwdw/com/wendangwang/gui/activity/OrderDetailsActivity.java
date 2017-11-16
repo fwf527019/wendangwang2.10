@@ -43,8 +43,10 @@ import hb.xnwdw.com.wendangwang.utils.MConstant;
 import okhttp3.Call;
 
 /**
+ * 订单详情
  * Created by Administrator on 2017/3/29.
  */
+
 
 public class OrderDetailsActivity extends ActivityBase {
     String orderNum;
@@ -136,23 +138,6 @@ public class OrderDetailsActivity extends ActivityBase {
         Intent intent = getIntent();
         orderNum = intent.getStringExtra("orderNum");
         list = intent.getIntegerArrayListExtra("btnNum");
-//        List<Button> listBtn = new ArrayList<>();
-//        listBtn.add(orderdetailBtn1);
-//        listBtn.add(orderdetailBtn2);
-//        listBtn.add(orderdetailBtn3);
-//        listBtn.add(orderdetailBtn4);
-//        listBtn.add(orderdetailBtn5);
-//        listBtn.add(orderdetailBtn6);
-//        listBtn.add(orderdetailBtn7);
-//        listBtn.add(orderdetailBtn8);
-//        listBtn.add(orderdetailBtn9);
-//        if(list!=null){
-//            for (int i = 0; i < list.size(); i++) {
-//                listBtn.get(list.get(i) - 1).setVisibility(View.VISIBLE);
-//            }
-//
-//            Log.d("OrderDetailsActivity", "list:" + list);
-//        }
 
         loadData(orderNum);
     }
@@ -529,6 +514,7 @@ public class OrderDetailsActivity extends ActivityBase {
                     public void onClick(DialogInterface dialog, int which) {
                         cancelOrder(orderNum);
                         dialog.dismiss();
+                        startActivity(new Intent(OrderDetailsActivity.this,MainPagerActivity.class).putExtra("fr",4));
                         finish();
                     }
                 });
@@ -552,6 +538,7 @@ public class OrderDetailsActivity extends ActivityBase {
                     public void onClick(DialogInterface dialog, int which) {
                         deleteOrder(orderNum);
                         dialog.dismiss();
+                        startActivity(new Intent(OrderDetailsActivity.this,MainPagerActivity.class).putExtra("fr",4));
                         finish();
                     }
                 });
@@ -627,6 +614,8 @@ public class OrderDetailsActivity extends ActivityBase {
             public void onClick(View v) {
                 applyRefund(orderNumber);
                 bottomDialog.dismiss();
+                startActivity(new Intent(OrderDetailsActivity.this,MainPagerActivity.class).putExtra("fr",4));
+                finish();
             }
         });
     }

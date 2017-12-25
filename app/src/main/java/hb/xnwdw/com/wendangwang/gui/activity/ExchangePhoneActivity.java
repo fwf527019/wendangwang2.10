@@ -200,6 +200,9 @@ public class ExchangePhoneActivity extends ActivityBase {
                 if (JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
                     Toast.makeText(ExchangePhoneActivity.this, "修改绑定手机成功", Toast.LENGTH_SHORT).show();
                    finish();
+                }               else {
+                    Toast.makeText(ExchangePhoneActivity.this, "失败：" + JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

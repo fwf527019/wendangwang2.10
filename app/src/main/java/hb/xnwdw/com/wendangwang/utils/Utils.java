@@ -66,6 +66,15 @@ public class Utils {
         String e = t[i - 1];
         return e;
     }
+    public static String cutstarString(String s, String r) {
+        String t[] = s.split(r);
+        int i = t.length;
+        String e = t[0];
+        return e;
+    }
+
+
+
 
     /**
      * 截取 从star到end
@@ -123,6 +132,8 @@ public class Utils {
             public void onResponse(String response, int id) {
                 if(JSONObject.parseObject(response).get("dataStatus").toString().equals("1")){
                     isLogin=true;
+                }else {
+                    isLogin=false;
                 }
             }
         });

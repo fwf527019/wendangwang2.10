@@ -74,8 +74,10 @@ public class NearShopActivity extends ActivityBase {
     }
 
     private String describe;
+    //我的位置
     private double latitude;
     private double lontitude;
+
     private Handler handler;
     private String adrasse = "您所在的位置";
     private LocationClient locationClient = null;
@@ -158,7 +160,7 @@ public class NearShopActivity extends ActivityBase {
      * @param lat
      */
     private   NearShopData nearDatas;
-    private void loadShopInfo(double lng, double lat) {
+    private void loadShopInfo(double lng, final double lat) {
         Map<String, String> map = new HashMap<String, String>();
         map.put("lng", String.valueOf(lng));
         map.put("lat", String.valueOf(lat));
@@ -173,9 +175,6 @@ public class NearShopActivity extends ActivityBase {
             @Override
             public void onResponse(String response, int id) {
                 LogUtils.d("NearShopActivity", response);
-                // LogUtils.d("SelfGetChooseShop", response);
-                //  LogUtils.d("NearShopActivity", "lontitude:" + lontitude);
-                //  LogUtils.d("NearShopActivity", "latitude:" + latitude);
                 if (!response.contains(MConstant.HTTP404)) {
                     nearDatas = JSON.parseObject(response, NearShopData.class);
                     if (data == null) {
@@ -195,11 +194,30 @@ public class NearShopActivity extends ActivityBase {
                             Intent intent = new Intent(getApplicationContext(), ShopActivity.class);
                             intent.putExtra("storeId", data.getObj().get(position).getGUID());
                             intent.putExtra("storeName", data.getObj().get(position).getStoreName());
+                            intent.putExtra("lat",data.getObj().get(position).getMapY());
+                            intent.putExtra("lot",data.getObj().get(position).getMapX());
+                            intent.putExtra("mlat", latitude);
+                            intent.putExtra("storeAddress",data.getObj().get(position).getStoreAddress());
+                            intent.putExtra("mlot", lontitude);
+
                             startActivity(intent);
                         }
                     });
 
-
+                    adpter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                        @Override
+                        public boolean onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                            Intent intent= new Intent(NearShopActivity.this,MapActivity.class);
+                            intent.putExtra("lat",data.getObj().get(position).getMapY());
+                            intent.putExtra("lot",data.getObj().get(position).getMapX());
+                            intent.putExtra("mlat",latitude);
+                            intent.putExtra("mlot",lontitude);
+                            intent.putExtra("name",data.getObj().get(position).getStoreName());
+                            intent.putExtra("storeAddress",data.getObj().get(position).getStoreAddress());
+                            startActivity(intent);
+                            return false;
+                        }
+                    });
 
                     adpter.getFooterLayout().setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -312,7 +330,7 @@ public class NearShopActivity extends ActivityBase {
                     if (circle_anim != null) {
                         nearshopRefreshImg.startAnimation(circle_anim);  //开始动画
                     }
-//                    locationClient.start();//开启定位
+//                  locationClient.start();//开启定位
                     mytime.start();
                 }
 //                locationClient = new LocationClient(this);
@@ -341,7 +359,7 @@ public class NearShopActivity extends ActivityBase {
 //                    }
 //                });
 //                locationClient.start();//开启定位
-//
+
                 break;
             case R.id.back:
                 finish();

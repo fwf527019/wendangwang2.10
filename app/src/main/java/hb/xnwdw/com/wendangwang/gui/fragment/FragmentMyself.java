@@ -27,10 +27,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hb.xnwdw.com.wendangwang.R;
 import hb.xnwdw.com.wendangwang.WDWApp;
+import hb.xnwdw.com.wendangwang.gui.activity.AboutUsActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.AccontinfoActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.LognActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MyAdressActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MyCollectActivity;
+import hb.xnwdw.com.wendangwang.gui.activity.MyCollectsActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MyFootActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MyMassegeActivity;
 import hb.xnwdw.com.wendangwang.gui.activity.MyMessageMianPage;
@@ -326,7 +328,7 @@ public class FragmentMyself extends FragmentBase implements HtttpRequest.LoginSt
                 startActivity(new Intent(getActivity(), MyMessageMianPage.class));
                 break;
             case "my_shoucang":
-                startActivity(new Intent(getActivity(), MyCollectActivity.class));
+                startActivity(new Intent(getActivity(), MyCollectsActivity.class));
                 break;
             case "my_foot":
                 startActivity(new Intent(getActivity(), MyFootActivity.class));

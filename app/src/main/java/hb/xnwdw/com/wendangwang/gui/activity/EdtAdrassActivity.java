@@ -208,8 +208,9 @@ public class EdtAdrassActivity extends ActivityBase {
                         startActivity(new Intent(EdtAdrassActivity.this, MyAdressActivity.class));
                         EventBus.getDefault().post(6);
                         finish();
+                    }                                  else {
+                        Toast.makeText(EdtAdrassActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(EdtAdrassActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -83,7 +83,7 @@ public class FragmentRecomendeBrand extends FragmentBase {
                                 @Override
                                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                                     Intent intent=new Intent(getActivity(), BrandDetails.class);
-                                    intent.putExtra("brandId",data.getObj().get(position).getBrandID() );
+                                    intent.putExtra("brandId",data.getObj().get(position).getID() );
                                     intent.putExtra("name",data.getObj().get(position).getBrandName() );
                                     intent.putExtra("pic",UrlApi.SERVER_IP+data.getObj().get(position).getBrandPic() );
                                     startActivity(intent);

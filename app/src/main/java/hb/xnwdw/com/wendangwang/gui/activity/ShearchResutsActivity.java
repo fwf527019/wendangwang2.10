@@ -1,11 +1,14 @@
 package hb.xnwdw.com.wendangwang.gui.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -392,6 +395,30 @@ public class ShearchResutsActivity extends ActivityBase {
      */
     private void showpopuwindow() {
         idList = new ArrayList<>();
+
+
+
+//
+//
+//        /***********下面这段代码可以重用******************/
+//        final Dialog bottomDialog = new Dialog(this, R.style.BottomDialog);
+//        View contentView = LayoutInflater.from(this).inflate(R.layout.shearch_brand_pop_window, null);
+//        bottomDialog.setContentView(contentView);
+//        ViewGroup.LayoutParams layoutParams = contentView.getLayoutParams();
+//        layoutParams.width = getResources().getDisplayMetrics().widthPixels;
+//
+//        contentView.setLayoutParams(layoutParams);
+//        bottomDialog.getWindow().setGravity(Gravity.BOTTOM);
+//        bottomDialog.setCanceledOnTouchOutside(true);
+//        bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
+//
+//
+//        /***********上面这段代码可以重用******************/
+//
+
+
+
+
         View contentView = LayoutInflater.from(ShearchResutsActivity.this).inflate(
                 R.layout.shearch_brand_pop_window, null);
         mPopuwidow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
@@ -399,9 +426,10 @@ public class ShearchResutsActivity extends ActivityBase {
         View rootview = LayoutInflater.from(getApplicationContext()).inflate(R.layout.activit_shearchresuts, null);
         // mPopuwidow.showAtLocation(rootview, Gravity.NO_GRAVITY, 0, 0);
         mPopuwidow.showAsDropDown(chooseLl);
-        ColorDrawable dw = new ColorDrawable(0xb0000000);
-        //设置SelectPicPopupWindow弹出窗体的背景
-        mPopuwidow.setBackgroundDrawable(dw);
+//        ColorDrawable dw = new ColorDrawable(0xb0000000);
+//        //设置SelectPicPopupWindow弹出窗体的背景
+//        mPopuwidow.setBackgroundDrawable(dw);
+        mPopuwidow.setBackgroundDrawable(new BitmapDrawable());
         mPopuwidow.setOutsideTouchable(true);
         final RecyclerView mreycycler = (RecyclerView) contentView.findViewById(R.id.shearch_brand_pop);
         TextView exit_tv = (TextView) contentView.findViewById(R.id.shearpop_exit);

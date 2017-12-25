@@ -14,21 +14,22 @@ import hb.xnwdw.com.wendangwang.netdata.UrlApi;
  * Created by Administrator on 2017/6/14.
  */
 
-public class WebViewSetings  {
+public class WebViewSetings {
     static Context context;
-    public static void setWebView(WebView webView,String url,Context context){
+
+    public static void setWebView(WebView webView, String url, Context context) {
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
-
-        settings.setDomStorageEnabled(true);
-
+        settings.setAllowFileAccess(true);
+        settings.setDomStorageEnabled(true);//允许DCOM
         settings.setSupportZoom(true);// 支持缩放
-       settings.setLoadWithOverviewMode(true);// 缩放至屏幕的大小
+        settings.setLoadWithOverviewMode(true);// 缩放至屏幕的大小
 //        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);//支持缓存
-          settings.setLoadsImagesAutomatically(true);//支持自动加载图片
-        synCookies(context,url);
+        settings.setLoadsImagesAutomatically(true);//支持自动加载图片
+        synCookies(context, url);
         webView.loadUrl(url);
     }
+
     public static void synCookies(Context context, String url) {
         CookieSyncManager.createInstance(context);
         CookieManager cookieManager = CookieManager.getInstance();

@@ -15,6 +15,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -78,10 +79,15 @@ public class FloorView extends LinearLayout {
             public void onClick(View v) {
 
                String url= data.get(pos).getTitleUrlMobile();
-                try {
-                    url= URLEncoder.encode(url,"utf-8");
 
-                if(data.get(pos).getTitleUrlMobile().contains("/wdw/page/mb/gs_detail.html")) {
+                try {
+                    url= URLDecoder.decode(url,"utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+
+                if(url.contains("/wdw/page/mb/gs_detail.html")) {
                     Intent intent = new Intent(context, GoodsDetails1.class);
                     intent.putExtra("itemId", Utils.cutString(url, "(?i)itemId="));
                     context.startActivity(intent);
@@ -113,9 +119,7 @@ public class FloorView extends LinearLayout {
                     intent.putExtra("url",url);
                     context.startActivity(intent);
                 }
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+
 
             }
         });

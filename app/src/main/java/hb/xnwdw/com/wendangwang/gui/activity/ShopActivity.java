@@ -3,16 +3,14 @@ package hb.xnwdw.com.wendangwang.gui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.HashMap;
@@ -26,26 +24,29 @@ import hb.xnwdw.com.wendangwang.gui.adapter.ShopActivityListAdapter;
 import hb.xnwdw.com.wendangwang.gui.widget.MyLinearLayoutManager;
 import hb.xnwdw.com.wendangwang.netdata.UrlApi;
 import hb.xnwdw.com.wendangwang.netdata.entity.ShopActivityData;
-import hb.xnwdw.com.wendangwang.netdata.mvp.UrlUtils;
 import hb.xnwdw.com.wendangwang.utils.HtttpRequest;
 import hb.xnwdw.com.wendangwang.utils.LogUtils;
 import okhttp3.Call;
-import okhttp3.MediaType;
 
 /**
  * Created by Administrator on 2017/5/12.
  */
 
 public class ShopActivity extends ActivityBase {
-    @BindView(R.id.back)
-    ImageView back;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.shopactivity_list)
     RecyclerView shopactivityList;
-    private String storName, storId;
-    private ShopActivityListAdapter adapter;
 
+    @BindView(R.id.public_tital)
+    RelativeLayout publicTital;
+    @BindView(R.id.back)
+    ImageView back;
+    @BindView(R.id.right_img)
+    ImageView rightImg;
+    private String storName, storId,storeAddress;
+    private ShopActivityListAdapter adapter;
+    private double lat,lot,mlat,mlot;
     @Override
     protected int getContentViewResId() {
         return R.layout.activit_shopactivity;
@@ -68,13 +69,20 @@ public class ShopActivity extends ActivityBase {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         storName = intent.getStringExtra("storeName");
+        storeAddress = intent.getStringExtra("storeAddress");
         storId = intent.getStringExtra("storeId");
+        lat = intent.getDoubleExtra("lat", 0);
+        lot = intent.getDoubleExtra("lot", 0);
+        mlat = intent.getDoubleExtra("mlat", 0);
+        mlot = intent.getDoubleExtra("mlot", 0);
+
+
         title.setText(storName);
         loadShopActivityData(storId);
     }
 
     private void loadShopActivityData(String storId) {
-        Map<String,String> map=new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("storeId", storId);
         HtttpRequest.CreatGetRequst(UrlApi.URL_GETSHOPACTIVITYLIST, map, new StringCallback() {
             @Override
@@ -93,9 +101,9 @@ public class ShopActivity extends ActivityBase {
                 adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        Intent intent=new Intent(ShopActivity.this,ActivityDetail.class);
-                        intent.putExtra("actId",data.getObj().get(position).getID()+"");
-                        intent.putExtra("acTitail",data.getObj().get(position).getActivityName());
+                        Intent intent = new Intent(ShopActivity.this, ActivityDetail.class);
+                        intent.putExtra("actId", data.getObj().get(position).getID() + "");
+                        intent.putExtra("acTitail", data.getObj().get(position).getActivityName());
 
                         startActivity(intent);
                     }
@@ -105,8 +113,23 @@ public class ShopActivity extends ActivityBase {
         });
     }
 
-    @OnClick(R.id.back)
-    public void onViewClicked() {
-        finish();
+
+    @OnClick({R.id.back, R.id.right_img})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
+            case R.id.right_img:
+                Intent intent=new Intent(this,MapActivity.class);
+                intent.putExtra("lat",lat);
+                intent.putExtra("lot",lot);
+                intent.putExtra("mlat",mlat);
+                intent.putExtra("mlot",mlot);
+                intent.putExtra("name",storName);
+                intent.putExtra("storeAddress",storeAddress);
+                startActivity(intent);
+                break;
+        }
     }
 }

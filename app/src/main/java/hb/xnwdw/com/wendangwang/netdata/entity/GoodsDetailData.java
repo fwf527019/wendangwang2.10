@@ -598,7 +598,7 @@ public class GoodsDetailData implements Serializable {
             private int LimitNewMember;
             private int LeastAmount;
             private int ReduceMoney;
-
+            private int BuyCount;
 
             public List<PagePresentItems> getPagePresentItemList() {
                 return pagePresentItemList;
@@ -606,6 +606,15 @@ public class GoodsDetailData implements Serializable {
 
             public void setPagePresentItemList(List<PagePresentItems> pagePresentItemList) {
                 this.pagePresentItemList = pagePresentItemList;
+            }
+
+
+            public int getBuyCount() {
+                return BuyCount;
+            }
+
+            public void setBuyCount(int buyCount) {
+                BuyCount = buyCount;
             }
 
             public int getOrderId() {
@@ -797,6 +806,15 @@ public class GoodsDetailData implements Serializable {
                 String ItemID;
                 String ItemPic;
                 String ItemName;
+                String PresentNum;
+
+                public String getPresentNum() {
+                    return PresentNum;
+                }
+
+                public void setPresentNum(String presentNum) {
+                    PresentNum = presentNum;
+                }
 
                 public String getItemID() {
                     return ItemID;

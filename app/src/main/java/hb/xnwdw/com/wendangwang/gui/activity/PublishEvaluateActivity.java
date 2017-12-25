@@ -204,6 +204,10 @@ public class PublishEvaluateActivity extends ActivityBase {
                         Toast.makeText(PublishEvaluateActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
                         finish();
                     }
+                    else {
+                        Toast.makeText(PublishEvaluateActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
+
+                    }
                 } else {
                     Toast.makeText(PublishEvaluateActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
                 }

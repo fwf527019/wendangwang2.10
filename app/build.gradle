@@ -28,11 +28,11 @@ android {
 
     defaultConfig {
         applicationId "hb.xnwdw.com.wendangwang"
-        minSdkVersion 19
+        minSdkVersion 17
         targetSdkVersion 25
-        versionCode 11 //2017-11-16
-        // versionCode 3
-        versionName "2.1.1"
+       versionCode 11 //2017-11-16 v 11
+       // versionCode 3
+        versionName "2.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         useLibrary 'org.apache.http.legacy'
         multiDexEnabled true

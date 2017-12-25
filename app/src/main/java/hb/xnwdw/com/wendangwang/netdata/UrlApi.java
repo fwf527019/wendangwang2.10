@@ -8,10 +8,9 @@ package hb.xnwdw.com.wendangwang.netdata;
  * URL管理
  */
 public class UrlApi {
-    //  public static String SERVER_IP = "http://wdw.cdhb.net";
-    // public static String SERVER_IP = "http://wdw.cdhb.net";
     //public static String SERVER_IP = "http://192.168.1.125:801";
-   //public static String SERVER_IP = "http://192.168.1.222:8002";
+  // public static String SERVER_IP = "http://192.168.1.222:8002";
+  // public static String SERVER_IP = "http://192.168.1.125:801";
     // public static String SERVER_IP = "http://www.qhwendang.com";
     //正式地址
    public static String SERVER_IP = "https://www.qhwendang.com";
@@ -20,11 +19,9 @@ public class UrlApi {
     public static String getServerIp() {
         return SERVER_IP;
     }
-
     public static void setServerIp(String serverIp) {
         SERVER_IP = serverIp;
     }
-
     public static String URL_MAINSLID = SERVER_IP + "/api/IndexDataService/GetIndexAdvert";//广告
     public static String URL_MAINMIAOSHA = SERVER_IP + "/api/IndexDataService/GetSekillInfo";//秒杀
     public static String URL_NEWARRIVALS = SERVER_IP + "/api/IndexDataService/GetNewArrivalsItems";//新品推荐
@@ -105,7 +102,8 @@ public class UrlApi {
     public static String URL_GainUseMyCoupon = SERVER_IP + "/api/OrderServiceInterface/GainUseMyCoupon";//获取线下优惠券
     public static String URL_OffLineOrderCrate = SERVER_IP + "/api/OrderServiceInterface/OffLineOrderCrate";//线下扫码购立即提交生成订单
     public static String URL_WXLOGIN = SERVER_IP + "/api/Basic_Member/WXAuthorized";//微信登录
-    public static String URL_GETMESSAGE = SERVER_IP + "/api/Basic_Member/QueryMemberMsg";//消息
+  //  public static String URL_GETMESSAGE = SERVER_IP + "/api/Basic_Member/QueryMemberMsg";//消息
+    public static String URL_GETMESSAGE = SERVER_IP + "/api/Basic_Member/QueryMemberSystemMsg";//消息
     public static String URL_GETIsOpen = SERVER_IP + "/api/LuckDrowService/IsOpen";//是否开放抽奖
     public static String URL_GETCanDraw = SERVER_IP + "/api/LuckDrowService/CanBeDraw";//查看订单是否可以参与抽奖
     public static String URL_GETDraws = SERVER_IP + "/api/LuckDrowService/GetPrize";//获取所有等级对应的奖品
@@ -153,10 +151,22 @@ public class UrlApi {
     public static String URL_GetFullPresentInfo = SERVER_IP + "/api/shoppingCartService/GetFullPresentInfo";//满赠
     public static String URL_GetBuyPresentInfo = SERVER_IP + "/api/shoppingCartService/GetBuyPresentInfo";//买赠
     public static String URL_CHEAKISLOGIN = SERVER_IP + "/api/Basic_Member/CheckMemberLogin";//验证是否登录
+    public static String URL_GetNoReaMsgCountByMsgType = SERVER_IP + "/api/Basic_Member/GetNoReaMsgCountByMsgType";//获取指定类型下的未读消息条数
+    public static String URL_LoadInformTypeList = SERVER_IP + "/api/Bus_ComplaintSuggest/LoadInformTypeList";//举报类型
+    public static String URL_LoadTypeList = SERVER_IP + "/api/Bus_ComplaintSuggest/LoadTypeList";//投诉类型
+    public static String URL_SubmitComSug = SERVER_IP + "/api/Bus_ComplaintSuggest/SubmitComSug";//提交
+
+    public static String URL_GetMyCollectBrand = SERVER_IP + "/api/Bus_MyCollects/GetMyCollectBrand";//查询我的收藏的品牌
+    public static String URL_CollectBrand = SERVER_IP + "/api/Bus_MyCollects/CollectBrand";//收藏品牌
+    public static String URL_IsCollectBrand = SERVER_IP + "/api/Bus_MyCollects/IsCollectBrand";// 是否收藏
+    public static String URL_BtachCancelCollectBrand = SERVER_IP + "/api/Bus_MyCollects/BtachCancelCollectBrand";// 批量取消品牌
+    public static String URL_QueryMemberMsgByMsgType = SERVER_IP + "/api/Basic_Member/QueryMemberMsgByMsgType";// 获取指定类型下的会员消息
+    public static String URL_GetQueryMessageDetail = SERVER_IP + "/api/Basic_Member/QueryMessageDetail";//获取投诉建议的消息详情
 
 
 //  获取满减金额	/api/ShoppingCartService/GetFullReducMoney	get	sSource sActivityNum活动编号iMoney购买金额 sMemberID加密收的会员ID	ActivityNum活动编号Money要减少的金额ItemID赠送商品ID  Num数量
 //  获取满赠信息	/api/shoppingCartService/GetFullPresentInfo	get	sSource sActivityNum活动编号iMoney购买金额 sMemberID加密收的会员ID	ActivityNum活动编号Money要减少的金额ItemID赠送商品ID  Num数量
 //  获取买赠活动的赠品信息	/api/shoppingCartService/GetBuyPresentInfo	get	sSource sActivityNum活动编号iMoney购买金额 sMemberID加密收的会员ID	ActivityNum活动编号Money要减少的金额ItemID赠送商品ID  Num数量
+
 
 }

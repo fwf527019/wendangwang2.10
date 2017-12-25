@@ -856,8 +856,6 @@ public class MyOrder extends ActivityBase {
                     Intent intent = new Intent(MyOrder.this, ShoppingCart1.class);
                     startActivity(intent);
                     finish();
-//                    EventBus.getDefault().post("shopingcar");
-//                    finish();
                 } else {
                     Toast.makeText(MyOrder.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
                 }

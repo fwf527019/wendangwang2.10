@@ -636,6 +636,8 @@ public class OrderDetailsActivity extends ActivityBase {
             public void onResponse(String response, int id) {
                 if (JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
                     Toast.makeText(OrderDetailsActivity.this, "操作成功", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(OrderDetailsActivity.this, "操作失败"+JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
                 }
 
             }

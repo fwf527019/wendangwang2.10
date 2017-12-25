@@ -25,6 +25,7 @@ import hb.xnwdw.com.wendangwang.WDWApp;
 import hb.xnwdw.com.wendangwang.netdata.UrlApi;
 import hb.xnwdw.com.wendangwang.utils.HtttpRequest;
 import hb.xnwdw.com.wendangwang.utils.LogUtils;
+import hb.xnwdw.com.wendangwang.utils.MConstant;
 import okhttp3.Call;
 
 /**
@@ -116,10 +117,12 @@ public class PaySuccessActivity extends ActivityBase {
             @Override
             public void onResponse(String response, int id) {
                 LogUtils.d("PaySuccessActivity", response);
-                if (JSONObject.parseObject(response).get("obj").toString().equals("true")) {
-                    orderCanDraw();
-                } else {
-                    drawLl.setVisibility(View.GONE);
+                if (!response.contains(MConstant.HTTP404)) {
+                    if (JSONObject.parseObject(response).get("obj").toString().equals("true")) {
+                        orderCanDraw();
+                    } else {
+                        drawLl.setVisibility(View.GONE);
+                    }
                 }
             }
         });
@@ -144,11 +147,12 @@ public class PaySuccessActivity extends ActivityBase {
             @Override
             public void onResponse(String response, int id) {
                 LogUtils.d("PaySuccessActivity_", response);
-
-                if (JSONObject.parseObject(response).get("obj") != null && JSONObject.parseObject(response).get("obj").toString().equals("1")) {
-                    drawLl.setVisibility(View.VISIBLE);
-                } else {
-                    drawLl.setVisibility(View.GONE);
+                if (!response.contains(MConstant.HTTP404)) {
+                    if (JSONObject.parseObject(response).get("obj") != null && JSONObject.parseObject(response).get("obj").toString().equals("1")) {
+                        drawLl.setVisibility(View.VISIBLE);
+                    } else {
+                        drawLl.setVisibility(View.GONE);
+                    }
                 }
             }
         });

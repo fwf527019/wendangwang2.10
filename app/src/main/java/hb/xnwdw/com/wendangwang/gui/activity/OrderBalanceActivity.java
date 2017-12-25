@@ -752,8 +752,8 @@ public class OrderBalanceActivity extends ActivityBase {
                             if (itemsDatas.getDatas().get(i).getPresentItemList() != null) {
                                 for (int j = 0; j < itemsDatas.getDatas().get(i).getPresentItemList().size(); j++) {
                                     ItemListBean.PresentItemBean presentItemBean = new ItemListBean.PresentItemBean();
-                                    presentItemBean.setItemName(itemsDatas.getDatas().get(i).getPresentItemList().get(0).getItemName());
-                                    presentItemBean.setPresentNum(itemsDatas.getDatas().get(i).getPresentItemList().get(0).getPresentNum());
+                                    presentItemBean.setItemName(itemsDatas.getDatas().get(i).getPresentItemList().get(j).getItemName());
+                                    presentItemBean.setPresentNum(itemsDatas.getDatas().get(i).getPresentItemList().get(j).getPresentNum());
                                     list.add(presentItemBean);
                                 }
                             }

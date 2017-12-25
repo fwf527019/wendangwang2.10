@@ -4,4 +4,16 @@
         <item>选择图片</item>
         <item>拍照</item>
     </string-array>
+    <string-array name="types">
+        <item>售后保障服务</item>
+        <item>未收到货</item>
+        <item>违背承诺</item>
+        <item>延迟发货</item>
+        <item>退款问题</item>
+        <item>物流问题 </item>
+        <item>商品问题</item>
+        <item>其他</item>
+    </string-array>
+
+
 </resources>

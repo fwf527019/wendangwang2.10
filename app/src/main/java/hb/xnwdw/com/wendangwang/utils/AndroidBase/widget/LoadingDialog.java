@@ -2,6 +2,7 @@ package hb.xnwdw.com.wendangwang.utils.AndroidBase.widget;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -76,8 +77,11 @@ public class LoadingDialog {
      * 关闭加载对话框
      */
     public static void cancelDialogForLoading() {
+        Log.d("LoadingDialog", "amdk");
         if (mLoadingDialog != null) {
+            Log.d("LoadingDialog", "111111111111111");
             mLoadingDialog.cancel();
+
         }
     }
 }

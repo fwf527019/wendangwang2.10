@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -604,10 +605,11 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
             final int finalI = i;
             try {
                 final String url = URLDecoder.decode(data.get(finalI).getMbPicUrl(), "utf-8");
-
+                //图片的链接
                 view.setPicIntent(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
 
                         if (url.contains("/wdw/page/mb/gs_detail.html")) {
                             Intent intent = new Intent(getActivity(), GoodsDetails1.class);
@@ -742,7 +744,7 @@ public class FragmentMain11 extends FragmentBase implements MainslidView, MainMi
     }
 
     private void loadMassegeNum() {
-        HtttpRequest.CreatGetRequst(UrlApi.URL_GETMASSEGENUM, null, new StringCallback() {
+        HtttpRequest.CreatGetRequst(UrlApi.URL_GetNoReaMsgCountByMsgType, null, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 

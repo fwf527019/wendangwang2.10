@@ -5,13 +5,28 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        fresco:placeholderImage="@drawable/defalt_pic"
-        android:scaleType="fitXY"
-        android:layout_margin="10dp"
-        fresco:placeholderImageScaleType="fitXY"
-        android:id="@+id/allbrand_listimg"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
-        />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/allbrand_listimg"
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY"
+            fresco:placeholderImage="@drawable/defalt_pic"
+            fresco:placeholderImageScaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/brand_chosen"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:layout_gravity="end"
+            android:background="@drawable/b_chosen"
+
+            />
+    </FrameLayout>
 </LinearLayout>

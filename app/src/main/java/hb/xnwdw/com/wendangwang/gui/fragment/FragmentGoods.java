@@ -415,7 +415,7 @@ public class FragmentGoods extends FragmentBase implements HtttpRequest.LoginSta
             if (act.getActivityContent().equals("满赠")) {
                 goodsdetaiActivityType.setText("满赠");
                 if (data.getObj().getActInfo().getPagePresentItemList() != null && data.getObj().getActInfo().getPagePresentItemList().size() > 0) {
-                    goodsdetaiActivity.setText("活动期间满" + act.getLeastAmount() + "赠送商品" + data.getObj().getActInfo().getPagePresentItemList().get(0).getItemName());
+                    goodsdetaiActivity.setText("活动期间满" + act.getLeastAmount() + "赠送商品:" + data.getObj().getActInfo().getPagePresentItemList().get(0).getItemName());
                     goodsdetaiActivity.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -429,7 +429,13 @@ public class FragmentGoods extends FragmentBase implements HtttpRequest.LoginSta
             if (act.getActivityContent().equals("买赠")) {
                 goodsdetaiActivityType.setText("买赠");
                 if (data.getObj().getActInfo().getPagePresentItemList() != null && data.getObj().getActInfo().getPagePresentItemList().size() > 0) {
-                    goodsdetaiActivity.setText("活动期间购买商品赠送" + data.getObj().getActInfo().getPagePresentItemList().get(0).getItemName());
+                    StringBuffer stringBuffer=new StringBuffer();
+                    for (int i =  0; i < data.getObj().getActInfo().getPagePresentItemList().size() ; i++) {
+                        stringBuffer.append(data.getObj().getActInfo().getPagePresentItemList().get(i).getItemName());
+                        stringBuffer.append("×"+data.getObj().getActInfo().getPagePresentItemList().get(i).getPresentNum()+" ");
+                    }
+                    String googsName=stringBuffer.toString().substring(0,stringBuffer.length());
+                    goodsdetaiActivity.setText("活动期间购买商品"+data.getObj().getActInfo().getBuyCount()+"件,赠送:" +googsName);
                     goodsdetaiActivity.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -725,6 +731,7 @@ public class FragmentGoods extends FragmentBase implements HtttpRequest.LoginSta
     /**
      * 获取销量最高品牌信息
      */
+   private BrandMaxData brandMaxData;
     private void loadMaxBrand(String ITEMID) {
 
         Map<String, String> map = new HashMap<>();
@@ -738,11 +745,11 @@ public class FragmentGoods extends FragmentBase implements HtttpRequest.LoginSta
             @Override
             public void onResponse(String response, int id) {
                 LogUtils.d("FragmentGoods", response);
-                BrandMaxData data = JSON.parseObject(response, BrandMaxData.class);
-                goodsdetaiPinpaiName.setText(data.getObj().getBrandName());
-                goodsdetaiPinpaiZaishou.setText(data.getObj().getItemCount() + "件商品在售");
-                goodsdetaiPinpaiXaioliang.setText("累计销量" + data.getObj().getSalesCount() + "件");
-                goodsdetaiPinpaiImg.setImageURI(UrlApi.SERVER_IP + data.getObj().getBrandPic());
+                brandMaxData = JSON.parseObject(response, BrandMaxData.class);
+                goodsdetaiPinpaiName.setText(brandMaxData.getObj().getBrandName());
+                goodsdetaiPinpaiZaishou.setText(brandMaxData.getObj().getItemCount() + "件商品在售");
+                goodsdetaiPinpaiXaioliang.setText("累计销量" + brandMaxData.getObj().getSalesCount() + "件");
+                goodsdetaiPinpaiImg.setImageURI(UrlApi.SERVER_IP + brandMaxData.getObj().getBrandPic());
             }
         });
 
@@ -919,6 +926,9 @@ public class FragmentGoods extends FragmentBase implements HtttpRequest.LoginSta
             /****品牌**/
             case R.id.goodsdetai_gotopingpai:
                 Intent intent1 = new Intent(getActivity(), BrandDetails.class);
+                intent1.putExtra("brandId",brandMaxData.getObj().getID()+"");
+                intent1.putExtra("name",brandMaxData.getObj().getBrandName());
+                intent1.putExtra("pic",UrlApi.SERVER_IP+brandMaxData.getObj().getBrandPic());
                 startActivity(intent1);
                 break;
         }

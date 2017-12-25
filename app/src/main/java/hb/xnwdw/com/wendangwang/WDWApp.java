@@ -174,8 +174,8 @@ public class WDWApp extends MultiDexApplication {
     private void initHttp() {
         try {
             InputStream in = getAssets().open("qhwendangwang.com.crt");
-         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, in, null);
-        // HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+       HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, in, null);
+       // HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new LoggerInterceptor("TAG"))
                     .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
@@ -189,6 +189,7 @@ public class WDWApp extends MultiDexApplication {
         }
 
     }
+
 
     private void registToWX() {
         //AppConst.WEIXIN.APP_ID是指你应用在微信开放平台上的AppID，记得替换。

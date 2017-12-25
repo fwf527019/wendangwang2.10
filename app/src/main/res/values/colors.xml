@@ -43,5 +43,7 @@
     <color name="purple_pressed">#9F79EE</color>
     <color name="white_pressed">#FFCFCFCF</color>
     <color name="white_transparent_70">#BBFFFFFF</color>
+    <color name="blue">#3abfb6</color>
+
 
 </resources>

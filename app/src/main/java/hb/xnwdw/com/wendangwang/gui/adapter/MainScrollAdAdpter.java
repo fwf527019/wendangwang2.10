@@ -12,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class MainScrollAdAdpter extends PagerAdapter {
                     //链接为商品详情
                     String url = list.get(finalI).getContentUrl();
                     try {
-                        url = URLEncoder.encode(url, "utf-8");
+                        url = URLDecoder.decode(url, "utf-8");
 
                         if (list.get(finalI).getContentUrl().contains("/wdw/page/mb/gs_detail.html")) {
                             Intent intent = new Intent(context, GoodsDetails1.class);

@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.qiyukf.unicorn.api.ConsultSource;
 import com.qiyukf.unicorn.api.Unicorn;
 import com.qiyukf.unicorn.api.UnreadCountChangeListener;
@@ -18,11 +19,15 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hb.xnwdw.com.wendangwang.R;
 import hb.xnwdw.com.wendangwang.netdata.UrlApi;
+import hb.xnwdw.com.wendangwang.netdata.entity.MsgData;
 import hb.xnwdw.com.wendangwang.utils.HtttpRequest;
 import hb.xnwdw.com.wendangwang.utils.MConstant;
 import okhttp3.Call;
@@ -64,6 +69,18 @@ public class MyMessageMianPage extends ActivityBase {
     TextView messageSysNotice;
     @BindView(R.id.message_kefu_notice)
     TextView messageKefuNotice;
+    @BindView(R.id.advance_my_massege_img_notify)
+    ImageView advanceMyMassegeImgNotify;
+    @BindView(R.id.advance_message_kefu_notice)
+    TextView advanceMessageKefuNotice;
+    @BindView(R.id.advance_message_type_notify)
+    TextView advanceMessageTypeNotify;
+    @BindView(R.id.advance_message_time_notify)
+    TextView advanceMessageTimeNotify;
+    @BindView(R.id.advance_message_count_notify)
+    TextView advanceMessageCountNotify;
+    @BindView(R.id.message_advance_ll)
+    LinearLayout messageAdvanceLl;
 
     @Override
     protected int getContentViewResId() {
@@ -88,21 +105,29 @@ public class MyMessageMianPage extends ActivityBase {
         addUnreadCountChangeListener(true);
         EventBus.getDefault().register(this);
         title.setText("消息中心");
-        loadMassegeNum();
-      int uniconNum=  Unicorn.getUnreadCount();
-        if(uniconNum>0){
+
+        int uniconNum = Unicorn.getUnreadCount();
+        if (uniconNum > 0) {
             messageKefuNotice.setVisibility(View.VISIBLE);
             messageKefuNotice.setText(uniconNum + "");
-        }else {
+        } else {
             messageKefuNotice.setVisibility(View.GONE);
         }
+        getMsg();
+
     }
 
-    @OnClick({R.id.back, R.id.message_sys_ll, R.id.message_fefu_ll})
+    @OnClick({R.id.back, R.id.message_sys_ll, R.id.message_fefu_ll, R.id.message_advance_ll})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.message_sys_ll:
-                startActivity(new Intent(MyMessageMianPage.this,MyMassegeActivity.class));
+                startActivity(new Intent(MyMessageMianPage.this, MyMassegeActivity.class));
+                break;
+            case R.id.message_advance_ll:
+                //投诉建议消息界面
+                Intent intent = new Intent(MyMessageMianPage.this, MyAdvanceMassegeActivity.class);
+                intent.putExtra("data", msgData);
+                startActivity(intent);
                 break;
             case R.id.message_fefu_ll:
                 String title = "稳当生活";
@@ -144,10 +169,10 @@ public class MyMessageMianPage extends ActivityBase {
             if (count > 0) {
                 messageKefuNotice.setVisibility(View.VISIBLE);
                 messageKefuNotice.setText(count + "");
-                messageCountNotify.setText("您有"+count+"条新消息未读");
+                messageCountNotify.setText("您有" + count + "条新消息未读");
             } else {
                 messageKefuNotice.setVisibility(View.GONE);
-                messageCountNotify.setText("您有"+0+"条新消息未读");
+                messageCountNotify.setText("您有" + 0 + "条新消息未读");
             }
 
         }
@@ -167,9 +192,10 @@ public class MyMessageMianPage extends ActivityBase {
     /**
      * 获取未读消息条数
      */
-    private int megNum;
+    private int sysMegNum;
+
     private void loadMassegeNum() {
-        HtttpRequest.CheackIsLoginGet(this,UrlApi.URL_GETMASSEGENUM, null, new StringCallback() {
+        HtttpRequest.CheackIsLoginGet(this, UrlApi.URL_GETMASSEGENUM, null, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
 
@@ -177,14 +203,20 @@ public class MyMessageMianPage extends ActivityBase {
 
             @Override
             public void onResponse(String response, int id) {
+
+
                 if (!response.contains(MConstant.HTTP404) && !response.equals("0")) {
-                    messageSysNotice.setVisibility(View.VISIBLE);
-                    messageSysNotice.setText(response);
-                    megNum= Integer.parseInt(response);
-                    messageCountSys.setText("您有"+megNum+"条新消息未读");
+                    sysMegNum = Integer.parseInt(response);
+                    if (sysMegNum - advanceMsg > 0) {
+                        messageSysNotice.setVisibility(View.VISIBLE);
+                        messageSysNotice.setText((sysMegNum - advanceMsg) + "");
+                    } else {
+                        messageSysNotice.setVisibility(View.INVISIBLE);
+                    }
+                    messageCountSys.setText("您有" + (sysMegNum - advanceMsg) + "条新消息未读");
                 } else {
                     messageSysNotice.setVisibility(View.INVISIBLE);
-                    messageCountSys.setText("您有"+0+"条新消息未读");
+                    messageCountSys.setText("您有" + 0 + "条新消息未读");
                 }
 
             }
@@ -193,6 +225,50 @@ public class MyMessageMianPage extends ActivityBase {
 
     @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
     public void onDataSynEvent(Integer event) {
-        loadMassegeNum();
+        if(event==1){
+            getMsg();
+        }
+
+    }
+
+
+
+    /**
+     * 获取投诉建议的消息
+     */
+    int advanceMsg = 0;
+    private MsgData msgData;
+
+    private void getMsg() {
+        Map<String, String> map = new HashMap<>();
+        map.put("iPage", "1");
+        map.put("iPageSize", "1000");
+//     sMsgType:通知消息|活动通知|订单消息|客户回复|服务通知
+        map.put("sMsgType", "客服回复");
+        HtttpRequest.CheackIsLoginGet(this, UrlApi.URL_QueryMemberMsgByMsgType, map, new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.d("MyAdvanceMassegeActivit", response);
+                if (!response.contains(MConstant.HTTP404)) {
+                    msgData = JSON.parseObject(response, MsgData.class);
+                    advanceMsg = msgData.getObj().getNoReadCount();
+                    if (advanceMsg > 0) {
+                        advanceMessageKefuNotice.setVisibility(View.VISIBLE);
+                        advanceMessageKefuNotice.setText(advanceMsg + "");
+                        advanceMessageCountNotify.setText("您有" + advanceMsg + "条新消息未读");
+                    } else {
+                        advanceMessageKefuNotice.setVisibility(View.GONE);
+                    }
+                }
+                loadMassegeNum();
+            }
+        });
+
+
     }
 }

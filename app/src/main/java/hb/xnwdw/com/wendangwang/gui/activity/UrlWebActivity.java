@@ -153,7 +153,9 @@ public class UrlWebActivity extends ActivityBase {
 
         Log.d("UrlWebActivity", url1);
         tital = intent.getStringExtra("tital");
-        urlactivtyTitle.setText(tital);
+        if(!tital.equals("")){
+            urlactivtyTitle.setText(tital);
+        }
         WebViewSetings.synCookies(this, url);
         WebViewSetings.setWebView(urlwebview, url, this);
 
@@ -177,7 +179,7 @@ public class UrlWebActivity extends ActivityBase {
             @Override
             public void onReceivedTitle(WebView view, String titlea) {
                 super.onReceivedTitle(view, titlea);
-                if(tital==null){
+                if(tital==null||tital.equals("")){
                     urlactivtyTitle.setText(titlea);
                 }
 

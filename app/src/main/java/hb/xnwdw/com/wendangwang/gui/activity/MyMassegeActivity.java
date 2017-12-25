@@ -168,6 +168,11 @@ public class MyMassegeActivity extends ActivityBase {
 
     }
 
+    /**
+     * 改变消息的已读未读状态
+     * @param id
+     * @param callback
+     */
     private void changeMessageState(String id, StringCallback callback) {
 
         Map<String, String> map = new HashMap<>();
@@ -175,6 +180,7 @@ public class MyMassegeActivity extends ActivityBase {
         HtttpRequest.CreatGetRequst(UrlApi.URL_SetMsgRead, map, callback);
 
     }
+
     @OnClick({R.id.back})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -184,6 +190,10 @@ public class MyMassegeActivity extends ActivityBase {
         }
     }
 
+    /**
+     * 或取消息数据
+     * @param page
+     */
     private void loadMessage(int page) {
         Map<String, String> map = new HashMap<>();
         map.put("iPage", page + "");

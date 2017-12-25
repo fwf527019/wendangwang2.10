@@ -4,17 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.jiguang.net.HttpResponse;
 import hb.xnwdw.com.wendangwang.R;
 import hb.xnwdw.com.wendangwang.WDWApp;
 import hb.xnwdw.com.wendangwang.utils.HtttpRequest;
@@ -39,6 +38,14 @@ public class MySetsActivity extends ActivityBase implements HtttpRequest.LoginSt
     LinearLayout setAboutusLl;
     @BindView(R.id.safe_exit)
     TextView safeExit;
+    @BindView(R.id.right_tv)
+    TextView rightTv;
+    @BindView(R.id.public_tital)
+    RelativeLayout publicTital;
+    @BindView(R.id.advance_ll)
+    LinearLayout advanceLl;
+    @BindView(R.id.report_ll)
+    LinearLayout reportLl;
 
     @Override
     protected int getContentViewResId() {
@@ -64,7 +71,7 @@ public class MySetsActivity extends ActivityBase implements HtttpRequest.LoginSt
     }
 
 
-    @OnClick({R.id.set_accontinfo_ll, R.id.set_accontself_ll, R.id.set_bindaccont_ll, R.id.set_aboutus_ll, R.id.back, R.id.safe_exit})
+    @OnClick({ R.id.advance_ll, R.id.report_ll,R.id.set_accontinfo_ll, R.id.set_accontself_ll, R.id.set_bindaccont_ll, R.id.set_aboutus_ll, R.id.back, R.id.safe_exit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.set_accontinfo_ll:
@@ -78,6 +85,14 @@ public class MySetsActivity extends ActivityBase implements HtttpRequest.LoginSt
                 break;
             case R.id.set_aboutus_ll:
                 new HtttpRequest(this).isLogin("set_aboutus_ll");
+                break;
+            case R.id.advance_ll:
+               //投诉建议
+                startActivity(new Intent(MySetsActivity.this,AdvanceActivity.class));
+                break;
+            case R.id.report_ll:
+                //举报
+                startActivity(new Intent(MySetsActivity.this,ReportActivity.class));
                 break;
             case R.id.safe_exit:
                 WDWApp.setUserToken(null);
@@ -101,14 +116,14 @@ public class MySetsActivity extends ActivityBase implements HtttpRequest.LoginSt
 
     @Override
     public void isLogin(String what) {
-        switch (what){
+        switch (what) {
             case "set_accontinfo_ll":
                 startActivity(new Intent(this, AccontinfoActivity.class));
                 break;
-            case  "set_accontself_ll":
+            case "set_accontself_ll":
                 startActivity(new Intent(this, AccontSafeActivity.class));
                 break;
-            case  "set_bindaccont_ll":
+            case "set_bindaccont_ll":
                 startActivity(new Intent(this, AccontBindingActivity.class));
                 break;
             case "set_aboutus_ll":

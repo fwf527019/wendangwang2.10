@@ -39,9 +39,9 @@ public class NearShopAdpter extends BaseQuickAdapter<NearShopData.ObjBean, BaseV
              mome = ss[0] + '.' + ss[1].substring(0, 2);
         }
 
-
         helper
                 .setText(R.id.nearshop_list_shopename, item.getStoreName())
+                .addOnClickListener(R.id.to_shop)
                 .setText(R.id.nearshop_list_distance, mome + "km")
                 .setText(R.id.nearsop_msg, (CharSequence) item.getActivity());
         ((SimpleDraweeView) (helper.getView(R.id.nearshop_list_img))).setImageURI(UrlApi.SERVER_IP + item.getStorePic());
@@ -50,7 +50,7 @@ public class NearShopAdpter extends BaseQuickAdapter<NearShopData.ObjBean, BaseV
 //            ((ImageView) (helper.getView(R.id.xiaonaba))).setVisibility(View.VISIBLE);
 //            ((TextView) (helper.getView(R.id.nearsop_msg))).setVisibility(View.VISIBLE);
         }else {
-            ((LinearLayout) (helper.getView(R.id.shop_activity_pic))).setVisibility(View.INVISIBLE);
+            ((LinearLayout) (helper.getView(R.id.shop_activity_pic))).setVisibility(View.GONE);
 //            ((ImageView) (helper.getView(R.id.xiaonaba))).setVisibility(View.GONE);
 //            ((TextView) (helper.getView(R.id.nearsop_msg))).setVisibility(View.GONE);
         }

@@ -76,6 +76,7 @@ public class MainPagerActivity extends ActivityBase {
         loadwhatcanShow();
         EventBus.getDefault().register(this);
         startNum += 1;
+        Log.d("MainPagerActivity", "startNum:" + startNum);
         /**
          * 版本检测
          */

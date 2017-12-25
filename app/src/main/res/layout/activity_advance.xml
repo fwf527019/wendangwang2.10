@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_no_right"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/stitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="投诉建议类型："
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kuang"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!--<ImageView-->
+            <!--android:layout_width="15dp"-->
+            <!--android:layout_height="10dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@drawable/xx" />-->
+
+            <Spinner
+                android:id="@+id/spnner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/types"></Spinner>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="问题描述："
+        android:textColor="@color/black"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/line_kuang">
+
+        <EditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="left"
+            android:hint="请输详细内容"
+            android:padding="5dp"
+            android:textSize="@dimen/px26" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="上传凭证:"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/sever_img_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/sever_addimg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/add_pic" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="每张图片大小不超过3M，最多3张" />
+
+    <Button
+        android:id="@+id/sever_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_bgs"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white" />
+
+</LinearLayout>

@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import com.jaeger.library.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hb.xnwdw.com.wendangwang.R;
@@ -277,7 +280,41 @@ public abstract class ActivityBase extends FragmentActivity {
         titleTv.setText(string);
     }
 
+    /**
+     * 检查手机上是否安装了指定的软件
+     * @param context
+     * @param packageName：应用包名
+     * @return
+     */
+    public boolean isAvilible(Context context, String packageName){
+        //获取packagemanager
+        final PackageManager packageManager = context.getPackageManager();
+        //获取所有已安装程序的包信息
+        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
+        //用于存储所有已安装程序的包名
+        List<String> packageNames = new ArrayList<String>();
+        //从pinfo中将包名字逐一取出，压入pName list中
+        if(packageInfos != null){
+            for(int i = 0; i < packageInfos.size(); i++){
+                String packName = packageInfos.get(i).packageName;
+                packageNames.add(packName);
+            }
+        }
+        //判断packageNames中是否有目标程序的包名，有TRUE，没有FALSE
+        return packageNames.contains(packageName);
+    }
 
+    /**
+     * 改变背景颜色
+     */
+    public void darkenBackground(Float bgcolor){
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = bgcolor;
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        getWindow().setAttributes(lp);
+
+    }
 
 }
 

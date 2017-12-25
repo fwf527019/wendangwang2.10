@@ -8,29 +8,26 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.TreeSet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hb.xnwdw.com.wendangwang.R;
-import hb.xnwdw.com.wendangwang.gui.adapter.AllBrandAdapter;
 import hb.xnwdw.com.wendangwang.gui.adapter.BrandDetaiAllGoodsAdapter;
 import hb.xnwdw.com.wendangwang.gui.adapter.BrandDetaiHotRecomendeAdapter;
-import hb.xnwdw.com.wendangwang.gui.adapter.ListA_ZAdapter;
 import hb.xnwdw.com.wendangwang.gui.widget.MyLinearLayoutManager;
 import hb.xnwdw.com.wendangwang.netdata.UrlApi;
 import hb.xnwdw.com.wendangwang.netdata.entity.AllBrandData;
@@ -57,6 +54,12 @@ public class BrandDetails extends ActivityBase {
     RecyclerView brandetailRecomendRecycler;
     @BindView(R.id.brandetail_allgoods_recycler)
     RecyclerView brandetailAllgoodsRecycler;
+    @BindView(R.id.right_tv)
+    TextView rightTv;
+    @BindView(R.id.public_tital)
+    RelativeLayout publicTital;
+    @BindView(R.id.sub_nomore_tv)
+    TextView subNomoreTv;
     private String brandId, brandName, picUrl;
     private BrandDetaiAllGoodsAdapter brandDetaiAllGoodsAdapter;
     private BrandDetaiHotRecomendeAdapter brandDetaiHotRecomendeAdapter;
@@ -85,11 +88,13 @@ public class BrandDetails extends ActivityBase {
         brandId = intent.getStringExtra("brandId");
         brandName = intent.getStringExtra("name");
         picUrl = intent.getStringExtra("pic");
-       title.setText(brandName);
+        title.setText(brandName);
+        rightTv.setText("收藏");
         LoadBrandGoodsData(brandId);
-       brandetailAdimg.setImageURI(picUrl);
+        brandetailAdimg.setImageURI(picUrl);
         LoadHotRecomendData(brandId);
-        initAllDatas(brandId);
+      //  initAllDatas(brandId);
+        cheakIsCllect(brandId);
     }
 
     /**
@@ -109,7 +114,7 @@ public class BrandDetails extends ActivityBase {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-
+                        Log.d("BrandDetails", "e:" + e);
                     }
 
                     @Override
@@ -126,7 +131,7 @@ public class BrandDetails extends ActivityBase {
                             brandDetaiHotRecomendeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                                    Intent intent = new Intent(getApplicationContext(),GoodsDetails1.class);
+                                    Intent intent = new Intent(getApplicationContext(), GoodsDetails1.class);
                                     intent.putExtra("itemId", data.getObj().get(position).getID() + "");
                                     startActivity(intent);
                                 }
@@ -145,30 +150,34 @@ public class BrandDetails extends ActivityBase {
      */
     private void LoadBrandGoodsData(String brandId) {
         Map<String, String> map = new HashMap<>();
+        startProgressDialog("加载中...");
         map.put("brandId", brandId);
+//        map.put("brandId", brandId);
+//        map.put("brandId", brandId);
 
         HtttpRequest.CreatGetRequst(UrlApi.URL_GETBRANDDETAIL, map, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-
+                Log.d("BrandDetails", "e:" + e);
             }
 
             @Override
             public void onResponse(String response, int id) {
                 LogUtils.d("BrandDetails", response);
-                if(response.contains(MConstant.HTTP404)){
+                if (response.contains(MConstant.HTTP404)) {
                     Toast.makeText(BrandDetails.this, "网络错误", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     final BrandDeatailData data = JSON.parseObject(response, BrandDeatailData.class);
                     GridLayoutManager linearLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                     brandetailAllgoodsRecycler.setLayoutManager(linearLayoutManager);
                     brandDetaiAllGoodsAdapter = new BrandDetaiAllGoodsAdapter(R.layout.item_shopcat_historygoods, data.getObj());
                     brandetailAllgoodsRecycler.setNestedScrollingEnabled(false);
                     brandetailAllgoodsRecycler.setAdapter(brandDetaiAllGoodsAdapter);
+                    stopProgressDialog();
                     brandDetaiAllGoodsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                            Intent intent = new Intent(getApplicationContext(),GoodsDetails1.class);
+                            Intent intent = new Intent(getApplicationContext(), GoodsDetails1.class);
                             intent.putExtra("itemId", data.getObj().get(position).getID() + "");
                             startActivity(intent);
                         }
@@ -180,13 +189,20 @@ public class BrandDetails extends ActivityBase {
     }
 
 
-    @OnClick({R.id.back, R.id.title})
+    @OnClick({R.id.back, R.id.title, R.id.right_tv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
                 finish();
                 break;
             case R.id.title:
+                break;
+            case R.id.right_tv:
+                if (rightTv.getText().toString().equals("收藏")) {
+                    clllectBrand(brandId);
+                } else {
+                    return;
+                }
                 break;
         }
     }
@@ -207,14 +223,71 @@ public class BrandDetails extends ActivityBase {
             public void onResponse(String response, int id) {
                 LogUtils.d("BrandDetails", response);
                 AllBrandData allBrandData = JSON.parseObject(response, AllBrandData.class);
-                for (int i = 0; i <allBrandData.getObj().size() ; i++) {
-                    if((allBrandData.getObj().get(i).getID()+"").equals(brandId)){
+                for (int i = 0; i < allBrandData.getObj().size(); i++) {
+                    if ((allBrandData.getObj().get(i).getID() + "").equals(brandId)) {
                         title.setText(allBrandData.getObj().get(i).getBrandName());
-                        brandetailAdimg.setImageURI(UrlApi.SERVER_IP+allBrandData.getObj().get(i).getBrandPic());
+                        brandetailAdimg.setImageURI(UrlApi.SERVER_IP + allBrandData.getObj().get(i).getBrandPic());
                     }
                 }
 
             }
         });
+    }
+
+
+    /**
+     * 检测是否收藏
+     */
+
+    private void cheakIsCllect(String brandId) {
+        Map<String, String> map = new HashMap<>();
+        map.put("brandID", brandId);
+        HtttpRequest.CreatGetRequst(UrlApi.URL_IsCollectBrand, map, new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Log.d("BrandDetails", "e:" + e);
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.d("BrandDetails", response);
+                if (JSONObject.parseObject(response).get("obj").toString().equals("0")) {
+                    rightTv.setText("收藏");
+                } else {
+                    rightTv.setText("已收藏");
+                }
+            }
+        });
+
+    }
+
+    /**
+     * 添加收藏
+     *
+     * @param brandId
+     */
+    private void clllectBrand(String brandId) {
+        Map<String, String> map = new HashMap<>();
+        map.put("brandID", brandId);
+        HtttpRequest.CheackIsLoginGet(this, UrlApi.URL_CollectBrand, map, new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Log.d("BrandDetails", "e:" + e);
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.d("BrandDetails", response);
+                if (!response.contains(MConstant.HTTP404)) {
+                    if (JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
+                        Toast.makeText(BrandDetails.this, "已收藏", Toast.LENGTH_SHORT).show();
+                        rightTv.setText("已收藏");
+                    } else {
+                        Toast.makeText(BrandDetails.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
     }
 }

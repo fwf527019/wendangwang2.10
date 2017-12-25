@@ -271,9 +271,9 @@ public class MyAdressActivity extends ActivityBase {
                     if (JSONObject.parseObject(response).get("dataStatus").toString().equals("1")) {
                         Toast.makeText(MyAdressActivity.this, "操作成功", Toast.LENGTH_SHORT).show();
                         initData();
+                    }                      else {
+                        Toast.makeText(MyAdressActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(MyAdressActivity.this, JSONObject.parseObject(response).get("describe").toString(), Toast.LENGTH_SHORT).show();
-
                 }
 
             }

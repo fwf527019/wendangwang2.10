@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hb.xnwdw.com.wendangwang.R;
+import hb.xnwdw.com.wendangwang.WDWApp;
 import hb.xnwdw.com.wendangwang.gui.view.MyPopWindow;
 import hb.xnwdw.com.wendangwang.netdata.UrlApi;
 import hb.xnwdw.com.wendangwang.utils.AppVerison;
@@ -79,15 +80,18 @@ public class AboutUsActivity extends ActivityBase {
         version.setText(versionName);
 
 
-              logoIco.setOnTouchListener(new OnDoubleClickListener(new OnDoubleClickListener.DoubleClickCallback() {
+        logoIco.setOnTouchListener(new OnDoubleClickListener(new OnDoubleClickListener.DoubleClickCallback() {
             @Override
             public void onDoubleClick() {
+             //  D/QianDaoActivity_post: {"page":0,"pageSize":0,"sumSize":0,"count":0,"obj"
+                // :{"RecordID":"b24837d7d46643dc8c16b8a9406807e4","PrizeType":0,"Integral":5,"CouponID":null,"CouponName":null,
+                // "CouponMoney":0.0,"CouponCondition":0.0,"CouponStart":"0001-01-01 00:00:00","CouponEnd":"0001-01-01 00:00:00"
+                // ,"ItemID":null,"ItemName":null,"ItemPic":null},"dataStatus":1,"describe":null}
 
-            /***********************c测试代码***********************/
-//                Intent intent = new Intent(AboutUsActivity.this, OffilineOrder.class);
-//                intent.putExtra("itemId","62" );
-//                intent.putExtra("storeId","65");
-//                startActivity(intent);
+                /***********************c测试代码***********************/
+                Intent intent = new Intent(AboutUsActivity.this, PaySuccessActivity.class);
+                WDWApp.payOrderNum="201710130063";
+                startActivity(intent);
 
             }
         }));
@@ -107,7 +111,6 @@ public class AboutUsActivity extends ActivityBase {
                 break;
         }
     }
-
 
 
     @Override

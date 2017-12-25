@@ -40,8 +40,9 @@ public class HtttpRequest {
      */
     public static void CreatGetRequst(String url, Map<String, String> map, StringCallback callback) {
         Map<String, String> map2 = new HashMap<String, String>();
-        map2.put("timestamp", UrlUtils.getTime());
-        map2.put("token", UrlUtils.getMd5(UrlUtils.getTime()));
+        String time= UrlUtils.getTime();
+        map2.put("timestamp",time);
+        map2.put("token", UrlUtils.getMd5(time));
         if (WDWApp.getUserToken() != null) {
 
             map2.put("userToken", WDWApp.getUserToken());
@@ -69,10 +70,11 @@ public class HtttpRequest {
      * @param callback
      */
     public static void CreatPostRequstNoToken(String url, String st, StringCallback callback) {
+        String time= UrlUtils.getTime();
         OkHttpUtils
                 .postString()
-                .addHeader("timestamp", UrlUtils.getTime())
-                .addHeader("token", UrlUtils.getMd5(UrlUtils.getTime()))
+                .addHeader("timestamp", time)
+                .addHeader("token", UrlUtils.getMd5(time))
                 .content(st)
                 .url(url)
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
@@ -88,8 +90,9 @@ public class HtttpRequest {
      */
     public static void CreatPostRequst(String url, String st, StringCallback callback) {
         Map<String, String> map2 = new HashMap<String, String>();
-        map2.put("timestamp", UrlUtils.getTime());
-        map2.put("token", UrlUtils.getMd5(UrlUtils.getTime()));
+        String time= UrlUtils.getTime();
+        map2.put("timestamp",time);
+        map2.put("token", UrlUtils.getMd5(time));
         if (WDWApp.getUserToken() != null) {
             map2.put("userToken", WDWApp.getUserToken());
         }
@@ -111,8 +114,10 @@ public class HtttpRequest {
      */
     public static void CreatGetRequstNoToken(String url, Map<String, String> map, StringCallback callback) {
         Map<String, String> map2 = new HashMap<String, String>();
-        map2.put("timestamp", UrlUtils.getTime());
-        map2.put("token", UrlUtils.getMd5(UrlUtils.getTime()));
+        String time= UrlUtils.getTime();
+        map2.put("timestamp",time);
+        map2.put("token", UrlUtils.getMd5(time));
+
         OkHttpUtils
                 .get()
                 .headers(map2)
@@ -127,8 +132,9 @@ public class HtttpRequest {
      */
     public static void CheackIsLoginGet(final Context context, final String url, final Map<String, String> map, final StringCallback callback) {
         Map<String, String> map3 = new HashMap<String, String>();
-        map3.put("timestamp", UrlUtils.getTime());
-        map3.put("token", UrlUtils.getMd5(UrlUtils.getTime()));
+        String time= UrlUtils.getTime();
+        map3.put("timestamp",time);
+        map3.put("token", UrlUtils.getMd5(time));
         if (WDWApp.getUserToken() != null) {
             map3.put("userToken", WDWApp.getUserToken());
         }
@@ -195,8 +201,9 @@ public class HtttpRequest {
     public static void CheackIsLoginPOST(final Context context, final String url, final String st, final StringCallback callback) {
 
         Map<String, String> map3 = new HashMap<String, String>();
-        map3.put("timestamp", UrlUtils.getTime());
-        map3.put("token", UrlUtils.getMd5(UrlUtils.getTime()));
+        String time= UrlUtils.getTime();
+        map3.put("timestamp",time);
+        map3.put("token", UrlUtils.getMd5(time));
         if (WDWApp.getUserToken() != null) {
             map3.put("userToken", WDWApp.getUserToken());
         }
@@ -241,8 +248,9 @@ public class HtttpRequest {
      */
     public void isLogin(final String what) {
         Map<String, String> map3 = new HashMap<String, String>();
-        map3.put("timestamp", UrlUtils.getTime());
-        map3.put("token", UrlUtils.getMd5(UrlUtils.getTime()));
+        String time= UrlUtils.getTime();
+        map3.put("timestamp",time);
+        map3.put("token", UrlUtils.getMd5(time));
         if (WDWApp.getUserToken() != null) {
             map3.put("userToken", WDWApp.getUserToken());
         }
